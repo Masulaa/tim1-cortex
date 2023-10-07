@@ -9,11 +9,13 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 const LogIn = lazy(() => import("./components/login/Login"));
 
 function App() {
+
+
   return (
     <BrowserRouter>
     <Routes>
       <Route
-        path="/LogIn"
+        path="/"
         element={
           <Suspense fallback>
             <LogIn/>
