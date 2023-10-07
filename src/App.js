@@ -6,7 +6,11 @@ import "./App.css";
 import "./style/global.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
+const AppLayout = lazy(()=> import ("./components/app-layout/AppLayout"));
+
 const LogIn = lazy(() => import("./components/login/Login"));
+const Home = lazy(() => import("./components/home/Home"));
+const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
 
 function App() {
 
@@ -15,13 +19,24 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route
-        path="/"
+        path="LogIn"
         element={
-          <Suspense fallback>
-            <LogIn/>
+          <Suspense fallback={<ErrorHandlerPage/>}>
+            <LogIn />
           </Suspense>
         }
       />
+      <Route path="/" element={<AppLayout />}>
+      <Route
+        path="Home"
+        element={
+          <Suspense fallback={<ErrorHandlerPage/>}>
+             <Home />
+          </Suspense>
+        }
+      />
+
+      </Route>
       </Routes>
       </BrowserRouter>
   );
