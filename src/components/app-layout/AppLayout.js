@@ -1,24 +1,18 @@
-
 import {
   UserOutlined,
   HomeOutlined,
- 
   PlusCircleOutlined,
   ReadOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, Avatar, Dropdown, theme } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
-const { Header, Content, Footer, } = Layout;
-
-
+const { Header, Content, Footer } = Layout;
 
 const App = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
-  
 
   const navigate = useNavigate();
 
@@ -88,7 +82,7 @@ const App = () => {
             }}
           />
           <Dropdown
-            overlay={profileMenu}
+           menu={profileMenu}
             trigger={["click"]}
             placement="bottom"
           >
@@ -101,42 +95,23 @@ const App = () => {
       </Header>
       <Content
         style={{
-          padding: "0 50px",
+          padding: "0 30px",
+          backgroundColor:"white",
+          height:"auto"
         }}
       >
-        <Breadcrumb
-          style={{
-            margin: "16px 0",
-          }}
-          items={[
-            {
-              href: "",
-              title: <HomeOutlined />,
-            },
-            {
-              title: "Online Biblioteka",
-            },
-          ]}
-        />
-        <Layout style={{}}>
-          
-          <div
-            style={{
-              flex: 1,
-              padding: "24px 12px",
-              background: colorBgContainer,
-            }}
-          >
-            <Outlet />
-          </div>
-        </Layout>
+        
+          <Outlet />
       </Content>
-      <Footer
+      {/* <Footer
         style={{
           textAlign: "center",
-          bottom:0,
-          position: "sticky",
-          width: "100%"
+          position: "relative",
+          left: 0,
+          bottom: 0,
+          width: "100%",
+          backgroundColor: "#1677FF",
+          padding: "14px 50px",
         }}
       >
         <div className="demo-logo">
@@ -148,10 +123,10 @@ const App = () => {
               fontSize: "25px",
             }}
           /> */}
-        </div>
+        {/* </div>
         <h1
           style={{
-            color: "#1677FF",
+            color: "white",
             fontSize: "25px",
             margin: "0",
             padding: "0",
@@ -160,8 +135,14 @@ const App = () => {
         >
           OfficeEats
         </h1>
-        React Cortex Team1 | OfficeEats
-      </Footer>
+        <span
+          style={{
+            color: "white",
+          }}
+        >
+          React Cortex Team1 | OfficeEats
+        </span>
+      </Footer> */} 
     </Layout>
   );
 };
