@@ -1,0 +1,38 @@
+main{
+}
+
+.blob:hover{
+    transform: scale(1.1,1.1);
+    border-bottom: 1px;
+    fill: aliceblue;
+}
+
+.blob{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    transition: transform 1s ease;
+}
+.blob h2{
+    margin: 0px;
+}
+  .blob::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4096FF;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .blob:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
