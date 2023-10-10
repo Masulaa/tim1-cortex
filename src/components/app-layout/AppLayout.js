@@ -95,7 +95,7 @@ const App = () => {
       </Header>
       <Content
         style={{
-          padding: "0 30px",
+          padding: "0 20px",
           backgroundColor:"white",
           height:"auto"
         }}

@@ -9,8 +9,9 @@ main{
   display: inline;
 }
 .title{
-  margin: 3rem 0;
+  margin: 1rem 0;
 }
+
 .blob:hover{
     transform: scale(1.15,1.15);
     border-bottom: 1px;
@@ -23,6 +24,7 @@ main{
     align-items: center;
     width: 200px;
     transition: transform 1s ease;
+    cursor: pointer;
 }
 .blob h2{
     margin: 10px;

@@ -12,7 +12,7 @@ const Home = () => {
           <svg
             viewBox="0 0 200 200"
             xmlns="http://www.w3.org/2000/svg"
-            width="200px"
+            width="10rem"
           >
             <path
               fill="#1677FF"
@@ -30,7 +30,7 @@ const Home = () => {
             <svg
               viewBox="0 0 200 200"
               xmlns="http://www.w3.org/2000/svg"
-              width="200px"
+              width="10rem"
             >
               <path
                 fill="#1677FF"
@@ -47,7 +47,7 @@ const Home = () => {
             <svg
               viewBox="0 0 200 200"
               xmlns="http://www.w3.org/2000/svg"
-              width="200px"
+              width="10rem"
             >
               <path
                 fill="#1677FF"

@@ -2,13 +2,16 @@
 import { Button, Form, Input, Checkbox } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { startTransition } from 'react';
 
 import "./Login.css";
 
 const LogIn = () => {
   const onFinish = (values) => {
-    console.log( values);
-    navigate("/Home");
+    startTransition(() => {
+      console.log(values);
+      navigate("/Home");
+    });
   };
   
   const navigate = useNavigate();
