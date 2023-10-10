@@ -8,8 +8,9 @@ main{
   color:#1677FF;
   display: inline;
 }
-.title{
-  margin: 1rem 0;
+
+.title h1{
+  margin: 0;
 }
 
 .blob:hover{
