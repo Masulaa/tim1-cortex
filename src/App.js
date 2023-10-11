@@ -32,7 +32,7 @@ function App() {
             }
           />
                    <Route
-            path="meal"
+            path="ChooseMeal"
             element={
               <Suspense fallback={<ErrorHandlerPage />}>
                 <ChooseMeal />

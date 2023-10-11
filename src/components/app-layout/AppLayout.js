@@ -1,32 +1,29 @@
+import { Outlet, useNavigate } from "react-router-dom";
 import {
   UserOutlined,
-  HomeOutlined,
   PlusCircleOutlined,
-  ReadOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, Avatar, Dropdown, theme } from "antd";
-import { Outlet, useNavigate } from "react-router-dom";
-const { Header, Content, Footer } = Layout;
+import { Layout, Menu, Avatar, Dropdown } from "antd";
+const {Item} = Menu;
+
+const { Header, Content } = Layout;
+
 
 const App = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+ 
 
   const navigate = useNavigate();
 
-  const navigateToProfile = () => navigate("/UserProfile");
-  const navigateToLogIn = () => navigate("/LogIn");
 
   const profileMenu = (
     <Menu>
-      <Menu.Item onClick={() => navigateToProfile()}>
+      <Item>
         <UserOutlined></UserOutlined> Profile
-      </Menu.Item>
-      <Menu.Item key="logout">
+      </Item>
+      <Item key="logout">
         <LogoutOutlined /> Logout
-      </Menu.Item>
+      </Item>
     </Menu>
   );
 
@@ -82,7 +79,7 @@ const App = () => {
             }}
           />
           <Dropdown
-           menu={profileMenu}
+           overlay={profileMenu}
             trigger={["click"]}
             placement="bottom"
           >

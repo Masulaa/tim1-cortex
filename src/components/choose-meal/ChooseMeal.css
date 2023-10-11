@@ -12,8 +12,12 @@
 }
 
 .category-title {
-  font-size: 2rem;
   text-align: center;
+}
+
+.category-button {
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

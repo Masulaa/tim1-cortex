@@ -23,7 +23,7 @@ const HistoryOfMeals = () => {
   return (
     <>
     <div>
-      <h1 style={{color: "#1677FF"}} className='title'>
+      <h1 className='title'>
         Istorija obroka
       </h1>
     </div>

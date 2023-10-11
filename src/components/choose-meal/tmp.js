@@ -1,6 +1,6 @@
 import { Avatar, List, Divider, Button } from 'antd';
 import React from 'react'; // Add React import
-{/*import './HistoryOfMeals.css';*/}
+
 const data = [
   {
     title: 'Ant Design Title 1',
