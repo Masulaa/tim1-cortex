@@ -1,74 +1,31 @@
-/* #4096FF
-
-#1677FF */
-
-
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-}
-
-.container-login {
-  width: 100%;
-  min-height: 100vh;
+.main{
+  height: 100vh;
+  width: auto;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 15px;
-  background: linear-gradient(-135deg,#4096FF, #1677FF);
 }
 
-.wrap-login {
-  width: 40rem;
-  background: #fff;
-  border-radius: 10px;
-  overflow-x: hidden;
-
-  padding: 90px 40px;
-}
-
-.login-form{
-  padding:0 5rem;
-width: 100%;
-}
-
-.login-form-title,
-.login-form-title2 {
-  font-family: Poppins-Bold;
-  font-size: 24px;
-  color: #333333;
-  line-height: 1.2;
-  text-align: center;
+.slika {
+  position: absolute;
+  z-index: -1;
+  background: url(../../images/new/background.jpeg);
+  background-position: 38% 50%;
+  background-size: cover;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  opacity: 0.1;
   width: 100%;
-  display: block;
-  padding-bottom: 5px;
+  height: 100%;
 }
 
-
-@-webkit-keyframes anim-shadow {
-  to {
-    box-shadow: 0px 0px 70px 25px;
-    opacity: 0;
-  }
-}
-
-@keyframes anim-shadow {
-  to {
-    box-shadow: 0px 0px 70px 25px;
-    opacity: 0;
-  }
-}
-
-.input:focus + .focus-input + .symbol-input {
-  color: #4096FF;
-  padding-left: 28px;
+.title-welcome {
+  color: #131313;
+  font-family: "Koulen";
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.92px;
+  text-align: center;
 }
