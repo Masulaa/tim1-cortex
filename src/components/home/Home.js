@@ -6,9 +6,9 @@ import profileIcon from "../../images/Ellipse 1.svg";
 
 const Home = () => {
   return (
-    <>
+    <> <div className="img"></div>
       <div className="main">
-        <div className="img"></div>
+       
         <div className="topbar-home">
           <img src={logo} alt="logo" className="image-topbar-home"></img>
           <img src={profileIcon} alt="logo" className="image-topbar-home-profile"></img>

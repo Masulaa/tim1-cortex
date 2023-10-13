@@ -7,18 +7,7 @@
   flex-direction: column;
 }
 
-.img {
-  position: absolute;
-  z-index: -1;
-  background: url(../../images/67d47fa34f31fe11e7379e3650207b6b.jpeg);
-  background-position: 38% 50%;
-  background-size: cover;
-  flex-shrink: 0;
-  background-repeat: no-repeat;
-  opacity: 0.1;
-  width: 100%;
-  height: 100%;
-}
+
 .title {
   gap: 24px;
   display: flex;
@@ -84,6 +73,9 @@
   line-height: 24px; /* 171.429% */
   letter-spacing: 0.5px;
   text-decoration-line: underline;
+}
+.active{
+cursor: pointer;
 }
 @media screen and (max-width: 370px) {
   .login-wrapper,

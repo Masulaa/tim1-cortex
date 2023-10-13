@@ -2,28 +2,17 @@
 .main{
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 80px;
+  padding: 2.25rem 6.25rem;
 }
 
-.img {
-  position: absolute;
-  z-index: -1;
-  background: url("../../images/9782021\ 2.png");
-  background-position: 38% 50%;
-  background-size: cover;
-  flex-shrink: 0;
-  background-repeat: no-repeat;
 
-  width: 100%;
-  height: 100%;
-}
 
 
 .topbar-home{
   display: flex;
   align-items: center;
-  gap: 12.125rem;
+  justify-content: space-between;
 }
 
 .image-topbar-home{
@@ -86,6 +75,7 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 letter-spacing: 1.28px;
+cursor: pointer;
 }
 
 .secondary-button{
@@ -96,7 +86,7 @@ letter-spacing: 1.28px;
 border: 1px solid #BD2B2B;
 background: #FFF;
 color: #BD2B2B;
-
+cursor: pointer;
 font-family: Koulen;
 font-size: 32px;
 font-style: normal;

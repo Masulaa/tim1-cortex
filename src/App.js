@@ -3,7 +3,7 @@ import "./App.css";
 import "./style/global.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-const AppLayout = lazy(() => import("./components/app-layout/AppLayout"));
+
 const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
 const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
