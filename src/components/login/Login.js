@@ -11,13 +11,19 @@ const LogIn = () => {
   const handleEmailChange = (event) => {
     const newEmail = event.target.value;
     setEmail(newEmail);
-    setButtonActive(newEmail !== "" && password !== "");
+    setButtonActive(newEmail.includes("@") && password.length >= 8);
   };
 
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
-    setButtonActive(email !== "" && newPassword !== "");
+    setButtonActive(email.includes("@") && newPassword.length >= 8);
+  };
+
+  const handleSubmit = () => {
+    if (isButtonActive) {
+      console.log("Email: ", email, " Password: ", password);
+    }
   };
 
   return (
@@ -42,9 +48,17 @@ const LogIn = () => {
             style={{ width: "326px" }}
             className="inputField"
             onChange={handlePasswordChange}
+            type="password"
           />
         </div>
-        <div className={`login-btn ${isButtonActive ? 'active' : ''}`} style={{ backgroundColor: isButtonActive ? '#BD2B2B' : '' , color: isButtonActive ? '#FFFFFF' : '' }}>
+        <div
+          className={`login-btn ${isButtonActive ? 'active' : 'disabled'}`}
+          onClick={handleSubmit}
+          style={{
+            backgroundColor: isButtonActive ? "#BD2B2B" : "",
+            color: isButtonActive ? "#FFFFFF" : "",
+          }}
+        >
           LOG IN
           <div className="forgot">Forgot password?</div>
         </div>
