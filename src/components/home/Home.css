@@ -7,12 +7,11 @@
 }
 
 
-
-
 .topbar-home{
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
 .image-topbar-home{
@@ -93,4 +92,31 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 letter-spacing: 1.28px;
+}
+
+@media screen and (max-width: 420px) {
+  .content-home,
+  .topbar-home {
+    scale: 0.65;
+  }
+  .main{
+    padding:1.05rem 0rem ;
+  }
+  *{
+    overflow:hidden;
+
+  }
+}
+@media screen and (max-height: 620px) and (max-width: 1050px){
+  .content-home,
+  .topbar-home {
+    scale: 0.65;
+  }
+  .main{
+    padding:1.05rem 0rem ;
+  }
+  *{
+    overflow:hidden;
+
+  }
 }
