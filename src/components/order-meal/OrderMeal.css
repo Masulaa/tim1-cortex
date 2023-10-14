@@ -1,0 +1,133 @@
+* {
+    overflow: hidden;
+}
+
+.main {
+    width: 390px;
+    height: 844px;
+    background: #FFF;
+}
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+}
+
+
+.back-button {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    padding: 24px;
+    flex-shrink: 0;
+}
+
+.img-layout {
+    width: 487px;
+    height: 324px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 4px;
+    background: url(../../images/PizzaCapricciosa.png), lightgray 0px -0.625px / 100% 100.154% no-repeat;
+}
+
+.meal-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+
+.meal-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+
+.meal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+}
+
+.meal-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.meal-name {
+    width: 226px;
+    height: 25px;
+    color: #131313;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    padding-top: 20px;
+}
+
+.meal-price {
+    width: 47px;
+    height: 23px;
+    color: #131313;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.meal-description {
+    width: 342px;
+    color: #131313;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.button {
+    width: 48px;
+    height: 48px;
+}
+
+.addbutton {
+    width: 326px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: #BD2B2B;
+    display: flex;
+    justify-content: center;
+}
+
+.addbutton-text {
+    color: #FFF;
+    font-family: 'Koulen', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.28px;
+    text-align: center;
+}

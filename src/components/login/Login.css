@@ -7,7 +7,6 @@
   flex-direction: column;
 }
 
-
 .title {
   gap: 24px;
   display: flex;
@@ -44,7 +43,7 @@
   width: 326px;
   height: 56px;
   background-color: #dc9c9c;
-  color: #131313;
+  color: #ffffff;
   text-align: center;
   font-family: Koulen;
   font-size: 32px;
@@ -74,8 +73,8 @@
   letter-spacing: 0.5px;
   text-decoration-line: underline;
 }
-.active{
-cursor: pointer;
+.active {
+  cursor: pointer;
 }
 @media screen and (max-width: 370px) {
   .login-wrapper,
@@ -84,5 +83,15 @@ cursor: pointer;
   }
   .input-wrapper {
     margin-top: 0px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .login-wrapper,
+  .title {
+    scale: 0.5;
+  }
+  .input-wrapper {
+    margin-top: -5rem;
   }
 }

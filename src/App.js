@@ -9,6 +9,7 @@ const Home = lazy(() => import("./components/home/Home"));
 const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
 const ChooseMeal = lazy(() => import("./components/choose-meal/ChooseMeal"));
 const HistoryOfMeals = lazy(() => import("./components/history-of-meals/HistoryOfMeals"));
+const OrderMeal = lazy(() => import("./components/order-meal/OrderMeal"));
 const Tmp = lazy(() => import("./components/choose-meal/tmp"));
 function App() {
   return (
@@ -44,6 +45,14 @@ function App() {
             element={
               <Suspense fallback={<ErrorHandlerPage />}>
                 <Tmp />
+              </Suspense>
+            }
+          />
+           <Route
+            path="OrderMeal"
+            element={
+              <Suspense fallback={<ErrorHandlerPage />}>
+                <OrderMeal />
               </Suspense>
             }
           />
