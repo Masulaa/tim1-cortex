@@ -52,11 +52,10 @@ const LogIn = () => {
           />
         </div>
         <div
-          className={`login-btn ${isButtonActive ? 'active' : 'disabled'}`}
+          className={`login-btn ${isButtonActive ? "active" : "disabled"}`}
           onClick={handleSubmit}
           style={{
             backgroundColor: isButtonActive ? "#BD2B2B" : "",
-            color: isButtonActive ? "#FFFFFF" : "",
           }}
         >
           LOG IN
