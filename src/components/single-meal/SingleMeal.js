@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./OrderMeal.css";
+import "./SingleMeal.css";
 import "../../style/global.css";
 import pizzaImg from "../../images/PizzaCapricciosa.png";
 import removebuttongImg from "../../images/RemoveButton.png";
