@@ -24,12 +24,6 @@ const LogIn = () => {
     setButtonActive(email.includes("@") && newPassword.length >= 8);
   };
 
-  const handleSubmit = () => {
-    if (isButtonActive) {
-      console.log("Email: ", email, " Password: ", password);
-    }
-  };
-
   const userData ={
     name: "Mihajlo1",
     email: email,

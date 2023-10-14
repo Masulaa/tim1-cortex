@@ -9,8 +9,7 @@ const Home = lazy(() => import("./components/home/Home"));
 const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
 const ChooseMeal = lazy(() => import("./components/choose-meal/ChooseMeal"));
 const HistoryOfMeals = lazy(() => import("./components/history-of-meals/HistoryOfMeals"));
-const OrderMeal = lazy(() => import("./components/order-meal/OrderMeal"));
-const Tmp = lazy(() => import("./components/choose-meal/tmp"));
+const SingleMeal = lazy(() => import("./components/single-meal/SingleMeal"));
 function App() {
   return (
     <BrowserRouter>
@@ -40,19 +39,11 @@ function App() {
               </Suspense>
             }
           />
-          <Route
-            path="Tmp"
-            element={
-              <Suspense fallback={<ErrorHandlerPage />}>
-                <Tmp />
-              </Suspense>
-            }
-          />
            <Route
-            path="OrderMeal"
+            path="SingleMeal"
             element={
               <Suspense fallback={<ErrorHandlerPage />}>
-                <OrderMeal />
+                <SingleMeal />
               </Suspense>
             }
           />
