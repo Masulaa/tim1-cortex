@@ -72,6 +72,7 @@
   line-height: 24px; /* 171.429% */
   letter-spacing: 0.5px;
   text-decoration-line: underline;
+  text-align: center;
 }
 .active {
   cursor: pointer;

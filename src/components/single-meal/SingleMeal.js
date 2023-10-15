@@ -1,26 +1,18 @@
 import React, { useState } from "react";
 import "./SingleMeal.css";
 import "../../style/global.css";
-import pizzaImg from "../../images/PizzaCapricciosa.png";
-import removebuttongImg from "../../images/RemoveButton.png";
-import removebuttonrImg from "../../images/RemoveButton2.png";
-import addbuttonrImg from "../../images/AddButton.png";
-import addbuttongImg from "../../images/AddButton2.png";
-import backButton from "../../images/arrow_back_ios_new.svg";
+
 
 const OrderMeal = () => {
   const [quantity, setQuantity] = useState(1);
-  const [removeImage, setRemoveImage] = useState(removebuttongImg);
-  const [addImage, setAddImage] = useState(addbuttonrImg);
+
 
   const increaseQuantity = () => {
     if (quantity < 10) {
       setQuantity(quantity + 1);
       if (quantity === 9) {
-        setAddImage(addbuttongImg);
       }
       if (quantity === 1) {
-        setRemoveImage(removebuttonrImg);
       }
     }
   };
@@ -29,18 +21,16 @@ const OrderMeal = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
       if (quantity === 2) {
-        setRemoveImage(removebuttongImg);
       }
       if (quantity === 10) {
-        setAddImage(addbuttonrImg);
       }
     }
   };
 
   return (
     <div className="main">
-        <img src={backButton} className="back-button" alt="img"/>
-      <img src={pizzaImg} alt="pizza" className="img-layout" />
+        <img className="back-button" alt="img"/>
+      <img src alt="pizza" className="img-layout" />
       <div className="texts">
         <div className="meal-wrapper">
           <div className="meal-content">
@@ -54,9 +44,9 @@ const OrderMeal = () => {
               </p>
             </div>
             <div className="counter">
-              <img src={removeImage} alt="removebutton" className="button" onClick={decreaseQuantity} />
+              <img src alt="removebutton" className="button" onClick={decreaseQuantity} />
               <h2>{quantity}</h2>
-              <img src={addImage} alt="addbutton" className="button" onClick={increaseQuantity} />
+              <img src alt="addbutton" className="button" onClick={increaseQuantity} />
             </div>
           </div>
           <div className="addbutton">
