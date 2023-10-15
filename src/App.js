@@ -22,7 +22,7 @@ function App() {
             </Suspense>
           }
         />
-        {/* <Route path="/" element={<AppLayout />}> /}
+        {/* <Route path="/" element={<AppLayout />}> */}
           <Route
             path="Home"
             element={
@@ -55,7 +55,7 @@ function App() {
               </Suspense>
             }
           />
-        {/ </Route> */}
+        {/* </Route> */}
       </Routes>
     </BrowserRouter>
   );

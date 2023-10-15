@@ -1,133 +1,165 @@
+/* Reset some default styles */
 * {
-    overflow: hidden;
-}
-
-.main {
-    width: 390px;
-    height: 844px;
-    background: #FFF;
-}
-
-.texts {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Apply styles to the main container */
+  .main-orderMeal {
+    width: 100%;
+    background: #fff;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 64px;
-}
-
-
-.back-button {
+    position: relative;
+  }
+  
+  /* Style the back button */
+  .back-button-orderMeal {
     position: absolute;
+    top: 16px;
+    left: 16px;
     width: 24px;
     height: 24px;
-    padding: 24px;
-    flex-shrink: 0;
-}
-
-.img-layout {
-    width: 487px;
-    height: 324px;
-    flex-shrink: 0;
-    overflow: hidden;
-    border-radius: 4px;
-    background: url(../../images/PizzaCapricciosa.png), lightgray 0px -0.625px / 100% 100.154% no-repeat;
-}
-
-.meal-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-}
-
-
-.meal-wrapper {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-}
-
-
-.meal-content {
+  }
+  
+  /* Style the pizza image */
+  .img-layout-orderMeal {
+    height: auto;
+    max-height: 400px;
+    background-image: url(../../images/PizzaCapricciosa.png);
+    background-color: lightgray;
+    background-position: 0px -0.625px;
+    background-size: 100% 100.154%;
+    background-repeat: no-repeat;
+  }
+  
+  /* Style the text section */
+  .texts-orderMeal {
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 64px;
-}
-
-.meal-title {
+    gap: 16px;
+    width: 100%;
+    max-width: 390px;
+  }
+  
+  /* Style the meal information container */
+  .about-orderMeal {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-}
-
-.meal-name {
-    width: 226px;
-    height: 25px;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  /* Style the meal title */
+  .title-orderMeal {
+    width: 100%;
     color: #131313;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 24px;
-    font-style: normal;
     font-weight: 600;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-    padding-top: 20px;
-}
-
-.meal-price {
-    width: 47px;
-    height: 23px;
+    line-height: 28px;
+    padding-top: 16px;
+  }
+  
+  /* Style the meal price */
+  .price-orderMeal {
     color: #131313;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 24px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0.5px;
+    line-height: 28px;
     margin: 0;
-}
-
-.meal-description {
-    width: 342px;
+  }
+  
+  /* Style the meal description */
+  .description-orderMeal {
+    width: 100%;
     color: #131313;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: 24px;
-    letter-spacing: 0.5px;
-}
-
-.counter {
+    text-align: left;
+  }
+  
+  /* Style the counter section */
+  .counter-orderMeal {
     display: flex;
     align-items: center;
-    gap: 32px;
-}
-
-.button {
-    width: 48px;
-    height: 48px;
-}
-
-.addbutton {
-    width: 326px;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 64px;
+  }
+  
+  /* Style the "ADD TO ORDER" button */
+  .addbutton-orderMeal {
+    width: 330px;
     height: 56px;
-    flex-shrink: 0;
     border-radius: 4px;
-    background: #BD2B2B;
+    background: #bd2b2b;
     display: flex;
     justify-content: center;
-}
-
-.addbutton-text {
-    color: #FFF;
-    font-family: 'Koulen', sans-serif;
-    font-size: 32px;
-    font-style: normal;
+    align-items: center;
+  }
+  
+  /* Style the text within the "ADD TO ORDER" button */
+  .addbutton-text-orderMeal {
+    color: #fff;
+    font-family: "Koulen", sans-serif;
+    font-size: 24px;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: 1.28px;
-    text-align: center;
-}
+  }
+  .button-wrapper-orderMeal {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .tmp-orderMeal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 64px;
+  }
+  
+  .counter-button-orderMeal {
+    margin: 0 32px;
+    width: 48px;
+  }
+  
+  @media screen and (max-height: 800px) {
+    .tmp-orderMeal {
+      margin-top: 16px;
+    }
+  
+    .counter-orderMeal {
+      margin-bottom: 32px;
+    }
+  }
+  
+  @media screen and (max-width: 380px) {
+      .addbutton-orderMeal {
+          width: 270px;
+      }
+  }
+  @media screen and (max-height: 680px) {
+      .tmp-orderMeal {
+        margin-top: 1px;
+      }
+    
+      .counter-orderMeal {
+        margin-bottom: 32px;
+      }
+      .tmp-orderMeal{
+          scale: 0.8;
+      }
+   .texts-orderMeal{
+      padding: 0px 16px;
+   }
+   .description-orderMeal {
+      line-height: 18px;
+  }
+  }
