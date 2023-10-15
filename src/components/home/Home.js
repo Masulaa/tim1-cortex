@@ -9,7 +9,7 @@ const Home = () => {
     <>
 
       <div className="img" alt="img"></div>
-      <div className="main">
+      <div className="main1">
         <div className="topbar-home">
           <img src={logo} alt="logo" className="image-topbar-home"></img>
           <img

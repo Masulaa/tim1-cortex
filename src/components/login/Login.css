@@ -1,4 +1,4 @@
-.main {
+.main2 {
   height: 100vh;
   width: auto;
   display: flex;
@@ -53,6 +53,11 @@
   letter-spacing: 1.28px;
   border-radius: 4px;
   margin-bottom: 26px;
+  border: none;
+}
+
+.login-btn-part{
+  text-align: center;
 }
 .login-wrapper {
   display: flex;
@@ -76,6 +81,12 @@
 }
 .active {
   cursor: pointer;
+  background-color: #BD2B2B;
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.active:hover{
+  background-color: #7e1d1d;
 }
 @media screen and (max-width: 370px) {
   .login-wrapper,

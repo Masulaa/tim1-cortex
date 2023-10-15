@@ -15,24 +15,24 @@ const LogIn = () => {
   const handleEmailChange = (event) => {
     const newEmail = event.target.value;
     setEmail(newEmail);
-    setButtonActive(newEmail.includes("@") && password.length >= 8);
+    setButtonActive(newEmail !== "" && password !== "");
   };
 
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
-    setButtonActive(email.includes("@") && newPassword.length >= 8);
+    setButtonActive(email !== "" && newPassword !== "");
   };
 
-  const userData ={
+  const userData = {
     name: "Mihajlo1",
     email: email,
-    password: password
-  }
+    password: password,
+  };
 
   const LogIn = async () => {
     try {
-      const response = AuthService.signup (userData);
+      const response = AuthService.signup(userData);
       console.log("API Response", response);
       navigate("/Home");
     } catch (error) {
@@ -41,7 +41,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="main">
+    <div className="main2">
       <div className="img"></div>
       <div className="title">
         <div className="title-welcome">Welcome</div>
@@ -62,11 +62,16 @@ const LogIn = () => {
             style={{ width: "326px" }}
             className="inputField"
             onChange={handlePasswordChange}
-            type="password"
           />
         </div>
-        <div className={`login-btn ${isButtonActive ? 'active' : ''}`} style={{ backgroundColor: isButtonActive ? '#BD2B2B' : '' , color: isButtonActive ? '#FFFFFF' : '' }} onClick={LogIn}>
-          LOG IN
+        <div className="login-btn-part">
+          <button
+            className={`login-btn ${isButtonActive ? "active" : ""}`}
+            onClick={LogIn}
+            disabled={!isButtonActive}
+          >
+            LOG IN
+          </button>
           <div className="forgot">Forgot password?</div>
         </div>
       </section>
