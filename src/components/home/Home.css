@@ -22,6 +22,7 @@
 .image-topbar-home-profile {
   width: 48px;
   height: 48px;
+  cursor: pointer; /* Dodajemo pokazivač na ikonicu profila */
 }
 
 .content-home {
@@ -97,6 +98,55 @@
   letter-spacing: 1.28px;
 }
 
+.image-topbar-home-profile-with-dropdown{
+  display: flex;
+align-items: center;
+gap: 8px;
+cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 5.5rem; 
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 189px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.option {
+  display: flex;
+  width: 100%;
+  padding: 8px;
+  align-items: center;
+  gap: 8px;
+  padding-left: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #131313;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.option:hover {
+  background: #E5C4C4; /* Promenite u boju koju želite za hover efekat */
+}
+
+/* Responsivni stilovi */
 @media screen and (max-width: 480px) {
   .content-home,
   .topbar-home {
@@ -105,10 +155,8 @@
   .main1 {
     padding: 1.05rem 0rem;
   }
-  * {
-    overflow: hidden;
-  }
 }
+
 @media screen and (max-height: 620px) and (max-width: 1050px) {
   .content-home,
   .topbar-home {
@@ -117,15 +165,11 @@
   .main1 {
     padding: 1.05rem 0rem;
   }
-  * {
-    overflow: hidden;
-  }
 }
 
 @media screen and (max-width: 325px) {
   .content-home {
     gap: 2px;
-    height: 100vh;
   }
   .main1 {
     padding: 1rem 0rem;
