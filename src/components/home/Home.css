@@ -8,16 +8,7 @@
   padding: 2.25rem 6.25rem;
 }
 
-.topbar-home {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.image-topbar-home {
-  width: 100px;
-  height: 23px;
-}
 
 .image-topbar-home-profile {
   width: 48px;
@@ -98,12 +89,6 @@
   letter-spacing: 1.28px;
 }
 
-.image-topbar-home-profile-with-dropdown{
-  display: flex;
-align-items: center;
-gap: 8px;
-cursor: pointer;
-}
 
 .dropdown {
   position: absolute;
@@ -148,8 +133,7 @@ cursor: pointer;
 
 /* Responsivni stilovi */
 @media screen and (max-width: 480px) {
-  .content-home,
-  .topbar-home {
+  .content-home {
     scale: 0.65;
   }
   .main1 {
@@ -159,8 +143,20 @@ cursor: pointer;
 
 @media screen and (max-height: 620px) and (max-width: 1050px) {
   .content-home,
-  .topbar-home {
+  .dropdown {
     scale: 0.65;
+  }
+  .dropdown{
+    position: absolute;
+    top: 2.5rem; 
+    right: 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 189px;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
   }
   .main1 {
     padding: 1.05rem 0rem;
