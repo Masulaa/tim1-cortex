@@ -66,7 +66,7 @@ const LogIn = () => {
         </div>
         <div className="login-btn-part">
           <button
-            className={`login-btn ${isButtonActive ? "active" : ""}`}
+            className={`disabled-btn ${isButtonActive ? "active" : ""}`}
             onClick={LogIn}
             disabled={!isButtonActive}
           >

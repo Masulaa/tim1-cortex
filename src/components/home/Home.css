@@ -55,39 +55,6 @@
   letter-spacing: 0.5px;
 }
 
-.primary-button {
-  width: 326px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: 4px;
-  background: #bd2b2b;
-  color: #fff;
-  border: none;
-  font-family: Koulen;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 1.28px;
-  cursor: pointer;
-}
-
-.secondary-button {
-  width: 326px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: 4px;
-  border: 1px solid #bd2b2b;
-  background: #fff;
-  color: #bd2b2b;
-  cursor: pointer;
-  font-family: Koulen;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 1.28px;
-}
 
 
 .dropdown {

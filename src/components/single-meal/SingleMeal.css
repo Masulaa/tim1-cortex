@@ -109,7 +109,7 @@
   /* Style the text within the "ADD TO ORDER" button */
   .addbutton-text-orderMeal {
     color: #fff;
-    font-family: "Koulen", sans-serif;
+    font-family: "Koulen";
     font-size: 24px;
     font-weight: 400;
     line-height: normal;
