@@ -39,7 +39,7 @@ const SingleMeal = () => {
 
   return (
     <div className="main-orderMeal">
-    <img src={backButton} className="back-button-orderMeal" />
+    <img src={backButton} className="back-button-orderMeal" alt="pizza"/>
     <img src={pizzaImg} alt="pizza" className="img-layout-orderMeal" />
       <section className="texts-orderMeal">
         <div className="about-orderMeal">

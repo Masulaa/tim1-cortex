@@ -19,7 +19,6 @@ const ChooseMeal = () => {
   return (
     <div className="main-choosemeal">
       <div className="topbar-home">
-        {" "}
         <div
           className="image-topbar-home-profile-with-dropdown"
           onClick={toggleDropdown}

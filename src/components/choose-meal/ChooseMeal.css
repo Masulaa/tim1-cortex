@@ -1,7 +1,7 @@
 .main-choosemeal{
   display: flex;
   flex-direction: column;
-  padding: 2.25rem 6.25rem;
+  padding: 2.25rem 1rem;
 }
 
 .search-icon-choose-meal {
@@ -65,7 +65,7 @@
 
 @media screen and (max-width: 430px) {
   .main-choosemeal {
-    padding: 1rem 0.25rem;
+    padding: 1rem 1rem;
   }
 }
 
