@@ -69,9 +69,7 @@ const SingleMeal = () => {
           />
         </div>
         <div className="button-wrapper-orderMeal">
-          <div className="addbutton-orderMeal">
-            <h1 className="addbutton-text-orderMeal">ADD TO ORDER</h1>
-          </div>
+            <button className="addbutton-text-orderMeal addbutton-orderMeal">ADD TO ORDER</button>
         </div>
       </section>
     </div>
