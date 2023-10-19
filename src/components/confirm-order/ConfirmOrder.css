@@ -1,0 +1,206 @@
+.main-confirmorder {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 1rem;
+}
+
+.confirmorder-title {
+  color: #131313;
+  font-family: Koulen;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.28px;
+}
+
+.confirmorder-head p {
+  margin: 0;
+}
+
+.myprofile-back-icon {
+  position: absolute;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0 0 0 5px;
+  left: 0;
+}
+
+.confirmorder-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.confirmorder-meals {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.confirmorder-meal {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+.confirmorder-title-and-description {
+  padding: 0px 47px 17px 0px;
+  align-items: flex-start;
+  display: flex;
+  height: 47px;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.confirmorder-title-and-description p {
+  margin: 0;
+}
+
+.confirmorder-meal-title {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.confirmorder-meal-description {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 13px; /* 108.333% */
+  letter-spacing: 0.5px;
+  opacity: 0.5;
+}
+
+.confirmorder-meal-counter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+}
+
+.counter-button-confirmorder {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.confirmorder-meal-price {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+  text-align: right;
+}
+
+.confirmorder-meal-quantity {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.confirmorder-meals-price-title {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 100% */
+  letter-spacing: 0.5px;
+}
+
+.confirmorder-meals-price {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  padding-left: 0.3rem;
+}
+
+.confirmorder-meals-description{
+  display: inline-flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 8px;
+margin-top: 1rem;
+}
+
+.confirmorder-finalprice-and-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.confirmorder-finalprice-and-description p{
+  margin: 0;
+}
+
+.confirmorder-meals-price-description{
+  color: #131313;
+font-family: Roboto;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: 13px; /* 108.333% */
+letter-spacing: 0.5px;
+opacity: 0.5;
+}
+
+.confirmorder-meal-price-info{
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.confirmorder-meals-text-over-description{
+  color: #000;
+font-family: Roboto;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: 24px; /* 200% */
+letter-spacing: 0.5px;
+}
+
+.confirmorder-meals-description p{
+  margin: 0;
+}
+
+.confirmorder-meals-button{
+  display: flex;
+
+justify-content: center;
+align-items: center;
+margin-top: 1rem;
+}
+
+@media screen and (max-width: 430px) {
+  .main-confirmorder {
+    padding: 1rem 1rem;
+  }
+  .primary-button{
+    scale: 0.80;
+  }
+}

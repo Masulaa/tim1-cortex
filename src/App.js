@@ -12,6 +12,7 @@ const HistoryOfMeals = lazy(() => import("./components/history-of-meals/HistoryO
 const SingleMeal = lazy(() => import("./components/single-meal/SingleMeal"));
 const OrderSent = lazy(() => import("./components/order-sent/OrderSent"))
 const MyProfile = lazy(()=>import("./components/my-profile/MyProfile"))
+const ConfirmOrder = lazy(()=>import("./components/confirm-order/ConfirmOrder"))
 
 
 function App() {
@@ -64,6 +65,14 @@ function App() {
             element={
               <Suspense fallback={<ErrorHandlerPage />}>
                 <OrderSent />
+              </Suspense>
+            }
+          />
+                    <Route
+            path="ConfirmOrder"
+            element={
+              <Suspense fallback={<ErrorHandlerPage />}>
+                <ConfirmOrder />
               </Suspense>
             }
           />
