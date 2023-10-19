@@ -23,7 +23,7 @@ const client = axios.create({
         console.log(`Received ${HTTP_UNAUTHORIZED} status code`);
         LocalStorage.remove("BearerToken");
   
-        window.location.href = "/LogIn";
+        window.location.href = "/";
       }
       return Promise.reject(error);
     }
@@ -64,8 +64,20 @@ const client = axios.create({
           return true;
         }
       } catch (error) {
-        console.error("Error while logging in");
+        // console.error("Error while logging in");
         return false;
+      }
+    },
+    async logout() {
+      try {
+        LocalStorage.remove("BearerToken");
+  
+        window.location.href = "/"; 
+  
+        return true; // Uspješno izlogovan
+      } catch (error) {
+        console.error("Error logout");
+        return false; 
       }
     },
   };
