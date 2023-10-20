@@ -64,7 +64,7 @@ const client = axios.create({
           return true;
         }
       } catch (error) {
-        // console.error("Error while logging in");
+        console.error("Error while logging in");
         return false;
       }
     },

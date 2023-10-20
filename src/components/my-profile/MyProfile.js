@@ -58,7 +58,8 @@ const MyProfile = () => {
         </div>
         
       </section>
-        </div><div className="myprofile-button-wrapper">
+        </div>
+      </div><div className="myprofile-button-wrapper">
           <button
             className={`disabled-btn ${isButtonActive ? "active" : ""}`}
             disabled={!isButtonActive}
@@ -66,7 +67,6 @@ const MyProfile = () => {
             SAVE CHANGES
           </button>
         </div>
-      </div>
     </div>
   );
 };
