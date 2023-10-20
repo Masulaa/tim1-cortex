@@ -25,7 +25,6 @@ const LogIn = () => {
   };
 
   const userData = {
-    name: "Mihajlo1",
     email: email,
     password: password,
   };

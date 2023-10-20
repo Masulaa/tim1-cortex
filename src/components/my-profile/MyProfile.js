@@ -24,6 +24,8 @@ const MyProfile = () => {
       setButtonActive(email !== "" && newPassword !== "");
     };
 
+    
+
   return (
     <div className="main-myprofile">
       
