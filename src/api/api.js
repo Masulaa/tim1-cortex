@@ -56,11 +56,12 @@ const client = axios.create({
             Authorization: `Bearer ${token}`,
           },
         });
+        console.log(response);
         if (response.status === HTTP_OK) {
-          console.log(
-            `Setting local token ${response.data.data.token}`
-          );
-          LocalStorage.set("BearerToken", response.data.data.token);
+          // console.log(
+          //   `Setting local token ${response.data.success.token}`
+          // );
+          LocalStorage.set("BearerToken", response.data.success.token);
           return true;
         }
       } catch (error) {
