@@ -1,4 +1,4 @@
-.main-choosemeal{
+.main-choosemeal {
   display: flex;
   flex-direction: column;
   padding: 2.25rem 1rem;
@@ -20,10 +20,9 @@
   padding-right: 40px; /* Prilagodite padding kako biste stvorili prostor za ikonicu */
 }
 
-
 .dropdown {
   position: absolute;
-  top: 5.5rem; 
+  top: 5.5rem;
   left: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -38,7 +37,6 @@
 .options {
   display: flex;
   flex-direction: column;
-
 }
 
 .option {
@@ -58,30 +56,30 @@
   letter-spacing: 0.5px;
 }
 
-.topbar-choosemeal-home{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.topbar-choosemeal-home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.choosemeal-title-menu{
+.choosemeal-title-menu {
   color: #131313;
-font-family: Roboto;
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: 24px; /* 100% */
-letter-spacing: 0.5px;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 100% */
+  letter-spacing: 0.5px;
 }
 
 .option:hover {
-  background: #E5C4C4; /* Promenite u boju koju želite za hover efekat */
+  background: #e5c4c4; /* Promenite u boju koju želite za hover efekat */
 }
 
 .choosemeal-categories-menu {
   display: flex;
   gap: 5rem;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
 }
 
@@ -91,21 +89,126 @@ letter-spacing: 0.5px;
   align-items: center;
 }
 
-.choosemeal-categories-text{
+.choosemeal-categories-text {
   color: #131313;
-font-family: Roboto;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 150% */
-letter-spacing: 0.5px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
 }
 
-.choosemeal-menu-apply-button{
+.choosemeal-menu-apply-button {
   padding-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.choosemeal-recommend-title {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 100% */
+  letter-spacing: 0.5px;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+}
+
+.choosemeal-meals {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.choosemeal-single-meal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.choosemeal-single-info {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.choosemeal-second-part-meal-info p {
+  margin: 0;
+}
+
+.choosemeal-meal-add-button {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.choosemeal-meal-price {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.choosemeal-second-part-meal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.choosemeal-meal-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+}
+
+.choosemeal-first-part-meal-info {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.choosemeal-meal-title-and-description p {
+  margin: 0;
+}
+
+.choosemeal-meal-title-and-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.choosemeal-meal-title {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.choosemeal-meal-description {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 13px; /* 108.333% */
+  letter-spacing: 0.5px;
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 430px) {
@@ -115,11 +218,10 @@ letter-spacing: 0.5px;
 }
 
 @media screen and (max-height: 620px) and (max-width: 1050px) {
-
-  .dropdown{
+  .dropdown {
     scale: 0.85;
     position: absolute;
-    top: 2.5rem; 
+    top: 2.5rem;
     right: 0rem;
     display: flex;
     flex-direction: column;
@@ -134,7 +236,10 @@ letter-spacing: 0.5px;
 @media screen and (max-width: 1050px) {
   .choosemeal-categories-menu {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Prikazujte po tri ikonice u svakoj koloni */
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* Prikazujte po tri ikonice u svakoj koloni */
     gap: 1rem; /* Dodajte razmak između kolona */
     align-items: center; /* Centriraj ikonice */
   }
