@@ -15,6 +15,15 @@ import BakeryDiningOutlinedIcon from '@mui/icons-material/BakeryDiningOutlined';
 import OutdoorGrillOutlinedIcon from '@mui/icons-material/OutdoorGrillOutlined';
 import CoffeeMakerOutlinedIcon from '@mui/icons-material/CoffeeMakerOutlined';
 
+const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
+  <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
+    <div className="options">
+      <div className="option">Profile</div>
+      <div className="option">Track Order</div>
+      <div className="option">Logout</div>
+    </div>
+  </div>
+);
 const ChooseMeal = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -34,17 +43,13 @@ const ChooseMeal = () => {
             alt="logo"
             className="image-topbar-home-profile"
           />
-          {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-        </div>
-        {isDropdownOpen && (
-          <div className="dropdown1">
-            <div className="options1">
-              <div className="option1">Profile</div>
-              <div className="option1">Track Order</div>
-              <div className="option1">Logout</div>
-            </div>
-          </div>
-        )}
+       {isDropdownOpen ? (
+        <ExpandLessIcon />
+      ) : (
+        <ExpandMoreIcon />
+      )}        </div>
+ 
+      <Dropdown isDropdownOpen={isDropdownOpen} />  
         <img src={logo} alt="logo" className="image-topbar-home" />{" "}
         <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
       </div>{" "}

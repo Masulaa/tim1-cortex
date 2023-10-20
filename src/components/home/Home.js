@@ -9,6 +9,16 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { AuthService } from "../../api/api";
 
+const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
+  <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
+    <div className="options">
+      <div className="option">Profile</div>
+      <div className="option">Track Order</div>
+      <div className="option">Logout</div>
+    </div>
+  </div>
+);
+
 const Home = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -40,10 +50,11 @@ const Home = () => {
           >
             <img src={profileIcon} alt="logo" className="image-topbar-home-profile" />
             {isDropdownOpen ? (
-              <ExpandLessIcon />
-            ) : (
-              <ExpandMoreIcon />
-            )}
+        <ExpandLessIcon />
+      ) : (
+        <ExpandMoreIcon />
+      )}
+      <Dropdown isDropdownOpen={isDropdownOpen} />
           </div>
         </div>
         {isDropdownOpen && (

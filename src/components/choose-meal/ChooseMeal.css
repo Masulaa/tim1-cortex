@@ -21,7 +21,7 @@
 }
 
 
-.dropdown1 {
+.dropdown {
   position: absolute;
   top: 5.5rem; 
   left: 1.5rem;
@@ -35,13 +35,13 @@
   z-index: 1;
 }
 
-.options1 {
+.options {
   display: flex;
   flex-direction: column;
 
 }
 
-.option1 {
+.option {
   display: flex;
   padding: 8px;
   align-items: center;
@@ -74,7 +74,7 @@ line-height: 24px; /* 100% */
 letter-spacing: 0.5px;
 }
 
-.option1:hover {
+.option:hover {
   background: #E5C4C4; /* Promenite u boju koju želite za hover efekat */
 }
 
@@ -116,7 +116,7 @@ letter-spacing: 0.5px;
 
 @media screen and (max-height: 620px) and (max-width: 1050px) {
 
-  .dropdown1{
+  .dropdown{
     scale: 0.85;
     position: absolute;
     top: 2.5rem; 
