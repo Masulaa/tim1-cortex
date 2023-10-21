@@ -47,6 +47,19 @@ body {
   box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
   z-index: 2;
 }
+.dropdown1 {
+  position: absolute;
+  top: 5.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 189px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
 
 .options {
   display: flex;
@@ -75,6 +88,16 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 2.25rem 1rem;
+}
+
+.topbar-computer-choosemeal-home{
+  padding: 2.25rem 1rem;
+}
+
+.topbar-computer-other-part{
+  display: flex;
+align-items: center;
+gap: 48px;
 }
 
 .choosemeal-menu {
@@ -162,6 +185,7 @@ body {
 
 .icon {
   margin-right: 20px;
+  cursor: pointer;
 }
 .circle {
   width: 64px;
@@ -321,12 +345,15 @@ body {
   letter-spacing: 0.5px;
   padding-top: 2rem;
   padding-bottom: 1.5rem;
+  padding-left: 1rem;
+padding-right: 1rem;
 }
 
 .choosemeal-meals {
   display: flex;
   flex-direction: column;
-
+padding-left: 1rem;
+padding-right: 1rem;
   gap: 16px;
   flex-shrink: 0;
 }
@@ -419,6 +446,15 @@ body {
   padding: 5px;
 }
 
+.choosmeal-computer-button{
+  width: 64px;
+height: 64px;
+position: fixed;
+bottom: 5%;
+right: 5%;
+cursor: pointer;
+}
+
 @media screen and (max-width: 430px) {
   .topbar-choosemeal-home {
     padding: 1rem;
@@ -474,7 +510,7 @@ body {
   }
 
   .menu-visible {
-
+scale: 0.90;
     position: absolute;
     width: 225px;
     height: 544px;
@@ -487,10 +523,11 @@ body {
     margin-top: 20vh;
   }
   .menu-hidden {
+    scale: 0.90;
     position: block;
     width: 225px;
     height: 544px;
-    z-index: 3;
+    z-index: -3;
     padding: 15px;
     margin-top: 20vh;
     background-color: #ffffff;
@@ -584,5 +621,35 @@ body {
     margin-left: 210px;
     margin-top: 5px;
 
+  }
+}
+
+.topbar-computer-choosemeal-home{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 960px) {
+
+}
+
+.phone-only {
+  display: none; /* Početno skrivanje na svim ekranima */
+}
+
+@media (max-width: 768px) {
+  .phone-only {
+    display: block; /* Prikazivanje na ekranima sa širinom manjom od 768px (telefoni) */
+  }
+}
+
+.computer-only {
+  display: none; /* Početno skrivanje na svim ekranima */
+}
+
+@media (min-width: 768px) {
+  .computer-only {
+    display: block; /* Prikazivanje na ekranima sa širinom manjom od 768px (telefoni) */
   }
 }
