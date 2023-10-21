@@ -1,4 +1,4 @@
-import { ArrowBack } from '@mui/icons-material';
+import { ArrowBackIosNew } from '@mui/icons-material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "./NotFound.css";
 import ErrorImage from "../../images/404.png";
@@ -104,7 +104,7 @@ const NotFound = () => {
         </div>
         <img src={computerbutton} className="notFound-choosmeal-computer-button"></img>
       </div>
-      <ArrowBack className="notFound-back-icon"></ArrowBack>
+      <ArrowBackIosNew className="notFound-back-icon"></ArrowBackIosNew>
          <div className="notFound-error">ERROR</div>
             <img src={ErrorImage} className="notFound-error-image" />
           <div className="notFound-error-text">Page not found</div>

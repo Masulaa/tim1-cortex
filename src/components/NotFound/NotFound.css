@@ -13,7 +13,7 @@
     left: 0;
 }
 
-@media (max-width: 600px) { /*TELEFON*/
+@media (max-width: 600px) { 
 
     .notFound-header,.notFound-footer{
         display: none;
@@ -52,7 +52,7 @@
   }
 
   
-  @media (min-width: 601px) { /*KOMPJUTER*/
+  @media (min-width: 601px) { 
 
     .notFound-arrowBack{
         margin-right: 24px;
@@ -331,7 +331,7 @@
         font-size: 24px;
         font-style: normal;
         font-weight: 600;
-        line-height: 24px; /* 100% */
+        line-height: 24px; 
         letter-spacing: 0.5px;
         padding-top: 2rem;
         padding-bottom: 1.5rem;
@@ -376,7 +376,7 @@
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        line-height: 24px; /* 150% */
+        line-height: 24px; 
         letter-spacing: 0.5px;
       }
       
@@ -415,7 +415,7 @@
         font-size: 16px;
         font-style: normal;
         font-weight: 600;
-        line-height: 24px; /* 150% */
+        line-height: 24px;
         letter-spacing: 0.5px;
       }
       
@@ -425,7 +425,7 @@
         font-size: 12px;
         font-style: normal;
         font-weight: 600;
-        line-height: 13px; /* 108.333% */
+        line-height: 13px;
         letter-spacing: 0.5px;
         opacity: 0.5;
       }
@@ -436,7 +436,7 @@
         font-size: 24px;
         font-style: normal;
         font-weight: 600;
-        line-height: 24px; /* 100% */
+        line-height: 24px; 
         letter-spacing: 0.5px;
         padding-top: 2rem;
         padding-bottom: 1.5rem;
@@ -484,7 +484,7 @@
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        line-height: 24px; /* 150% */
+        line-height: 24px; 
         letter-spacing: 0.5px;
       }
       
@@ -523,7 +523,7 @@
         font-size: 16px;
         font-style: normal;
         font-weight: 600;
-        line-height: 24px; /* 150% */
+        line-height: 24px; 
         letter-spacing: 0.5px;
       }
       
@@ -533,7 +533,7 @@
         font-size: 12px;
         font-style: normal;
         font-weight: 600;
-        line-height: 13px; /* 108.333% */
+        line-height: 13px; 
         letter-spacing: 0.5px;
         opacity: 0.5;
       }
@@ -580,9 +580,9 @@
           grid-template-columns: repeat(
             3,
             1fr
-          ); /* Prikazujte po tri ikonice u svakoj koloni */
-          gap: 1rem; /* Dodajte razmak između kolona */
-          align-items: center; /* Centriraj ikonice */
+          ); 
+          gap: 1rem; 
+          align-items: center; 
         }
       
         .notFound--categories-single {
@@ -590,8 +590,7 @@
           flex-direction: column;
           align-items: center;
         }
-      
-        /* Dodajte druge stilove prema potrebi za manje ekrane */
+     
       }
       @media screen and (min-width: 960px) {
         .notFound--categories-menu {
@@ -730,22 +729,22 @@
       }
       
       .notFound-phone-only {
-        display: none; /* Početno skrivanje na svim ekranima */
+        display: none; 
       }
       
       @media (max-width: 768px) {
         .notFound-phone-only {
-          display: block; /* Prikazivanje na ekranima sa širinom manjom od 768px (telefoni) */
+          display: block;
         }
       }
       
       .notFound-computer-only {
-        display: none; /* Početno skrivanje na svim ekranima */
+        display: none; 
       }
       
       @media (min-width: 768px) {
         .notFound-computer-only {
-          display: block; /* Prikazivanje na ekranima sa širinom manjom od 768px (telefoni) */
+          display: block;
         }
       }
   }
