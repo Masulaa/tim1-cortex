@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -74,8 +73,6 @@ const ChooseMeal = () => {
   const toggleDropdownLeft = () => {
     setIsDropdownOpenLeft(!isDropdownOpenLeft);
   };
-
-  const navigate = useNavigate();
 
 
   const fetchArticles = async () => {
@@ -195,7 +192,6 @@ const ChooseMeal = () => {
                     src={addbuttongImg}
                     alt=""
                     className="choosemeal-meal-add-button"
-                    onClick={()=>{navigate(`SingleMeal/${article.id}`)}}
                   ></img>
                 </div>
               </div>
