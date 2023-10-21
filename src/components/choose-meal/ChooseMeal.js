@@ -23,7 +23,7 @@ import "../../style/global.css";
 import { ArticleService } from "../../api/api";
 import addbuttongImg from "../../images/AddButton.png";
 import pizzaImg from "../../images/PizzaCapricciosa.png";
-import computerbutton from "../../images/icons/Group 23.png"
+import computerbutton from "../../images/icons/Group 23.png";
 
 const icons = [
   MenuIcon,
@@ -48,7 +48,9 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
     </div>
   </div>
 );
-
+{
+  /*Left je zapravo Right*/
+}
 const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
@@ -69,11 +71,9 @@ const ChooseMeal = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  
   const toggleDropdownLeft = () => {
     setIsDropdownOpenLeft(!isDropdownOpenLeft);
   };
-
 
   const fetchArticles = async () => {
     try {
