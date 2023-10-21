@@ -74,18 +74,18 @@ const NotFound = () => {
 
   return (
     <div className="notFound-main">
-      <div className="notFound-header"> <div className="notFound-topbar-computer-choosemeal-home">
+      <div className="notFound-header"> <div className="notFound-topbar-computer--home">
           <div className="notFound-image-topbar-wrapper">
           <ArrowBackIcon className="notFound-arrowBack"></ArrowBackIcon>
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
           <div className="notFound-topbar-computer-other-part">
             {" "}
-            <div className="notFound-search-choosemeal">
+            <div className="notFound-search-">
               <OutlinedInput className="notFound-search-input" placeholder="Search" />
               <SearchOutlined className="notFound-search-icon-choose-meal" />
             </div>{" "}
-            <div className="notFound-choosemeal-shoopingbag">
+            <div className="notFound--shoopingbag">
               <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
             </div>
             <div

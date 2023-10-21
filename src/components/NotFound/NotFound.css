@@ -93,7 +93,7 @@
     .notFound-back-icon{
         opacity: 0%;
     }
-    .notFound-main-choosemeal {
+    .notFound-main- {
         display: flex;
         flex-direction: column;
       }
@@ -104,7 +104,7 @@
         width: 156px;
         height: 23px;
       }
-      .notFound-search-choosemeal {
+      .notFound-search- {
         display: flex;
         justify-content: center;
       }
@@ -178,14 +178,14 @@
         letter-spacing: 0.5px;
       }
       
-      .notFound-topbar-choosemeal-home {
+      .notFound-topbar--home {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 2.25rem 1rem;
       }
       
-      .notFound-topbar-computer-choosemeal-home{
+      .notFound-topbar-computer--home{
         padding: 2.25rem 1rem;
       }
       
@@ -195,7 +195,7 @@
       gap: 48px;
       }
       
-      .notFound-choosemeal-menu {
+      .notFound--menu {
         border-radius: 15px 15px 0 0;
         background-color: #ffffff;
         z-index: 3;
@@ -206,7 +206,7 @@
         flex-shrink: 0;
       }
       
-      .notFound-choosemeal-title-menu {
+      .notFound--title-menu {
         color: #131313;
         font-family: Roboto;
         font-size: 24px;
@@ -221,20 +221,20 @@
         background: #e5c4c4;
       }
       
-      .notFound-choosemeal-categories-menu {
+      .notFound--categories-menu {
         display: flex;
         gap: 5rem;
         align-items: center;
         justify-content: center;
       }
       
-      .notFound-choosemeal-categories-single {
+      .notFound--categories-single {
         display: flex;
         flex-direction: column;
         align-items: center;
       }
       
-      .notFound-choosemeal-categories-text {
+      .notFound--categories-text {
         color: #131313;
         font-family: Roboto;
         font-size: 16px;
@@ -244,13 +244,13 @@
         letter-spacing: 0.5px;
       }
       
-      .notFound-choosemeal-menu-apply-button {
+      .notFound--menu-apply-button {
         padding: 2rem 0;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      .notFound-choosemeal-menu-apply {
+      .notFound--menu-apply {
         width: 326px;
         height: 44px;
         flex-shrink: 0;
@@ -325,7 +325,7 @@
         transition: transform 1s ease-in-out, display 0s 1s, opacity 1s 0s;
       }
       
-      .notFound-choosemeal-recommend-title {
+      .notFound--recommend-title {
         color: #131313;
         font-family: Roboto;
         font-size: 24px;
@@ -337,7 +337,7 @@
         padding-bottom: 1.5rem;
       }
       
-      .notFound-choosemeal-meals {
+      .notFound--meals {
         display: flex;
         flex-direction: column;
       
@@ -345,13 +345,13 @@
         flex-shrink: 0;
       }
       
-      .notFound-choosemeal-single-meal {
+      .notFound--single-meal {
         display: flex;
         flex-direction: column;
         gap: 16px;
       }
       
-      .notFound-choosemeal-single-info {
+      .notFound--single-info {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -359,18 +359,18 @@
         gap: 12px;
       }
       
-      .notFound-choosemeal-second-part-meal-info p {
+      .notFound--second-part-meal-info p {
         margin: 0;
       }
       
-      .notFound-choosemeal-meal-add-button {
+      .notFound--meal-add-button {
         width: 24px;
         height: 24px;
         flex-shrink: 0;
         cursor: pointer;
       }
       
-      .notFound-choosemeal-meal-price {
+      .notFound--meal-price {
         color: #131313;
         font-family: Roboto;
         font-size: 16px;
@@ -380,36 +380,36 @@
         letter-spacing: 0.5px;
       }
       
-      .notFound-choosemeal-second-part-meal-info {
+      .notFound--second-part-meal-info {
         display: flex;
         flex-direction: column;
         gap: 1.2rem;
       }
       
-      .notFound-choosemeal-meal-img {
+      .notFound--meal-img {
         width: 64px;
         height: 64px;
         border-radius: 4px;
       }
       
-      .notFound-choosemeal-first-part-meal-info {
+      .notFound--first-part-meal-info {
         display: inline-flex;
         align-items: flex-start;
         gap: 16px;
       }
       
-      .notFound-choosemeal-meal-title-and-description p {
+      .notFound--meal-title-and-description p {
         margin: 0;
       }
       
-      .notFound-choosemeal-meal-title-and-description {
+      .notFound--meal-title-and-description {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
       }
       
-      .notFound-choosemeal-meal-title {
+      .notFound--meal-title {
         color: #131313;
         font-family: Roboto;
         font-size: 16px;
@@ -419,7 +419,7 @@
         letter-spacing: 0.5px;
       }
       
-      .notFound-choosemeal-meal-description {
+      .notFound--meal-description {
         color: #131313;
         font-family: Roboto;
         font-size: 12px;
@@ -430,7 +430,7 @@
         opacity: 0.5;
       }
       
-      .notFound-choosemeal-recommend-title {
+      .notFound--recommend-title {
         color: #131313;
         font-family: Roboto;
         font-size: 24px;
@@ -444,7 +444,7 @@
       padding-right: 1rem;
       }
       
-      .notFound-choosemeal-meals {
+      .notFound--meals {
         display: flex;
         flex-direction: column;
       padding-left: 1rem;
@@ -453,13 +453,13 @@
         flex-shrink: 0;
       }
       
-      .notFound-choosemeal-single-meal {
+      .notFound--single-meal {
         display: flex;
         flex-direction: column;
         gap: 16px;
       }
       
-      .notFound-choosemeal-single-info {
+      .notFound--single-info {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -467,18 +467,18 @@
         gap: 12px;
       }
       
-      .notFound-choosemeal-second-part-meal-info p {
+      .notFound--second-part-meal-info p {
         margin: 0;
       }
       
-      .notFound-choosemeal-meal-add-button {
+      .notFound--meal-add-button {
         width: 24px;
         height: 24px;
         flex-shrink: 0;
         cursor: pointer;
       }
       
-      .notFound-choosemeal-meal-price {
+      .notFound--meal-price {
         color: #131313;
         font-family: Roboto;
         font-size: 16px;
@@ -488,36 +488,36 @@
         letter-spacing: 0.5px;
       }
       
-      .notFound-choosemeal-second-part-meal-info {
+      .notFound--second-part-meal-info {
         display: flex;
         flex-direction: column;
         gap: 1.2rem;
       }
       
-      .notFound-choosemeal-meal-img {
+      .notFound--meal-img {
         width: 64px;
         height: 64px;
         border-radius: 4px;
       }
       
-      .notFound-choosemeal-first-part-meal-info {
+      .notFound--first-part-meal-info {
         display: inline-flex;
         align-items: flex-start;
         gap: 16px;
       }
       
-      .notFound-choosemeal-meal-title-and-description p {
+      .notFound--meal-title-and-description p {
         margin: 0;
       }
       
-      .notFound-choosemeal-meal-title-and-description {
+      .notFound--meal-title-and-description {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
       }
       
-      .notFound-choosemeal-meal-title {
+      .notFound--meal-title {
         color: #131313;
         font-family: Roboto;
         font-size: 16px;
@@ -527,7 +527,7 @@
         letter-spacing: 0.5px;
       }
       
-      .notFound-choosemeal-meal-description {
+      .notFound--meal-description {
         color: #131313;
         font-family: Roboto;
         font-size: 12px;
@@ -537,7 +537,7 @@
         letter-spacing: 0.5px;
         opacity: 0.5;
       }
-      .notFound-choosemeal-shoppingbag {
+      .notFound--shoppingbag {
         padding: 5px;
       }
       
@@ -551,7 +551,7 @@
       }
       
       @media screen and (max-width: 430px) {
-        .notFound-topbar-choosemeal-home {
+        .notFound-topbar--home {
           padding: 1rem;
         }
       }
@@ -575,7 +575,7 @@
       }
       
       @media screen and (max-width: 1050px) {
-        .notFound-choosemeal-categories-menu {
+        .notFound--categories-menu {
           display: grid;
           grid-template-columns: repeat(
             3,
@@ -585,7 +585,7 @@
           align-items: center; /* Centriraj ikonice */
         }
       
-        .notFound-choosemeal-categories-single {
+        .notFound--categories-single {
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -594,12 +594,12 @@
         /* Dodajte druge stilove prema potrebi za manje ekrane */
       }
       @media screen and (min-width: 960px) {
-        .notFound-choosemeal-categories-menu {
+        .notFound--categories-menu {
           display: flex;
           flex-direction: column;
           gap: 0;
         }
-        .notFound-choosemeal-title-menu {
+        .notFound--title-menu {
           display: none;
           color: transparent;
         }
@@ -637,13 +637,13 @@
           background: rgba(0, 0, 0, 0);
           z-index: 1;
         }
-        .notFound-choosemeal-categories-icon {
+        .notFound--categories-icon {
           width: 23px;
           height: 23px;
           justify-content: center;
           align-items: center;
         }
-        .notFound-choosemeal-categories-single {
+        .notFound--categories-single {
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -654,7 +654,7 @@
           height: 3rem;
           padding-left: 2px;
         }
-        .notFound-choosemeal-menu-apply-button {
+        .notFound--menu-apply-button {
           width: 100%;
           height: 32px;
           display: flex;
@@ -662,7 +662,7 @@
           background: transparent;
           padding: 15px 0;
         }
-        .notFound-choosemeal-menu-apply {
+        .notFound--menu-apply {
           width: 193px;
           height: 32px;
           flex-shrink: 0;
@@ -691,7 +691,7 @@
         
       }
       @media screen and (max-width: 360px) {
-        .notFound-choosemeal-menu-apply-button {
+        .notFound--menu-apply-button {
           width: 100%;
           height: 3rem;
           display: flex;
@@ -700,7 +700,7 @@
           padding: 15px 0;
           margin-top: 35px;
         }
-        .notFound-choosemeal-menu-apply {
+        .notFound--menu-apply {
           width: 226px;
           height: 3rem;
         }
@@ -708,7 +708,7 @@
           width: 250px;
       
         }
-        .notFound-search-choosemeal{
+        .notFound-search-{
           display: flex;
           justify-content: center;
         }
@@ -719,7 +719,7 @@
         }
       }
       
-      .notFound-topbar-computer-choosemeal-home{
+      .notFound-topbar-computer--home{
         display: flex;
         align-items: center;
         justify-content: space-between;
