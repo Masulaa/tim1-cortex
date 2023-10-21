@@ -8,13 +8,20 @@ const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
 const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
 const ChooseMeal = lazy(() => import("./components/choose-meal/ChooseMeal"));
-const RateOrder = lazy(()=>import("./components/rate-order/RateOrder"))
 const HistoryOfMeals = lazy(() =>
   import("./components/history-of-meals/HistoryOfMeals")
 );
 const SingleMeal = lazy(() => import("./components/single-meal/SingleMeal"));
-const OrderSent = lazy(() => import("./components/order-sent/OrderSent"))
-const MyProfile = lazy(()=>import("./components/my-profile/MyProfile"))
+const OrderSent = lazy(() => import("./components/order-sent/OrderSent"));
+const TrackOrder = lazy (() => import("./components/track-order/TrackOrder"))
+const MyProfile = lazy(() => import("./components/my-profile/MyProfile"));
+const ConfirmOrder = lazy(() =>
+  import("./components/confirm-order/ConfirmOrder")
+);
+const Settings = lazy(() => import("./components/settings/Settings"));
+
+const RateOrder = lazy(()=>import("./components/rate-order/RateOrder"))
+
 
 
 function App() {
