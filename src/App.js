@@ -3,7 +3,6 @@ import "./App.css";
 import "./style/global.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-
 const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
 const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
@@ -13,16 +12,16 @@ const HistoryOfMeals = lazy(() =>
 );
 const SingleMeal = lazy(() => import("./components/single-meal/SingleMeal"));
 const OrderSent = lazy(() => import("./components/order-sent/OrderSent"));
-const TrackOrder = lazy (() => import("./components/track-order/TrackOrder"))
+const TrackOrder = lazy(() => import("./components/track-order/TrackOrder"));
 const MyProfile = lazy(() => import("./components/my-profile/MyProfile"));
 const ConfirmOrder = lazy(() =>
   import("./components/confirm-order/ConfirmOrder")
 );
 const Settings = lazy(() => import("./components/settings/Settings"));
 
-const RateOrder = lazy(()=>import("./components/rate-order/RateOrder"))
+const RateOrder = lazy(() => import("./components/rate-order/RateOrder"));
 
-
+const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 function App() {
   return (
@@ -85,7 +84,7 @@ function App() {
             </Suspense>
           }
         />
-         <Route
+        <Route
           path="TrackOrder"
           element={
             <Suspense fallback={<ErrorHandlerPage />}>
@@ -109,14 +108,22 @@ function App() {
             </Suspense>
           }
         />
-          <Route
-            path="RateOrder"
-            element={
-              <Suspense fallback={<ErrorHandlerPage />}>
-                <RateOrder />
-              </Suspense>
-            }
-          />
+        <Route
+          path="RateOrder"
+          element={
+            <Suspense fallback={<ErrorHandlerPage />}>
+              <RateOrder />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<ErrorHandlerPage />}>
+              <NotFound />
+            </Suspense>
+          }
+        />
         {/* </Route> */}
       </Routes>
     </BrowserRouter>

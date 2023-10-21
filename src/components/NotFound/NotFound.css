@@ -1,0 +1,59 @@
+.back-icon{
+    display: inline-flex;
+    height: 32px;
+    padding-right: 0px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    color: #131313;
+    position: fixed;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 0 0 0 5px;
+    left: 0;
+}
+
+@media (max-width: 600px) { /*TELEFON*/
+
+    .header,.footer{
+        display: none;
+    }
+
+    .main{
+        display: flex;
+        padding: 36px 16px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .error{
+        color: #131313;
+        font-family: Koulen;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 1.28px;
+    }
+     
+    .error-image{
+        margin-top: 160px;
+    } 
+    
+    .error-text{
+        color: #E1E4E5;
+        font-family: Koulen;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.96px;
+    }
+  }
+
+  
+  @media (min-width: 601px) { /*KOMPJUTER*/
+    .error-image{
+        background-color: red;
+    }
+  }
