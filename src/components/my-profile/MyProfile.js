@@ -8,17 +8,17 @@ import closeBtn from "../../images/close.svg";
 import "./MyProfile.css"; // Stilovi za MyProfile komponentu
 
 const MyProfile = () => {
-  const [user, setUser] = useState([]);
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState({ email: "", password: "" });
   const [password, setPassword] = useState("");
   const [isButtonActive, setButtonActive] = useState(false);
+  const [email, setEmail] = useState("");
   const [isModalVisible, setModalVisible] = useState(false);
+  const [modalText, setModalText] = useState("");
 
   const fetchUser = async () => {
     try {
       const response = await ProfileService.GetProfile();
       setUser(response.data.success);
-      setEmail(response.data.success.email);
     } catch (error) {
       console.log("Error fetching user:", error);
     }
@@ -28,10 +28,12 @@ const MyProfile = () => {
     fetchUser();
   }, []);
 
+  useEffect(() => {
+    setEmail(user.email);
+  }, [user.email]);
+
   const handleEmailChange = (event) => {
-    const newEmail = event.target.value;
-    setEmail(newEmail);
-    setButtonActive(newEmail !== "" && password !== "");
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -40,9 +42,9 @@ const MyProfile = () => {
     setButtonActive(email !== "" && newPassword !== "");
   };
 
-  const openModal = () => {
+  const openModal = (text) => {
+    setModalText(text);
     setModalVisible(true);
-    // Postavi timeout za zatvaranje modaala nakon 3 sekunde
     setTimeout(() => {
       closeModal();
     }, 3000);
@@ -68,23 +70,21 @@ const MyProfile = () => {
           <section className="myprofile-input-wrapper">
             <div className="input-wrapper2">
               <TextField
-                label="Email"
                 variant="outlined"
                 style={{ width: "326px" }}
                 className="inputField"
                 onChange={handleEmailChange}
-                defaultValue={email}
-                InputLabelProps={{
-                  shrink: !!email,
-                }}
+                value={email}
               />
+
               <TextField
                 label="Password"
+                type="password"
                 variant="outlined"
                 style={{ width: "326px" }}
                 className="inputField"
                 onChange={handlePasswordChange}
-                value={user.password}
+                value={password}
               />
             </div>
           </section>
@@ -94,7 +94,7 @@ const MyProfile = () => {
         <button
           className={`disabled-btn ${isButtonActive ? "active" : ""}`}
           disabled={!isButtonActive}
-          onClick={openModal}
+          onClick={() => openModal("Changes saved.")}
         >
           SAVE CHANGES
         </button>
@@ -103,7 +103,7 @@ const MyProfile = () => {
       {isModalVisible && (
         <div className="myprofile-changes-saved">
           <p className="myprofile-changes-saved-text">
-            Changes saved.
+            {modalText}
           </p>
           <img
             src={closeBtn}
