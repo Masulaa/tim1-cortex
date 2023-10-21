@@ -75,14 +75,14 @@
   opacity: 50%;
 }
 
-.title {
-  top: 68.5px;
-  left: 120px;
+.rateorder-title {
+  color: #131313;
   font-family: Koulen;
-  text-align: center;
   font-size: 32px;
-  letter-spacing: 4%;
-  line-height: 57.81px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1.28px;
 }
 
 .user-picture {

@@ -84,8 +84,12 @@ const client = axios.create({
   };
 
   export const ArticleService = {
-    GetArticles() {
-      return client.get("articles");
+    async GetArticles(articleSearchData) {
+      return await client.get("articles", articleSearchData);
+
+    },
+    async GetSingleArticle(id) {
+      return await client.get(`articles/${id}`);
     },
   };
 

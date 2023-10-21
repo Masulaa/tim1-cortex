@@ -19,6 +19,7 @@ const MyProfile = () => {
     try {
       const response = await ProfileService.GetProfile();
       setUser(response.data.success);
+      console.log(response.data.success)
     } catch (error) {
       console.log("Error fetching user:", error);
     }

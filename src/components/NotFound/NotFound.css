@@ -13,6 +13,19 @@
     left: 0;
 }
 
+.dropdown {
+  position: absolute;
+  top: 5.5rem; 
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 189px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+}
+
 @media (max-width: 600px) { 
 
     .notFound-header,.notFound-footer{
@@ -37,7 +50,7 @@
     }
      
     .notFound-error-image{
-        margin-top: 160px;
+        margin-top: 8rem;
     } 
     
     .notFound-error-text{
@@ -70,7 +83,6 @@
         font-weight: 400;
         line-height: normal;
         letter-spacing: 2.56px;
-        margin-top: 100px;
         height: 0px;
     }
      
