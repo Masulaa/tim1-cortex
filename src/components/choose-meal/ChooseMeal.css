@@ -1,7 +1,6 @@
 .main-choosemeal {
   display: flex;
   flex-direction: column;
-
 }
 body{
   overflow: hidden;

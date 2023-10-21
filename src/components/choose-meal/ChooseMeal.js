@@ -21,6 +21,8 @@ import logo from "../../images/logo.png";
 import "./ChooseMeal.css";
 import "../../style/global.css";
 import { ArticleService } from "../../api/api";
+import addbuttongImg from "../../images/AddButton.png";
+import pizzaImg from "../../images/PizzaCapricciosa.png";
 
 
 const icons = [
@@ -60,7 +62,7 @@ const ChooseMeal = () => {
     try {
       const response = await ArticleService.GetArticles();
       setArticles(response.data);
-      // console.log(response.data);
+       console.log(response);
     } catch (error) {
       console.log("Error fetching articles:", error);
     }
@@ -114,6 +116,39 @@ const ChooseMeal = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div>
+        <div className="choosemeal-recommend-title">Recommend</div>
+        <div className="choosemeal-meals">
+        {articles.map((article) => (
+        <div key={article.id} className="choosemeal-single-meal">
+          <div className="choosemeal-single-info">
+            <div className="choosemeal-first-part-meal-info">
+              <img
+                src={pizzaImg}
+                alt=""
+                className="choosemeal-meal-img"
+              ></img>
+              <div className="choosemeal-meal-title-and-description">
+                <p className="choosemeal-meal-title">{article.name}</p>
+                <p className="choosemeal-meal-description">
+                  {article.description}
+                </p>
+              </div>
+            </div>
+            <div className="choosemeal-second-part-meal-info">
+              <p className="choosemeal-meal-price">{article.price}€</p>
+              <img
+                src={addbuttongImg}
+                alt=""
+                className="choosemeal-meal-add-button"
+              ></img>
+            </div>
+          </div>
+          <div className="line"></div>
+        </div>
+      ))}
+        </div>
       </div>
       {<div className={`${isMenuVisible ? "overlay-visible" : "overlay-hidden"}`} onClick={toggleMenu} ></div>}
       <div className={`choosemeal-menu ${isMenuVisible ? "menu-visible" : "menu-hidden"}`}>
