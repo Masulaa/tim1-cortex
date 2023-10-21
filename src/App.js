@@ -4,14 +4,16 @@ import "./style/global.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 
+
 const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
 const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
 const ChooseMeal = lazy(() => import("./components/choose-meal/ChooseMeal"));
 const HistoryOfMeals = lazy(() => import("./components/history-of-meals/HistoryOfMeals"));
 const SingleMeal = lazy(() => import("./components/single-meal/SingleMeal"));
-const OrderSent = lazy(() => import("./components/order-sent/OrderSent"))
-const MyProfile = lazy(()=>import("./components/my-profile/MyProfile"))
+const OrderSent = lazy(() => import("./components/order-sent/OrderSent"));
+const MyProfile = lazy(()=>import("./components/my-profile/MyProfile"));
+const RateOrder = lazy(()=>import("./components/rate-order/RateOrder"));
 
 
 function App() {
@@ -64,6 +66,14 @@ function App() {
             element={
               <Suspense fallback={<ErrorHandlerPage />}>
                 <OrderSent />
+              </Suspense>
+            }
+          />
+          <Route
+            path="RateOrder"
+            element={
+              <Suspense fallback={<ErrorHandlerPage />}>
+                <RateOrder />
               </Suspense>
             }
           />
