@@ -100,7 +100,10 @@ const ChooseMeal = () => {
         <div className="image-topbar-wrapper">
           <img src={logo} alt="logo" className="image-topbar-home" />{" "}
         </div>
-        <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
+        <div className="choosemeal-shoopingbag">
+        <ShoppingBagOutlinedIcon ></ShoppingBagOutlinedIcon>
+
+        </div>
       </div>{" "}
       <div className="search-choosemeal">
       <OutlinedInput className="search-input" placeholder="Search" />
