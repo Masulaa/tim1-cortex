@@ -46,12 +46,27 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
 );
 
 const ChooseMeal = () => {
+  const [articles,setArticles]=useState([])
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const fetchArticles = async () => {
+    try {
+      const response = await ArticleService.GetArticles();
+      setArticles(response.data);
+      // console.log(response.data);
+    } catch (error) {
+      console.log("Error fetching articles:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);

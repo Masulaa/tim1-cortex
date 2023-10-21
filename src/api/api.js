@@ -6,7 +6,7 @@ const HTTP_OK = 200;
 
 
 const client = axios.create({
-    baseURL: "http://localhost:8000/api",
+    baseURL: "http://localhost:8000/api/",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const client = axios.create({
     async (config) => {
       const token = LocalStorage.get("BearerToken");
   
-      console.log("Token is", token);
+      // console.log("Token is", token);
   
       if (!config.headers.Authorization) {
         config.headers.Authorization = `Bearer ${token}`;
@@ -82,4 +82,17 @@ const client = axios.create({
       }
     },
   };
+
+  export const ArticleService = {
+    GetArticles() {
+      return client.get("articles");
+    },
+  };
+
+  export const ProfileService = {
+    GetProfile() {
+      return client.get("user");
+    },
+  };
+  
   
