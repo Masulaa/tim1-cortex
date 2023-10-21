@@ -1,0 +1,155 @@
+.main-rateOrder {
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 1rem;
+  gap: 16px; /* Dodano gap svojstvo */
+}
+
+.rateOrder-content {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-icon {
+  position: fixed;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0 0 0 5px;
+  left: 0;
+}
+
+.food-picture {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  position: relative;
+}
+
+.info-box {
+  top: 140px;
+  left: 24px;
+  width: 263px;
+  height: 64px;
+  display: flex; /* Dodano display flex */
+  flex-direction: column; /* Dodano flex direction */
+  gap: 16px;
+}
+
+.info-box-mini {
+  width: 183px;
+  height: 47px;
+  display: flex; /* Dodano display flex */
+  flex-direction: column; /* Dodano flex direction */
+}
+
+.info {
+  margin-top: 20px;
+  width: 342px;
+  height: 64px;
+  display: flex;
+  gap: 16px; /* Dodano gap svojstvo */
+}
+
+.food-title {
+  width: 180px;
+  height: 17px;
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #131313;
+}
+
+.food-desc {
+  width: 180px;
+  font-weight: 500;
+  height: 22px;
+  font-family: Roboto;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: 0.5px;
+  color: #131313;
+  opacity: 50%;
+}
+
+.title {
+  top: 68.5px;
+  left: 120px;
+  font-family: Koulen;
+  text-align: center;
+  font-size: 32px;
+  letter-spacing: 4%;
+  line-height: 57.81px;
+}
+
+.user-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.rate-div {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 16px;
+  height: 32px;
+  width: 232px;
+}
+
+.stars {
+  height: 24px;
+  width: 184px;
+  display: flex; /* Dodano display flex */
+  gap: 8px;
+}
+
+.stars * {
+  width: 24px;
+  height: 24px;
+
+  top: 3px;
+}
+
+.text-field {
+  width: 342px;
+  height: 33px;
+  gap: 10px;
+  border-width: 1px;
+  border-color: #797979;
+  border-radius: 4px;
+  color: #79747e;
+  display: flex; /* Dodano display flex */
+  flex-direction: row; /* Dodano flex direction */
+}
+
+.send-icon {
+  position: absolute;
+  color: #1c1b1f;
+  align-items: center;
+  margin-left: 300px;
+  margin-top: 16px;
+}
+
+.price {
+  width: 29px;
+  height: 17px;
+  left: 313px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+.line {
+  margin-top: 46px;
+  height: 1px;
+  width: 342px;
+  background: #b9b9b9;
+  border: 1px;
+}

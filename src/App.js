@@ -3,6 +3,7 @@ import "./App.css";
 import "./style/global.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
+
 const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
 const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
@@ -18,6 +19,10 @@ const ConfirmOrder = lazy(() =>
   import("./components/confirm-order/ConfirmOrder")
 );
 const Settings = lazy(() => import("./components/settings/Settings"));
+
+const RateOrder = lazy(()=>import("./components/rate-order/RateOrder"))
+
+
 
 function App() {
   return (
@@ -104,6 +109,14 @@ function App() {
             </Suspense>
           }
         />
+          <Route
+            path="RateOrder"
+            element={
+              <Suspense fallback={<ErrorHandlerPage />}>
+                <RateOrder />
+              </Suspense>
+            }
+          />
         {/* </Route> */}
       </Routes>
     </BrowserRouter>
