@@ -1,9 +1,4 @@
-/* Reset some default styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 /* Apply styles to the main container */
 .main-orderMeal {
