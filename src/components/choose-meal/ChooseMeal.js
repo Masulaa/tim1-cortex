@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,  useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -20,6 +20,8 @@ import circle from "../../images/Ellipse 2.svg";
 import logo from "../../images/logo.png";
 import "./ChooseMeal.css";
 import "../../style/global.css";
+import { ArticleService } from "../../api/api";
+
 
 const icons = [
   MenuIcon,
