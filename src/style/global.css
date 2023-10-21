@@ -117,16 +117,18 @@ border-bottom: 1px solid #b9b9b9;
   background-color: #7e1d1d;
 }
 
-.dropdown {
+.dropdown,.dropdown1 {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-.dropdown.open {
+.dropdown.open,.dropdown1.open  {
   opacity: 1;
   visibility: visible;
 }
+
+
 
 
 @media screen and (max-height: 620px) and (max-width: 1050px) {

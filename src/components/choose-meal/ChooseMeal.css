@@ -47,6 +47,7 @@ body {
   box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
   z-index: 2;
 }
+
 .dropdown1 {
   position: absolute;
   top: 5.5rem;
@@ -90,14 +91,14 @@ body {
   padding: 2.25rem 1rem;
 }
 
-.topbar-computer-choosemeal-home{
+.topbar-computer-choosemeal-home {
   padding: 2.25rem 1rem;
 }
 
-.topbar-computer-other-part{
+.topbar-computer-other-part {
   display: flex;
-align-items: center;
-gap: 48px;
+  align-items: center;
+  gap: 48px;
 }
 
 .choosemeal-menu {
@@ -155,6 +156,7 @@ gap: 48px;
   align-items: center;
   justify-content: center;
 }
+
 .choosemeal-menu-apply {
   width: 326px;
   height: 44px;
@@ -346,14 +348,14 @@ gap: 48px;
   padding-top: 2rem;
   padding-bottom: 1.5rem;
   padding-left: 1rem;
-padding-right: 1rem;
+  padding-right: 1rem;
 }
 
 .choosemeal-meals {
   display: flex;
   flex-direction: column;
-padding-left: 1rem;
-padding-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   gap: 16px;
   flex-shrink: 0;
 }
@@ -446,13 +448,13 @@ padding-right: 1rem;
   padding: 5px;
 }
 
-.choosmeal-computer-button{
+.choosmeal-computer-button {
   width: 64px;
-height: 64px;
-position: fixed;
-bottom: 5%;
-right: 5%;
-cursor: pointer;
+  height: 64px;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 430px) {
@@ -463,6 +465,21 @@ cursor: pointer;
 
 @media screen and (max-height: 620px) and (max-width: 1050px) {
   .dropdown {
+    opacity: 0;
+    visibility: hidden;
+    scale: 0.85;
+    position: absolute;
+    top: 2.5rem;
+    right: 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 189px;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+  }
+  .dropdown1 {
     opacity: 0;
     visibility: hidden;
     scale: 0.85;
@@ -495,22 +512,22 @@ cursor: pointer;
     flex-direction: column;
     align-items: center;
   }
-
-  /* Dodajte druge stilove prema potrebi za manje ekrane */
 }
+
 @media screen and (min-width: 960px) {
   .choosemeal-categories-menu {
     display: flex;
     flex-direction: column;
     gap: 0;
   }
+
   .choosemeal-title-menu {
     display: none;
     color: transparent;
   }
 
   .menu-visible {
-scale: 0.90;
+    scale: 0.9;
     position: absolute;
     width: 225px;
     height: 544px;
@@ -522,8 +539,9 @@ scale: 0.90;
     border-radius: 15px;
     margin-top: 20vh;
   }
+
   .menu-hidden {
-    scale: 0.90;
+    scale: 0.9;
     position: block;
     width: 225px;
     height: 544px;
@@ -536,18 +554,21 @@ scale: 0.90;
     box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
     border-radius: 15px;
   }
+
   .overlay-visible {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0);
     z-index: 1;
   }
+
   .choosemeal-categories-icon {
     width: 23px;
     height: 23px;
     justify-content: center;
     align-items: center;
   }
+
   .choosemeal-categories-single {
     display: flex;
     flex-direction: row;
@@ -559,6 +580,7 @@ scale: 0.90;
     height: 3rem;
     padding-left: 2px;
   }
+
   .choosemeal-menu-apply-button {
     width: 100%;
     height: 32px;
@@ -567,6 +589,7 @@ scale: 0.90;
     background: transparent;
     padding: 15px 0;
   }
+
   .choosemeal-menu-apply {
     width: 193px;
     height: 32px;
@@ -580,6 +603,7 @@ scale: 0.90;
     line-height: normal;
     letter-spacing: 0.64px;
   }
+
   .menu-hidden {
     opacity: 0;
     transition: transform 0.3s ease-in-out, display 0s 0.3s, opacity 0.3s 0s;
@@ -591,10 +615,8 @@ scale: 0.90;
     transform: none;
     transition: transform 0.3s ease-in-out, display 0s 0.3s, opacity 0.3s 0s;
   }
-
-
-  
 }
+
 @media screen and (max-width: 360px) {
   .choosemeal-menu-apply-button {
     width: 100%;
@@ -605,33 +627,34 @@ scale: 0.90;
     padding: 15px 0;
     margin-top: 35px;
   }
+
   .choosemeal-menu-apply {
     width: 226px;
     height: 3rem;
   }
-  .search-input{
-    width: 250px;
 
+  .search-input {
+    width: 250px;
   }
-  .search-choosemeal{
+
+  .search-choosemeal {
     display: flex;
     justify-content: center;
   }
-  .search-icon-choose-meal{
+
+  .search-icon-choose-meal {
     margin-left: 210px;
     margin-top: 5px;
-
   }
 }
 
-.topbar-computer-choosemeal-home{
+.topbar-computer-choosemeal-home {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 @media screen and (min-width: 960px) {
-
 }
 
 .phone-only {
@@ -653,4 +676,7 @@ scale: 0.90;
     display: block; /* Prikazivanje na ekranima sa širinom manjom od 768px (telefoni) */
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 51bd853c7137e10fe2d5b9b470c75ea88585bdaa

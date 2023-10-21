@@ -61,7 +61,7 @@ function App() {
           }
         />
         <Route
-          path="SingleMeal"
+          path="ChooseMeal/SingleMeal/:id"
           element={
             <Suspense fallback={<ErrorHandlerPage />}>
               <SingleMeal />
