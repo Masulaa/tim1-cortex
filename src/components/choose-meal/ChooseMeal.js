@@ -26,6 +26,7 @@ import pizzaImg from "../../images/PizzaCapricciosa.png";
 import computerbutton from "../../images/icons/Group 23.png";
 import inactivecheckbox from "../../images/icons/Component 7.svg";
 
+
 const icons = [
   MenuIcon,
   LocalPizzaOutlinedIcon,
