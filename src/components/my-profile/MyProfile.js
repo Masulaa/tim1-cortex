@@ -1,24 +1,24 @@
-import "./MyProfile.css";
-import slika01 from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
-import TextField from "@mui/material/TextField";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowBackIosNew } from "@mui/icons-material";
-import editslika from "../../images/icons/Group 26.png";
+import TextField from "@mui/material/TextField";
 import { ProfileService } from "../../api/api";
+import slika01 from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
+import editslika from "../../images/icons/Group 26.png";
+import closeBtn from "../../images/close.svg";
+import "./MyProfile.css"; // Stilovi za MyProfile komponentu
 
 const MyProfile = () => {
   const [user, setUser] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isButtonActive, setButtonActive] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const fetchUser = async () => {
     try {
       const response = await ProfileService.GetProfile();
       setUser(response.data.success);
-      setEmail(response.data.success.email); // Postavljamo email da bude user.email
-
-      // console.log(response.data.success);
+      setEmail(response.data.success.email);
     } catch (error) {
       console.log("Error fetching user:", error);
     }
@@ -38,6 +38,18 @@ const MyProfile = () => {
     const newPassword = event.target.value;
     setPassword(newPassword);
     setButtonActive(email !== "" && newPassword !== "");
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+    // Postavi timeout za zatvaranje modaala nakon 3 sekunde
+    setTimeout(() => {
+      closeModal();
+    }, 3000);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   return (
@@ -61,9 +73,9 @@ const MyProfile = () => {
                 style={{ width: "326px" }}
                 className="inputField"
                 onChange={handleEmailChange}
-                defaultValue={email} // Koristimo email kao defaultValue
+                defaultValue={email}
                 InputLabelProps={{
-                  shrink: !!email, // shrink label when email has a value
+                  shrink: !!email,
                 }}
               />
               <TextField
@@ -82,10 +94,25 @@ const MyProfile = () => {
         <button
           className={`disabled-btn ${isButtonActive ? "active" : ""}`}
           disabled={!isButtonActive}
+          onClick={openModal}
         >
           SAVE CHANGES
         </button>
       </div>
+
+      {isModalVisible && (
+        <div className="myprofile-changes-saved">
+          <p className="myprofile-changes-saved-text">
+            Changes saved.
+          </p>
+          <img
+            src={closeBtn}
+            className="myprofile-changes-saved-icon"
+            alt="Close"
+            onClick={closeModal}
+          />
+        </div>
+      )}
     </div>
   );
 };

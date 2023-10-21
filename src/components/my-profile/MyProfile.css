@@ -104,6 +104,35 @@
   right: 0;
 }
 
+.myprofile-changes-saved {
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 4px;
+  background: #FFF;
+  box-shadow: 2px 2px 24px 0px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+}
+
+.myprofile-changes-saved-text {
+  width: 270px;
+  color: #131313;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 113.688%;
+  letter-spacing: 0.48px;
+}
+
+.myprofile-changes-saved-icon {
+  width: 24px;
+  height: 24px;
+  color: #1C1B1F
+}
+
 @media screen and (max-width: 430px) {
   .main-myprofile {
     padding: 1rem 1rem;
@@ -121,3 +150,5 @@
     margin-top: 20%;
   }
 }
+
+
