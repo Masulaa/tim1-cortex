@@ -2,17 +2,16 @@
   display: flex;
   flex-direction: column;
 }
-body{
+body {
   overflow: hidden;
 }
-.image-topbar-wrapper{
+.image-topbar-wrapper {
   width: 156px;
   height: 23px;
 }
-.search-choosemeal{
+.search-choosemeal {
   display: flex;
   justify-content: center;
-
 }
 
 .search-icon-choose-meal {
@@ -34,7 +33,6 @@ body{
   gap: 10px;
   height: 33px;
 }
-
 
 .dropdown {
   position: absolute;
@@ -72,22 +70,22 @@ body{
   letter-spacing: 0.5px;
 }
 
-.topbar-choosemeal-home{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2.25rem 1rem ;
+.topbar-choosemeal-home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.25rem 1rem;
 }
 
-.choosemeal-menu{
-  border-radius: 15px 15px 0 0 ;
+.choosemeal-menu {
+  border-radius: 15px 15px 0 0;
   background-color: #ffffff;
   z-index: 3;
   position: absolute;
   margin-top: 30vh;
-width: 100%;
-height:100%;
-flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
 }
 
 .choosemeal-title-menu {
@@ -96,13 +94,13 @@ flex-shrink: 0;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
-  line-height: 24px; /* 100% */
+  line-height: 24px;
   letter-spacing: 0.5px;
-padding-left: 24px;
+  padding-left: 24px;
 }
 
 .option:hover {
-  background: #e5c4c4; /* Promenite u boju koju želite za hover efekat */
+  background: #e5c4c4;
 }
 
 .choosemeal-categories-menu {
@@ -124,38 +122,36 @@ padding-left: 24px;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
   letter-spacing: 0.5px;
 }
 
-.choosemeal-menu-apply-button{
+.choosemeal-menu-apply-button {
   padding: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
-.choosemeal-menu-apply{
+.choosemeal-menu-apply {
   width: 326px;
-height: 44px;
-flex-shrink: 0;
-border-radius: 4px;
-background: #bd2b2b;
-color: #fff;
-border: none;
-font-family: Koulen;
-font-size: 32px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 1.28px;
-cursor: pointer;
-transition: background-color 0.3s, transform 0.2s;
-display: flex;
-align-items: center;
-justify-content: center;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #bd2b2b;
+  color: #fff;
+  border: none;
+  font-family: Koulen;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.28px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 
 .icon-row {
   display: flex;
@@ -165,7 +161,7 @@ justify-content: center;
 }
 
 .icon {
-  margin-right: 20px; 
+  margin-right: 20px;
 }
 .circle {
   width: 64px;
@@ -182,36 +178,32 @@ justify-content: center;
 .inner-icon {
   z-index: 1;
   display: flex;
-margin: -70%;
+  margin: -70%;
 }
 
-
-.overlay-visible{
+.overlay-visible {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.5);
   transition: 1s ease-in-out;
   z-index: 1;
 }
-.overlay-hidden{
+.overlay-hidden {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0); 
+  background: rgba(0, 0, 0, 0);
   z-index: 1;
 }
 
 .menu-hidden {
-  transform: translateY(100%);
+  transform: translateY(200%);
   transition: transform 1s ease-in-out, display 0s 1s, opacity 1s 0s;
-
 }
 
 .menu-visible {
   transform: translateY(0%);
   transition: transform 1s ease-in-out, display 0s 1s, opacity 1s 0s;
-
-  
 }
 
 .choosemeal-recommend-title {
@@ -422,19 +414,21 @@ margin: -70%;
   line-height: 13px; /* 108.333% */
   letter-spacing: 0.5px;
   opacity: 0.5;
+}
+.choosemeal-shoppingbag {
+  padding: 5px;
 }
 
 @media screen and (max-width: 430px) {
   .topbar-choosemeal-home {
-  padding: 1rem;
+    padding: 1rem;
   }
 }
 
 @media screen and (max-height: 620px) and (max-width: 1050px) {
-
-  .dropdown{
+  .dropdown {
     opacity: 0;
-  visibility: hidden;
+    visibility: hidden;
     scale: 0.85;
     position: absolute;
     top: 2.5rem;
@@ -446,7 +440,6 @@ margin: -70%;
     border-radius: 4px;
     background: white;
     box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
-    
   }
 }
 
@@ -469,10 +462,127 @@ margin: -70%;
 
   /* Dodajte druge stilove prema potrebi za manje ekrane */
 }
-@media screen and (min-width:960px) {
-  
-.icon-row{
-justify-content: center;
-}
+@media screen and (min-width: 960px) {
+  .choosemeal-categories-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .choosemeal-title-menu {
+    display: none;
+    color: transparent;
+  }
 
+  .menu-visible {
+
+    position: absolute;
+    width: 225px;
+    height: 544px;
+    padding: 15px;
+    z-index: 3;
+    background-color: #ffffff;
+    margin-left: 3rem;
+    box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 15px;
+    margin-top: 20vh;
+  }
+  .menu-hidden {
+    position: block;
+    width: 225px;
+    height: 544px;
+    z-index: 3;
+    padding: 15px;
+    margin-top: 20vh;
+    background-color: #ffffff;
+    margin-left: 3rem;
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 15px;
+  }
+  .overlay-visible {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1;
+  }
+  .choosemeal-categories-icon {
+    width: 23px;
+    height: 23px;
+    justify-content: center;
+    align-items: center;
+  }
+  .choosemeal-categories-single {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    width: 225px;
+    align-items: center;
+    gap: 16px;
+    height: 3rem;
+    padding-left: 2px;
+  }
+  .choosemeal-menu-apply-button {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    border-radius: 4px;
+    background: transparent;
+    padding: 15px 0;
+  }
+  .choosemeal-menu-apply {
+    width: 193px;
+    height: 32px;
+    flex-shrink: 0;
+    color: #fff;
+
+    font-family: Koulen;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.64px;
+  }
+  .menu-hidden {
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, display 0s 0.3s, opacity 0.3s 0s;
+    transform: none;
+  }
+
+  .menu-visible {
+    opacity: 1;
+    transform: none;
+    transition: transform 0.3s ease-in-out, display 0s 0.3s, opacity 0.3s 0s;
+  }
+
+
+  
+}
+@media screen and (max-width: 360px) {
+  .choosemeal-menu-apply-button {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    border-radius: 4px;
+    background: transparent;
+    padding: 15px 0;
+    margin-top: 35px;
+  }
+  .choosemeal-menu-apply {
+    width: 226px;
+    height: 3rem;
+  }
+  .search-input{
+    width: 250px;
+
+  }
+  .search-choosemeal{
+    display: flex;
+    justify-content: center;
+  }
+  .search-icon-choose-meal{
+    margin-left: 210px;
+    margin-top: 5px;
+
+  }
 }
