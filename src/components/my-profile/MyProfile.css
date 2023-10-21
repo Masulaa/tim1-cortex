@@ -18,91 +18,91 @@
   gap: 16px;
 }
 
-.myprofile-email{
-    color: #131313;
-font-family: Roboto;
-font-size: 16px;
-font-style: normal;
-line-height: 24px; /* 150% */
-letter-spacing: 0.5px;
-font-weight: 600;
+.myprofile-email {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+  font-weight: 600;
 }
 
-.myprofile-info p{
-    margin: 0;
+.myprofile-info p {
+  margin: 0;
 }
 
-.myprofile-title-and-icon{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 64px;
-    position: relative; 
+.myprofile-title-and-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+  position: relative;
 }
 
-.myprofile-back-icon{
-    position: fixed;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 0 0 0 5px;
-    left: 0;
+.myprofile-back-icon {
+  position: fixed;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0 0 0 5px;
+  left: 0;
 }
 
-.myprofile-firstpart-section{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.myprofile-firstpart-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.myprofile-picture{
-    width: 100px;
-    height: 100px;
-    flex-shrink: 0;
-    border-radius: 100px;
-    position: relative;
+.myprofile-picture {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 100px;
+  position: relative;
 }
 
-.myprofile-title{
-    color: #131313;
-font-family: Koulen;
-font-size: 32px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 1.28px;
+.myprofile-title {
+  color: #131313;
+  font-family: Koulen;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.28px;
 }
 
 .myprofile-input-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
 
-  .input-wrapper2 {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-  }
+.input-wrapper2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
 
-  .myprofile-button-wrapper{
-    display: flex;
-align-content: flex-end;
-gap: 60px;
-  }
+.myprofile-button-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 5%;
+}
 
-  .myprofile-edit-picture{
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    position: absolute; /* Postavljamo edit sliku na apsolutno pozicioniranje */
-    bottom: 0; /* Pomeramo edit sliku na dno */
-    right: 0;
-
-  }
+.myprofile-edit-picture {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  position: absolute; /* Postavljamo edit sliku na apsolutno pozicioniranje */
+  bottom: 0; /* Pomeramo edit sliku na dno */
+  right: 0;
+}
 
 @media screen and (max-width: 430px) {
   .main-myprofile {
@@ -110,11 +110,14 @@ gap: 60px;
   }
 }
 @media screen and (max-width: 370px) {
-    .input-wrapper2,
-    .myprofile-button-wrapper{
-        scale: 0.75;
-    }
-    .myprofile-content{
-        gap: 0;
-    }
+  .input-wrapper2,
+  .myprofile-button-wrapper {
+    scale: 0.75;
+  }
+  .myprofile-content {
+    gap: 0;
+  }
+  .myprofile-button-wrapper {
+    margin-top: 20%;
+  }
 }

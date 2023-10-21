@@ -6,7 +6,7 @@ const HTTP_OK = 200;
 
 
 const client = axios.create({
-    baseURL: "http://localhost:8000/api",
+    baseURL: "http://localhost:8000/api/",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const client = axios.create({
         console.log(`Received ${HTTP_UNAUTHORIZED} status code`);
         LocalStorage.remove("BearerToken");
   
-        window.location.href = "/LogIn";
+        window.location.href = "/";
       }
       return Promise.reject(error);
     }
@@ -33,7 +33,7 @@ const client = axios.create({
     async (config) => {
       const token = LocalStorage.get("BearerToken");
   
-      console.log("Token is", token);
+      // console.log("Token is", token);
   
       if (!config.headers.Authorization) {
         config.headers.Authorization = `Bearer ${token}`;
@@ -56,11 +56,12 @@ const client = axios.create({
             Authorization: `Bearer ${token}`,
           },
         });
+        console.log(response);
         if (response.status === HTTP_OK) {
-          console.log(
-            `Setting local token ${response.data.data.token}`
-          );
-          LocalStorage.set("BearerToken", response.data.data.token);
+          // console.log(
+          //   `Setting local token ${response.data.success.token}`
+          // );
+          LocalStorage.set("BearerToken", response.data.success.token);
           return true;
         }
       } catch (error) {
@@ -68,5 +69,30 @@ const client = axios.create({
         return false;
       }
     },
+    async logout() {
+      try {
+        LocalStorage.remove("BearerToken");
+  
+        window.location.href = "/"; 
+  
+        return true; // Uspješno izlogovan
+      } catch (error) {
+        console.error("Error logout");
+        return false; 
+      }
+    },
   };
+
+  export const ArticleService = {
+    GetArticles() {
+      return client.get("articles");
+    },
+  };
+
+  export const ProfileService = {
+    GetProfile() {
+      return client.get("user");
+    },
+  };
+  
   

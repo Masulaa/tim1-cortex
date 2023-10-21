@@ -1,0 +1,114 @@
+.trackorder-main {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+}
+
+.trackorder-head p {
+  margin: 0;
+}
+
+.trackorder-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.trackorder-back-icon {
+  position: absolute;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0 0 0 5px;
+  left: 0;
+}
+
+.trackorder-image {
+  width: 240px;
+  height: 160px;
+  flex-shrink: 0;
+}
+
+.trackorder-title {
+  color: #131313;
+  font-family: Koulen;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.28px;
+}
+
+.trackorder-content {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle-space {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.trackorder-first-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.order-text-active{
+    width: 167px;
+    height: 9px;
+    color: #bd2b2b;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+}
+
+.order-text-deactive{
+    width: 167px;
+    height: 9px;
+    color: #131313;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    padding-bottom: 10px;
+}
+
+.track-order-delivered{
+    display: flex;
+    
+}
+.track-order-on-the-way{
+    display: flex;
+}
+
+.trackorder-steps{
+    display: flex;
+    flex-direction: column;
+}
+
+.trackorder-button-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 2rem;
+}
+
+@media screen and (max-width: 370px) {
+    .trackorder-button-wrap {
+        scale: 0.75;
+        padding-bottom: 3rem;
+      }
+}

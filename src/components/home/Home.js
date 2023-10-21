@@ -7,6 +7,17 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import profileIcon from "../../images/Ellipse 1.svg";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { AuthService } from "../../api/api";
+
+const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
+  <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
+    <div className="options">
+      <div className="option">Profile</div>
+      <div className="option">Track Order</div>
+      <div className="option">Logout</div>
+    </div>
+  </div>
+);
 
 const Home = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -16,7 +27,16 @@ const Home = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
   
-  
+  const handleLogout = async () => {
+    
+    try {
+      const success = await AuthService.logout();
+      if(success){
+      console.log("Logout succesfull");}
+    } catch (error) {
+      console.error("Error logout", error);
+    }
+  }
 
   return (
     <>
@@ -30,18 +50,18 @@ const Home = () => {
           >
             <img src={profileIcon} alt="logo" className="image-topbar-home-profile" />
             {isDropdownOpen ? (
-              <ExpandLessIcon />
-            ) : (
-              <ExpandMoreIcon />
-            )}
+        <ExpandLessIcon />
+      ) : (
+        <ExpandMoreIcon />
+      )}
+      <Dropdown isDropdownOpen={isDropdownOpen} />
           </div>
         </div>
         {isDropdownOpen && (
           <div className="dropdown">
             <div className="options">
-              <div className="option">Profile</div>
-              <div className="option">Track Order</div>
-              <div className="option">Logout</div>
+              <div className="option" onClick={()=>{navigate("/MyProfile")}}>Profile</div>
+              <div className="option" onClick={handleLogout}>Logout</div>
             </div>
           </div>
         )}

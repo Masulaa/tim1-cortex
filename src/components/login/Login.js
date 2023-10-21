@@ -25,7 +25,6 @@ const LogIn = () => {
   };
 
   const userData = {
-    name: "Mihajlo1",
     email: email,
     password: password,
   };
@@ -57,6 +56,7 @@ const LogIn = () => {
             onChange={handleEmailChange}
           />
           <TextField
+          type="password"
             label="Password"
             variant="outlined"
             style={{ width: "326px" }}

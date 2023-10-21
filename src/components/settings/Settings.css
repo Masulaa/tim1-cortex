@@ -1,0 +1,134 @@
+.main-settings {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 1rem;
+}
+
+.settings-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.settings-head p {
+  margin: 0;
+}
+
+.settings-back-icon {
+  position: absolute;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0 0 0 5px;
+  left: 0;
+}
+
+.settings-title {
+  color: #131313;
+  font-family: Koulen;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.28px;
+}
+
+.settigs-content {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.settings-mini-title-and-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.settings-mini-title-and-description p {
+  margin: 0;
+}
+
+.settings-mini-title {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 100% */
+  letter-spacing: 0.5px;
+}
+
+.settings-description {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 13px; /* 108.333% */
+  letter-spacing: 0.5px;
+  opacity: 0.5;
+}
+
+.settings-days {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.settings-day {
+  display: flex;
+  width: 342px;
+  padding: 16px;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-day p {
+  margin: 0;
+}
+
+.settings-active-button {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.settings-day-text-active {
+  color: #bd2b2b;
+  font-family: Roboto;
+  font-size: 16px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.settings-day-text-inactive {
+  color: #131313;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.settings-button{
+  display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+@media screen and (max-width: 430px) {
+  .main-confirmorder {
+    padding: 1rem 1rem;
+  }
+  .primary-button {
+    scale: 0.8;
+  }
+}
