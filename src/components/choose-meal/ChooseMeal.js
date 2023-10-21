@@ -39,6 +39,7 @@ const ChooseMeal = () => {
     try {
       const response = await ArticleService.GetArticles();
       setArticles(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log("Error fetching articles:", error);
     }
