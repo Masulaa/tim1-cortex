@@ -1,17 +1,13 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .track-order-main {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    position: relative;
-    padding: 0 20px; 
+    position: absolute;
+    padding: 0.8rem 1rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .track-order-title {
@@ -22,7 +18,8 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 1.28px;
-    margin-top: 6px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 
@@ -47,21 +44,22 @@
     width: 240px;
     height: 160px;
     flex-shrink: 0;
-    margin-top: 10px;
+    padding-bottom: 10px;
 }
 
 .track-order-icons {
     width: 215px;
     height: 228px;
     flex-shrink: 0;
-    margin-top: 40px;
     margin-right: 40px;
+    margin-bottom: 120px;
 }
+
 
 .track-order-preparation {
     display: inline-flex;
     align-items: center;
-    gap: 47px;
+    gap: 16px;
 }
 
 .order-preparation {
@@ -85,7 +83,7 @@
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 .order-preparation-text-deactive {
@@ -98,7 +96,7 @@
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .track-order-on-the-way {
@@ -122,7 +120,7 @@
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .on-the-way-text-active {
@@ -135,19 +133,23 @@
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .selected-icon {
     width: 24px;
     height: 24px;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 .track-order-delivered {
     display: inline-flex;
     align-items: center;
     gap: 16px;
+}
+
+.order-preparation p {
+    margin: 0;
 }
 
 .order-delivered-icon {
@@ -165,7 +167,7 @@
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 .order-delivered-text-active {
@@ -178,7 +180,7 @@
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 .circle-space {
@@ -191,7 +193,7 @@
 .circle {
     width: 6px;
     height: 6px;
-    margin-right: 185px;
+    margin-left: 12px;
 }
 
 .order-check {
@@ -201,12 +203,13 @@
 }
 
 .rate-order-button {
-    margin-top: 150px;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+    margin-top: 100px;
+    width: calc(100% - 60px);
+    max-width: 480px; 
+    margin: 0 auto; 
+    padding: 10px;
 }
+
 
 .rate-order-group {
     width: 100%;
