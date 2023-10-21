@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SingleMeal.css";
 import "../../style/global.css";
 import pizzaImg from "../../images/PizzaCapricciosa.png";
@@ -15,6 +15,8 @@ import profileIcon from "../../images/Ellipse 1.svg";
 import computerbutton from "../../images/icons/Group 23.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import { ArticleService } from "../../api/api";
+import { useParams } from "react-router";
 
 const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
@@ -44,6 +46,23 @@ const SingleMeal = () => {
   const [quantity, setQuantity] = useState(1);
   const [removeImage, setRemoveImage] = useState(removebuttongImg);
   const [addImage, setAddImage] = useState(addbuttonrImg);
+  const { id } = useParams();
+  const [article, setArticle] = useState([]);
+
+  const fetchArticles = async () => {
+    try {
+      const response = await ArticleService.GetSingleArticle(id)
+      setArticle(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log("Error fetching articles:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -114,13 +133,11 @@ const SingleMeal = () => {
       <img src={pizzaImg} alt="pizza" className="img-layout-orderMeal" />
       <section className="texts-orderMeal">
         <div className="about-orderMeal">
-          <h1 className="title-orderMeal">Pizza Capricciosa</h1>
-          <h2 className="price-orderMeal">11$</h2>
+          <h1 className="title-orderMeal">{article.name}</h1>
+          <h2 className="price-orderMeal">{article.price}</h2>
         </div>
         <div className="description-orderMeal">
-          Indulge in the classic perfection of Pizza Capricciosa—melted
-          mozzarella, savory ham, mushrooms, and zesty tomato sauce. An Italian
-          delight in every bite!
+          {article.description} {article.ingredients}
         </div>
       </section>
       <section className="tmp-orderMeal">

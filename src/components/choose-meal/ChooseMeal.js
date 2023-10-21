@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, startTransition } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -24,11 +24,11 @@ import { ArticleService } from "../../api/api";
 import addbuttongImg from "../../images/AddButton.png";
 import pizzaImg from "../../images/PizzaCapricciosa.png";
 import computerbutton from "../../images/icons/Group 23.png";
-<<<<<<< HEAD
-=======
+import { useNavigate } from "react-router";
+
 import inactivecheckbox from "../../images/icons/Component 7.svg";
 
->>>>>>> 4e58eb96e83d7af14c70879d7ec7a3d392a2b374
+
 
 const icons = [
   MenuIcon,
@@ -81,11 +81,8 @@ const ChooseMeal = () => {
     setIsDropdownOpenLeft(!isDropdownOpenLeft);
   };
 
-<<<<<<< HEAD
-=======
+  const navigate = useNavigate();
 
-
->>>>>>> 4e58eb96e83d7af14c70879d7ec7a3d392a2b374
   const fetchArticles = async () => {
     try {
       const response = await ArticleService.GetArticles({
@@ -214,6 +211,7 @@ const ChooseMeal = () => {
                     src={addbuttongImg}
                     alt=""
                     className="choosemeal-meal-add-button"
+                    onClick={()=>{startTransition(navigate(`SingleMeal/${article.id}`));}}
                   ></img>
                 </div>
               </div>
