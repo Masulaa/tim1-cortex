@@ -74,7 +74,7 @@ const MyProfile = () => {
             style={{ width: "326px" }}
             className="inputField"
             onChange={handlePasswordChange}
-            defaultValue={user.password}
+            value={user.password}
           />
         </div>
       </section>
