@@ -1,23 +1,40 @@
 .main-choosemeal{
   display: flex;
   flex-direction: column;
-  padding: 2.25rem 1rem;
+
+}
+body{
+  overflow: hidden;
+}
+.image-topbar-wrapper{
+  width: 156px;
+  height: 23px;
+}
+.search-choosemeal{
+  display: flex;
+  justify-content: center;
+
 }
 
 .search-icon-choose-meal {
   font-size: 35px;
   position: absolute;
-  right: 8rem; /* Prilagodite poziciju po potrebi */
-  top: 7rem; /* Da biste vertikalno centrirali ikonicu */
-  transform: translateY(-50%); /* Da biste vertikalno centrirali ikonicu */
+  margin-top: 3px;
+  margin-left: 300px;
   pointer-events: none;
   color: #666666;
   transition: all 0.4s;
 }
 
 .search-input {
-  width: 100%; /* Postavite širinu input polja na 100% */
-  padding-right: 40px; /* Prilagodite padding kako biste stvorili prostor za ikonicu */
+  display: flex;
+  width: 342px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+  height: 33px;
+  
 }
 
 
@@ -32,7 +49,7 @@
   border-radius: 4px;
   background: white;
   box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
-  z-index: 1;
+  z-index: 2;
 }
 
 .options {
@@ -62,6 +79,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 2.25rem 1rem ;
+}
+
+.choosemeal-menu{
+  border-radius: 15px 15px 0 0 ;
+  background-color: #ffffff;
+  z-index: 3;
+  position: absolute;
+margin-top: 48.5vh;
+width: 100%;
+height: 542px;
+flex-shrink: 0;
 }
 
 .choosemeal-title-menu{
@@ -72,6 +101,7 @@ font-style: normal;
 font-weight: 600;
 line-height: 24px; /* 100% */
 letter-spacing: 0.5px;
+padding-left: 24px;
 }
 
 .option:hover {
@@ -93,30 +123,111 @@ letter-spacing: 0.5px;
 
 .choosemeal-categories-text{
   color: #131313;
-font-family: Roboto;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 150% */
-letter-spacing: 0.5px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
 }
 
 .choosemeal-menu-apply-button{
-  padding-top: 2rem;
+  padding: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  
+}
+.choosemeal-menu-apply{
+  width: 326px;
+height: 44px;
+flex-shrink: 0;
+border-radius: 4px;
+background: #bd2b2b;
+color: #fff;
+border: none;
+font-family: Koulen;
+font-size: 32px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 1.28px;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.2s;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+.icon-row {
+  display: flex;
+  overflow-x: auto;
+  height: 100px;
+  padding: 15px 0px 15px 24px;
+}
+
+.icon {
+  margin-right: 20px; 
+}
+.circle {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.circle-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.inner-icon {
+  z-index: 1;
+  display: flex;
+margin: -70%;
+}
+
+
+.overlay-visible{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  transition: 1s ease-in-out;
+  z-index: 1;
+}
+.overlay-hidden{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); 
+  z-index: 1;
+}
+
+.menu-hidden {
+  transform: translateY(100%);
+  transition: transform 1s ease-in-out, display 0s 1s, opacity 1s 0s;
+
+}
+
+.menu-visible {
+  transform: translateY(0%);
+  transition: transform 1s ease-in-out, display 0s 1s, opacity 1s 0s;
+
+  
 }
 
 @media screen and (max-width: 430px) {
-  .main-choosemeal {
-    padding: 1rem 1rem;
+  .topbar-choosemeal-home {
+  padding: 1rem;
   }
 }
 
 @media screen and (max-height: 620px) and (max-width: 1050px) {
 
   .dropdown{
+    opacity: 0;
+  visibility: hidden;
     scale: 0.85;
     position: absolute;
     top: 2.5rem; 
@@ -128,6 +239,7 @@ letter-spacing: 0.5px;
     border-radius: 4px;
     background: white;
     box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+    
   }
 }
 
@@ -146,4 +258,11 @@ letter-spacing: 0.5px;
   }
 
   /* Dodajte druge stilove prema potrebi za manje ekrane */
+}
+@media screen and (min-width:960px) {
+  
+.icon-row{
+justify-content: center;
+}
+
 }
