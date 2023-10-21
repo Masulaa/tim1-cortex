@@ -15,13 +15,13 @@ const LogIn = () => {
   const handleEmailChange = (event) => {
     const newEmail = event.target.value;
     setEmail(newEmail);
-    setButtonActive(newEmail !== "" && password !== "");
+    setButtonActive(newEmail.includes("@") && password.length >= 8);
   };
 
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
-    setButtonActive(email !== "" && newPassword !== "");
+    setButtonActive(email.includes("@") && newPassword.length >= 8);
   };
 
   const userData = {
@@ -31,7 +31,7 @@ const LogIn = () => {
 
   const LogIn = async () => {
     try {
-      const response = AuthService.signup(userData);
+      const response = await AuthService.signup(userData);
       console.log("API Response", response);
       navigate("/Home");
     } catch (error) {
@@ -56,7 +56,7 @@ const LogIn = () => {
             onChange={handleEmailChange}
           />
           <TextField
-          type="password"
+            type="password"
             label="Password"
             variant="outlined"
             style={{ width: "326px" }}
