@@ -9,15 +9,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { AuthService } from "../../api/api";
 
-const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
-  <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
-    <div className="options">
-      <div className="option">Profile</div>
-      <div className="option">Track Order</div>
-      <div className="option">Logout</div>
-    </div>
-  </div>
-);
+
 
 const Home = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -37,7 +29,14 @@ const Home = () => {
       console.error("Error logout", error);
     }
   }
-
+const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
+  <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
+    <div className="options">
+      <div className="option" onClick={()=>{navigate("/MyProfile")}} >Profile</div>
+      <div className="option" onClick={handleLogout}>Logout</div>
+    </div>
+  </div>
+);
   return (
     <>
       <div className="img" alt="img"></div>

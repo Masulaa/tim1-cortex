@@ -455,6 +455,26 @@ right: 5%;
 cursor: pointer;
 }
 
+.choosemeal-info-message{
+  display: flex;
+padding: 16px;
+justify-content: center;
+align-items: center;
+gap: 16px;
+border-radius: 4px;
+background: #E5C4C4;
+}
+
+.choosemeal-info-message-text{
+  color: #131313;
+font-family: Roboto;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 113.688%; /* 13.643px */
+letter-spacing: 0.48px;
+}
+
 @media screen and (max-width: 430px) {
   .topbar-choosemeal-home {
     padding: 1rem;

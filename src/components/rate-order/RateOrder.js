@@ -109,7 +109,7 @@ const RateOrder = () => {
         <div className="rateOrder-info">
           {" "}
           <ArrowBackIosNew className="back-icon"></ArrowBackIosNew>
-          <h1 className="title">Rate Order</h1>
+          <h1 className="rateorder-title">Rate Order</h1>
           <div className="info-box">
             <FoodInfo
               foodName="Pizza Capricciosa"

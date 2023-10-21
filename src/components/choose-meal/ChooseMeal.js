@@ -23,7 +23,8 @@ import "../../style/global.css";
 import { ArticleService } from "../../api/api";
 import addbuttongImg from "../../images/AddButton.png";
 import pizzaImg from "../../images/PizzaCapricciosa.png";
-import computerbutton from "../../images/icons/Group 23.png"
+import computerbutton from "../../images/icons/Group 23.png";
+import inactivecheckbox from "../../images/icons/Component 7.svg";
 
 const icons = [
   MenuIcon,
@@ -64,22 +65,26 @@ const ChooseMeal = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownOpenLeft, setIsDropdownOpenLeft] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [searchData, setSearchData] = useState("");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  
   const toggleDropdownLeft = () => {
     setIsDropdownOpenLeft(!isDropdownOpenLeft);
   };
 
 
+
   const fetchArticles = async () => {
     try {
-      const response = await ArticleService.GetArticles();
+      const response = await ArticleService.GetArticles({
+        name: searchData
+      });
       setArticles(response.data);
-      console.log(response);
+      console.log(response.data);
+      console.log(searchData)
     } catch (error) {
       console.log("Error fetching articles:", error);
     }
@@ -87,7 +92,8 @@ const ChooseMeal = () => {
 
   useEffect(() => {
     fetchArticles();
-  }, []);
+  }, [searchData]);
+
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
@@ -109,7 +115,7 @@ const ChooseMeal = () => {
           <div className="topbar-computer-other-part">
             {" "}
             <div className="search-choosemeal">
-              <OutlinedInput className="search-input" placeholder="Search" />
+              <OutlinedInput className="search-input" placeholder="Search" onChange={(e)=>{setSearchData(e.target.value)}}/>
               <SearchOutlined className="search-icon-choose-meal" />
             </div>{" "}
             <div className="choosemeal-shoopingbag">
@@ -153,9 +159,16 @@ const ChooseMeal = () => {
           </div>
         </div>{" "}
         <div className="search-choosemeal">
-          <OutlinedInput className="search-input" placeholder="Search" />
+          <OutlinedInput className="search-input" placeholder="Search" onChange={(e)=>{setSearchData(e.target.value)}}/>
           <SearchOutlined className="search-icon-choose-meal" />
         </div>
+      </div>
+      <div className="choosemeal-info-message">
+        <p className="choosemeal-info-message-text">
+          Orders can be accepted until 8:00 in the morning. After 9:00, the
+          application will automatically block the possibility of ordering for
+          that day.
+        </p>
       </div>
       <div className="icon-row">
         {icons.map((Icon, index) => (
