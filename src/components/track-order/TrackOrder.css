@@ -1,243 +1,114 @@
-.track-order-main {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    padding: 0.8rem 1rem;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.trackorder-main {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
 }
 
-.track-order-title {
-    color: #131313;
-    font-family: 'Koulen', sans-serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 1.28px;
-    margin-top: 10px;
-    margin-left: 10px;
+.trackorder-head p {
+  margin: 0;
 }
 
-
-.backbtn-ram {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  .back-button-track {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    color: #131313;
-  }
-
-.track-order-logo {
-    width: 240px;
-    height: 160px;
-    flex-shrink: 0;
-    padding-bottom: 10px;
+.trackorder-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-.track-order-icons {
-    width: 215px;
-    height: 228px;
-    flex-shrink: 0;
-    margin-right: 40px;
-    margin-bottom: 120px;
+.trackorder-back-icon {
+  position: absolute;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0 0 0 5px;
+  left: 0;
 }
 
-
-.track-order-preparation {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
+.trackorder-image {
+  width: 240px;
+  height: 160px;
+  flex-shrink: 0;
 }
 
-.order-preparation {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+.trackorder-title {
+  color: #131313;
+  font-family: Koulen;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.28px;
 }
 
-.order-preparation-icon {
-    width: 32px;
-    height: 32px;
-}
+.trackorder-content {
+  display: flex;
 
-.order-preparation-text-active {
-    width: 167px;
-    height: 9px;
-    color: #BD2B2B;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-    margin-bottom: 25px;
-}
-
-.order-preparation-text-deactive {
-    width: 167px;
-    height: 9px;
-    color: #131313;
-    font-family: 'Roboto',sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-    padding-bottom: 10px;
-}
-
-.track-order-on-the-way {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.on-the-way-icon {
-    width: 32px;
-    height: 32px;
-}
-
-.on-the-way-text-deactive {
-    width: 167px;
-    height: 9px;
-    color: #131313;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-    margin-bottom: 30px;
-}
-
-.on-the-way-text-active {
-    width: 167px;
-    height: 9px;
-    color: #BD2B2B;
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-    margin-bottom: 30px;
-}
-
-.selected-icon {
-    width: 24px;
-    height: 24px;
-    margin-top: 5px;
-}
-
-.track-order-delivered {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.order-preparation p {
-    margin: 0;
-}
-
-.order-delivered-icon {
-    width: 32px;
-    height: 32px;
-}
-
-.order-delivered-text-deactive {
-    width: 167px;
-    height: 9px;
-    color: #131313;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-    margin-bottom: 25px;
-}
-
-.order-delivered-text-active {
-    width: 167px;
-    height: 9px;
-    color: #BD2B2B;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-    margin-bottom: 25px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .circle-space {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-.circle {
-    width: 6px;
-    height: 6px;
-    margin-left: 12px;
-}
-
-.order-check {
-    width: 24px;
-    height: 24px;
-    margin-top: 3px;
-}
-
-.rate-order-button {
-    margin-top: 100px;
-    width: calc(100% - 60px);
-    max-width: 480px; 
-    margin: 0 auto; 
-    padding: 10px;
+.trackorder-first-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
 }
 
 
-.rate-order-group {
-    width: 100%;
-}
-
-.rate-order-rectangle {
-    width: 100%;
-    height: 56px;
-    border-radius: 4px;
-    background: #BD2B2B;
-}
-
-.rate-order-text {
-    width: 100%;
-    height: 56px;
-    color: #fff;
-    font-family: 'Koulen', sans-serif;
-    font-size: 32px;
+.order-text-active{
+    width: 167px;
+    height: 9px;
+    color: #bd2b2b;
+    font-family: "Roboto";
+    font-size: 16px;
     font-style: normal;
-    font-weight: 400;
-    line-height: 56px;
-    letter-spacing: 1.28px;
-    text-align: center;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
 }
 
-@media (min-width: 480px) {
-    .rate-order-button {
-      max-width: 480px; 
-    }
+.order-text-deactive{
+    width: 167px;
+    height: 9px;
+    color: #131313;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    padding-bottom: 10px;
+}
+
+.track-order-delivered{
+    display: flex;
     
-  }
+}
+.track-order-on-the-way{
+    display: flex;
+}
+
+.trackorder-steps{
+    display: flex;
+    flex-direction: column;
+}
+
+.trackorder-button-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 2rem;
+}
+
+@media screen and (max-width: 370px) {
+    .trackorder-button-wrap {
+        scale: 0.75;
+        padding-bottom: 3rem;
+      }
+}
