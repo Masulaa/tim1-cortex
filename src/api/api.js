@@ -109,6 +109,9 @@ const client = axios.create({
       return client.get("order");
      
     },
+    IsOrderPossible(){
+      return client.get("order-possible")
+    }
   }
 
   export const RatingService = {
@@ -116,4 +119,6 @@ const client = axios.create({
       return client.post("ratings", ratingData)
     }
   }
+
+
   

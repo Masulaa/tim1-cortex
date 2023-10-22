@@ -26,6 +26,8 @@ import pizzaImg from "../../images/PizzaCapricciosa.png";
 import computerbutton from "../../images/icons/Group 23.png";
 import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
+import { OrderService } from "../../api/api";
+import { redirect } from "react-router-dom";
 
 const icons = [
   MenuIcon,
@@ -76,6 +78,23 @@ const ChooseMeal = () => {
   const toggleDropdownLeft = () => {
     setIsDropdownOpenLeft(!isDropdownOpenLeft);
   };
+  const IsOrderPossible = async () => {
+    try {
+      const response = await OrderService.IsOrderPossible();
+      setIsPossible(response);
+      console.log(response);
+    } catch (error) {
+      console.log("Error fetching isPossible:", error);
+    }
+  };
+
+  const [isPossible, setIsPossible] = useState([])
+
+  useEffect(() => {
+    IsOrderPossible();
+  }, []);
+
+ 
 
   const navigate = useNavigate();
 
@@ -84,8 +103,11 @@ const ChooseMeal = () => {
       const response = await ArticleService.GetArticles();
       setArticles(response.data);
       console.log(response);
+      if (response.status === 400) {
+        navigate("/Home");
+      }
     } catch (error) {
-      console.log("Error fetching articles:", error);
+  
     }
   };
 
@@ -101,7 +123,11 @@ const ChooseMeal = () => {
     if (index === 0) {
       toggleMenu();
     }
-  };
+  }; 
+  
+if (!isPossible.status === 200) {
+  navigate('/Home');
+}
 
   return (
     <div className="main-choosemeal">
@@ -164,7 +190,7 @@ const ChooseMeal = () => {
       <div className="icon-row">
         {icons.map((Icon, index) => (
           <div className="icon" key={index} onClick={() => handleClick(index)}>
-            <div className="circle">
+            <div className="choosemeal-circle">
               <img src={circle} alt="Circle" className="circle-icon" />
               <Icon className="inner-icon" />
             </div>
