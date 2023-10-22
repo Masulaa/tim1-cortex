@@ -88,6 +88,9 @@ const client = axios.create({
       return await client.get("articles", articleSearchData);
 
     },
+    async GetSingleArticle(id) {
+      return await client.get(`articles/${id}`);
+    },
   };
 
   export const ProfileService = {

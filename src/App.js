@@ -30,7 +30,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <LogIn />
             </Suspense>
           }
@@ -39,7 +39,7 @@ function App() {
         <Route
           path="Home"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <Home />
             </Suspense>
           }
@@ -47,7 +47,7 @@ function App() {
         <Route
           path="MyProfile"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <MyProfile />
             </Suspense>
           }
@@ -55,7 +55,7 @@ function App() {
         <Route
           path="ChooseMeal"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <ChooseMeal />
             </Suspense>
           }
@@ -63,7 +63,7 @@ function App() {
         <Route
           path="ChooseMeal/SingleMeal/:id"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <SingleMeal />
             </Suspense>
           }
@@ -71,7 +71,7 @@ function App() {
         <Route
           path="OrderSent"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <OrderSent />
             </Suspense>
           }
@@ -79,7 +79,7 @@ function App() {
         <Route
           path="ConfirmOrder"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <ConfirmOrder />
             </Suspense>
           }
@@ -87,7 +87,7 @@ function App() {
         <Route
           path="TrackOrder"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <TrackOrder />
             </Suspense>
           }
@@ -95,7 +95,7 @@ function App() {
         <Route
           path="Settings"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <Settings />
             </Suspense>
           }
@@ -103,7 +103,7 @@ function App() {
         <Route
           path="HistoryOfMeals"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <HistoryOfMeals />
             </Suspense>
           }
@@ -111,7 +111,7 @@ function App() {
         <Route
           path="RateOrder"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <RateOrder />
             </Suspense>
           }
@@ -119,7 +119,7 @@ function App() {
         <Route
           path="*"
           element={
-            <Suspense fallback={<ErrorHandlerPage />}>
+            <Suspense fallback={<NotFound />}>
               <NotFound />
             </Suspense>
           }
