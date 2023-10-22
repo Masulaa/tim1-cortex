@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import logo from "../../images/logo.png";
 import TextField from "@mui/material/TextField";
@@ -11,6 +11,18 @@ const LogIn = () => {
   const [isButtonActive, setButtonActive] = useState(false);
 
   const navigate = useNavigate();
+
+  const checkIfUserIsLoggedIn = () => {
+    const token = localStorage.getItem("BearerToken"); // Pretpostavimo da token čuvate pod ovim ključem
+    if (token) {
+      // Ako postoji token, korisnik je već prijavljen
+      navigate("/Home"); // Preusmeri korisnika na početnu stranicu
+    }
+  };
+
+  useEffect(() => {
+    checkIfUserIsLoggedIn();
+  }, []);
 
   const handleEmailChange = (event) => {
     const newEmail = event.target.value;
