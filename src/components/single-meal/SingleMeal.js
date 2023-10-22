@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "./SingleMeal.css";
 import "../../style/global.css";
 import pizzaImg from "../../images/PizzaCapricciosa.png";
@@ -16,7 +17,11 @@ import computerbutton from "../../images/icons/Group 23.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { ArticleService } from "../../api/api";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
+
+
+import { useDispatch } from "react-redux";
+import { addOrder } from "../../store/orderStore";
 
 const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
@@ -48,6 +53,31 @@ const SingleMeal = () => {
   const [addImage, setAddImage] = useState(addbuttonrImg);
   const { id } = useParams();
   const [article, setArticle] = useState([]);
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const addedMealIds = useSelector((state) => state.orders.addedMealIds);
+
+  // Dodajte sledeću proveru kako biste onemogućili dodavanje istog obroka
+  const isMealAlreadyAdded = article.id && addedMealIds.includes(article.id);
+
+  const handleAddToOrder = () => {
+    // Pravite objekat sa informacijama o narudžbini
+    const orderInfo = {
+      id: article.id, // Zamenite sa odgovarajućim ID-jem iz vaših podataka
+      name: article.name,
+      price: article.price,
+      description: article.description + article.ingredients,
+      quantity: quantity,
+    };
+
+    // Koristite dispatch da pozovete akciju i dodate narudžbinu u Redux store
+    dispatch(addOrder(orderInfo));
+    console.log(orderInfo)
+    navigate("/ConfirmOrder")
+  };
 
   const fetchArticles = async () => {
     try {
@@ -126,7 +156,6 @@ const SingleMeal = () => {
             <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
           </div>
         </div>
-        <img src={computerbutton} className="choosmeal-computer-button"></img>
       </div>
       <div className="computer-only-content">
       <img src={backButton} className="back-button-orderMeal" alt="pizza" />
@@ -157,8 +186,12 @@ const SingleMeal = () => {
           />
         </div>
         <div className="button-wrapper-orderMeal">
-          <button className="addbutton-text-orderMeal addbutton-orderMeal">
-            ADD TO ORDER
+        <button
+            className={`disabled-btn ${!isMealAlreadyAdded ? "active" : ""}`}
+            onClick={handleAddToOrder}
+            disabled={isMealAlreadyAdded} // Onemogućava dodavanje istog obroka
+          >
+            {isMealAlreadyAdded ? "ALREADY ADDED" : "ADD TO ORDER"}
           </button>
         </div>
       </section>
