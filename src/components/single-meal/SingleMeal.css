@@ -28,7 +28,11 @@
   background-size: 100% 100.154%;
   background-repeat: no-repeat;
 }
-
+.img-layout-orderMeal {
+  width: 100%;
+  height: 324px;
+  object-fit: fill;
+}
 /* Style the text section */
 .texts-orderMeal {
   padding: 16px;
@@ -86,7 +90,7 @@
   align-items: center;
   gap: 8px;
   justify-content: center;
-  margin-bottom: 64px;
+  margin-bottom: 2rem;
 }
 
 /* Style the "ADD TO ORDER" button */
@@ -118,7 +122,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 64px;
+  margin-top: 2rem;
 }
 
 .counter-button-orderMeal {
@@ -132,7 +136,7 @@
   }
 
   .counter-orderMeal {
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
 }
 
@@ -141,32 +145,13 @@
     width: 270px;
   }
 }
-@media screen and (max-height: 680px) {
-  .tmp-orderMeal {
-    margin-top: 1px;
-  }
 
-  .counter-orderMeal {
-    margin-bottom: 32px;
-  }
-  .tmp-orderMeal {
-    scale: 0.8;
-  }
-  .texts-orderMeal {
-    padding: 0px 16px;
-  }
-  .description-orderMeal {
-    line-height: 18px;
-  }
-}
 
 .main-choosemeal {
   display: flex;
   flex-direction: column;
 }
-body {
-  overflow: hidden;
-}
+
 .image-topbar-wrapper {
   width: 156px;
   height: 23px;
@@ -338,13 +323,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.icon-row {
-  display: flex;
-  overflow-x: auto;
-  height: 100px;
-  padding: 15px 0px 15px 24px;
 }
 
 .icon {
@@ -829,11 +807,23 @@ body {
   }
 }
 
+
 .computer-only {
   display: none; /* Početno skrivanje na svim ekranima */
 }
-
-@media (min-width: 768px) {
+@media (max-width: 656px) {
+  .search-choosemeal{
+    width: 200px;
+  }
+  .search-icon-choose-meal{
+    margin-left: 160px;
+  }
+  .topbar-computer-other-part{
+    gap: 14px;
+  }
+  
+}
+@media (min-width: 480px) {
   .computer-only {
     display: block; /* Prikazivanje na ekranima sa širinom manjom od 768px (telefoni) */
   }
@@ -848,6 +838,9 @@ body {
     align-items: center;
     padding: 0 1rem;
     
+  }
+  .tmp-orderMeal{
+    margin: 20px 0px;
   }
   .texts-orderMeal {
     display: flex;
@@ -874,7 +867,7 @@ body {
     justify-content: left;
     margin: 0;
     margin-top: -50px;
-    padding: 30px 0;
+    padding: 15px 0;
   }
   .counter-button-orderMeal {
     margin: 0;
@@ -882,10 +875,103 @@ body {
   .counter-orderMeal h2 {
     margin: 24px;
   }
+  .button-wrapper-orderMeal{
+    width: 390px;
+  }
+  .disabled-btn{
+    width: 390px;
+  }
+}
+@media (max-width: 320px) {
+
+.texts-orderMeal,.description-orderMeal{
+  max-width: 250px;
 }
 
-.img-layout-orderMeal {
-  width: 100%;
-  height: 324px;
-  object-fit: fill;
+}
+
+@media  screen and (max-height:850px) {
+  .img-layout-orderMeal{
+    max-height: 250px;
+    max-width: auto ;
+
+  }
+  .title-orderMeal{
+    font-size: 25px;
+    padding: 5px 0px 0px 0px;
+  }
+  .texts-orderMeal{
+    gap: 5px;
+  }
+  .counter-orderMeal{
+    padding: 0;
+  }
+
+}
+@media  screen and (max-height:740px) {
+
+  .topbar-computer-choosemeal-home{
+    padding: 1rem;
+  }
+  .tmp-orderMeal {
+    margin-top: 1px;
+  }
+  .title-orderMeal{
+    font-size: 22px;
+    padding: 2px 0px 0px 0px;
+  }
+  .texts-orderMeal{
+    gap: 2px;
+    padding: 2px;
+  }
+
+
+  .description-orderMeal {
+    line-height: 18px;
+    width: 374px;
+    height: auto;
+  }
+  .tmp-orderMeal{
+    margin-top: 35px;
+  }
+
+
+}
+@media screen and (max-width:400px) {
+  .texts-orderMeal{
+    max-width: 300px;
+    text-align: left;
+  }
+}
+@media screen and (max-width:350px) {
+  .texts-orderMeal{
+    max-width: 250px;
+    text-align: left;
+  }
+}
+@media (max-height: 628px) {
+  .phone-only {
+    display: block; /* Prikazivanje na ekranima sa širinom manjom od 768px (telefoni) */
+  }
+  .computer-only {
+    display: none; /* Početno skrivanje na svim ekranima */
+  }
+  .img-layout-orderMeal{
+    max-width: 100vw;
+  }
+  .computer-only-content{
+    padding: 0;
+  }
+  .counter-orderMeal{
+    justify-content: center;
+    margin: 5px;
+    padding: 0px;
+  }
+  .tmp-orderMeal{
+    margin: 0;
+  }
+
+  .disabled-btn{
+    width: 200px;
+  }
 }
