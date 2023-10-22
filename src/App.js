@@ -6,6 +6,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
 const ChooseMeal = lazy(() => import("./components/choose-meal/ChooseMeal"));
+const ChooseMealForWholeWeek = lazy(() => import("./components/choose-meal-for-week/ChooseMealForWholeWeek"));
 const HistoryOfMeals = lazy(() =>
   import("./components/history-of-meals/HistoryOfMeals")
 );
@@ -59,6 +60,15 @@ function App() {
             </Suspense>
           }
         />
+          <Route
+          path="ChooseMealForWholeWeek"
+          element={
+            <Suspense fallback={<NotFound />}>
+              <ChooseMealForWholeWeek />
+            </Suspense>
+          }
+        />
+        
         <Route
           path="ChooseMeal/SingleMeal/:id"
           element={
