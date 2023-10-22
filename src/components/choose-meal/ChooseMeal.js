@@ -211,7 +211,8 @@ const ChooseMeal = () => {
                     src={addbuttongImg}
                     alt=""
                     className="choosemeal-meal-add-button"
-                    onClick={()=>{startTransition(navigate(`SingleMeal/${article.id}`));}}
+                    onClick={() => navigate(`SingleMeal/${article.id}`)}
+
                   ></img>
                 </div>
               </div>
