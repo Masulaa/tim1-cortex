@@ -97,6 +97,9 @@ const client = axios.create({
     GetProfile() {
       return client.get("user");
     },
+    EditProfile(userNewData) {
+      return client.post("user", userNewData)
+    }
   };
   
 

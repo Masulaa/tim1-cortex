@@ -16,10 +16,12 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown, isAdmin, navigate, handleLog
     <div className="options">
       <div className="option" onClick={() => { navigate("/MyProfile") }}>Profile</div>
       <div className="option" onClick={handleLogout}>Logout</div>
-      <div className="option" onClick={() => {navigate("/TrackOrder")}}>Track Order</div>
+      {isPossible === 400 ? ( // Prikazi "Track Order" ako je isPossible 400
+      <div className="option" onClick={() => { navigate("/TrackOrder") }}>Track Order</div>
+    ) : null}
       {isAdmin && (
         <>
-          <div className="option" onClick={() => { /* Handle Meal Settings click */ }}>Meal Settings</div>
+          <div className="option" onClick={() => {navigate("/Settings")}}>Meal Settings</div>
           <div className="option" onClick={() => { /* Handle Invoice click */ }}>Invoice</div>
         </>
       )}

@@ -99,13 +99,13 @@
 .myprofile-changes-saved {
   display: flex;
   padding: 16px;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
   gap: 16px;
   border-radius: 4px;
   background: #FFF;
   box-shadow: 2px 2px 24px 0px rgba(0, 0, 0, 0.15);
-  margin: 0 auto;
+  margin: -1rem auto;
 }
 
 .myprofile-changes-saved-text {
