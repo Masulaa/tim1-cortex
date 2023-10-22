@@ -141,3 +141,58 @@ border-bottom: 1px solid #b9b9b9;
   }
 }
 
+.notFound-back-icon{
+  display: inline-flex;
+  height: 32px;
+  padding-right: 0px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: #131313;
+  position: fixed;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0 0 0 5px;
+  left: 0;
+}
+
+/*Used for changing back icon, based on device*/
+@media (max-width: 600px){
+  .notFound-back-icon,.back-icon,.back-icon-absolute{
+    opacity: 100%;
+}
+.notFound-arrowBack,.arrowBack,.arrowBack-absolute,.arrowBack-absolute2{
+  opacity: 0%;
+}
+}
+
+@media (min-width: 601px){
+  .notFound-back-icon,.back-icon,.back-icon-absolute{
+    opacity: 0%;
+}
+
+.notFound-arrowBack,.arrowBack,.arrowBack-absolute,.arrowBack-absolute2{
+  margin-right: 24px;
+  opacity: 100%;
+}
+
+}
+
+.arrowBack-absolute{
+  position: absolute;
+  left: 20px;
+  top: 50px;
+}
+
+
+.arrowBack-absolute2{
+  position: absolute;
+  left: 18px;
+  top: 30px;
+}
+
+.back-icon-absolute{
+  position: absolute;
+  left: 18px;
+  top: 30px;
+}

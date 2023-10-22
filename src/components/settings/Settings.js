@@ -1,8 +1,8 @@
 import "./Settings.css";
 
 import { useState } from "react";
-
-import { ArrowBackIosNew } from "@mui/icons-material";
+import { ArrowBackIosNew } from '@mui/icons-material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import active from "../../images/icons/active.svg";
 import inactive from "../../images/icons/inactive.svg";
 const Settings = () => {
@@ -34,7 +34,8 @@ const Settings = () => {
   return (
     <div className="main-settings">
       <div className="settings-head">
-        <ArrowBackIosNew className="settings-back-icon"></ArrowBackIosNew>
+        <ArrowBackIcon className="arrowBack-absolute2"></ArrowBackIcon>
+        <ArrowBackIosNew className="back-icon-absolute"></ArrowBackIosNew>
         <p className="settings-title">SETTINGS</p>
       </div>
       <div className="settigs-content">
