@@ -91,9 +91,9 @@ const Home = () => {
     }
   };
 
-  const toChooseMealForWholeWeek = () => {
-    navigate("/ChooseMealForWholeWeek");
-  };
+  // const toChooseMealForWholeWeek = () => {
+  //   navigate("/ChooseMealForWholeWeek");
+  // };
 
   const fetchUser = async () => {
     try {
