@@ -2,26 +2,62 @@ import "./Home.css";
 import React, { useState, useEffect } from "react";
 import logo from "../../images/logo.png";
 import icon from "../../images/8bb19757e48ed988259f35eab3822824.png";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import profileIcon from "../../images/Ellipse 1.svg";
 import { useNavigate } from "react-router-dom";
 import { AuthService, OrderService } from "../../api/api";
 import { ProfileService } from "../../api/api";
 
-
-const Dropdown = ({ isDropdownOpen, toggleDropdown, isAdmin, navigate, handleLogout ,isPossible }) => (
-  <div className={`choose-meal-dropdown${isDropdownOpen ? '-open' : ''}`}>
+const Dropdown = ({
+  isDropdownOpen,
+  toggleDropdown,
+  isAdmin,
+  navigate,
+  handleLogout,
+  isPossible,
+}) => (
+  <div className={`choose-meal-dropdown${isDropdownOpen ? "-open" : ""}`}>
     <div className="options">
-      <div className="option" onClick={() => { navigate("/MyProfile") }}>Profile</div>
-      <div className="option" onClick={handleLogout}>Logout</div>
+      <div
+        className="option"
+        onClick={() => {
+          navigate("/MyProfile");
+        }}
+      >
+        Profile
+      </div>
+      <div className="option" onClick={handleLogout}>
+        Logout
+      </div>
       {isPossible === 400 ? ( // Prikazi "Track Order" ako je isPossible 400
-      <div className="option" onClick={() => { navigate("/TrackOrder") }}>Track Order</div>
-    ) : null}
+        <div
+          className="option"
+          onClick={() => {
+            navigate("/TrackOrder");
+          }}
+        >
+          Track Order
+        </div>
+      ) : null}
       {isAdmin && (
         <>
-          <div className="option" onClick={() => {navigate("/Settings")}}>Meal Settings</div>
-          <div className="option" onClick={() => { /* Handle Invoice click */ }}>Invoice</div>
+          <div
+            className="option"
+            onClick={() => {
+              navigate("/Settings");
+            }}
+          >
+            Meal Settings
+          </div>
+          <div
+            className="option"
+            onClick={() => {
+              /* Handle Invoice click */
+            }}
+          >
+            Invoice
+          </div>
         </>
       )}
     </div>
@@ -31,7 +67,7 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown, isAdmin, navigate, handleLog
 const Home = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [user, setUser] = useState([]);
-  const [isPossible, setIsPossible] = useState([])
+  const [isPossible, setIsPossible] = useState([]);
   const navigate = useNavigate();
 
   const toggleDropdown = () => {
@@ -56,7 +92,7 @@ const Home = () => {
   };
 
   const toChooseMealForWholeWeek = () => {
-      navigate("/ChooseMealForWholeWeek");
+    navigate("/ChooseMealForWholeWeek");
   };
 
   const fetchUser = async () => {
@@ -99,14 +135,20 @@ const Home = () => {
             className="image-topbar-home-profile-with-dropdown"
             onClick={toggleDropdown}
           >
-            <img src={profileIcon} alt="logo" className="image-topbar-home-profile" />
-            {isDropdownOpen ? (
-              <ExpandLessIcon />
-            ) : (
-              <ExpandMoreIcon />
-            )}
-           <Dropdown isDropdownOpen={isDropdownOpen} toggleDropdown={toggleDropdown} isAdmin={isAdmin} navigate={navigate} handleLogout={handleLogout} isPossible={isPossible.status}/>
-
+            <img
+              src={profileIcon}
+              alt="logo"
+              className="image-topbar-home-profile"
+            />
+            {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+            <Dropdown
+              isDropdownOpen={isDropdownOpen}
+              toggleDropdown={toggleDropdown}
+              isAdmin={isAdmin}
+              navigate={navigate}
+              handleLogout={handleLogout}
+              isPossible={isPossible.status}
+            />
           </div>
         </div>
         <div className="content-home">
@@ -115,8 +157,13 @@ const Home = () => {
             <div className="title-home">I’m ordering for:</div>
           </div>
           <div className="second-part-of-content-home">
-          <button className={`primary-button`} onClick={toChooseMeal} >TODAY</button>
-            <button className="secondary-button" onClick={toChooseMealForWholeWeek}>WHOLE WEEK</button>
+            <button
+              className={`disabled-btn ${isPossible.status===400 ? "active" : ""}`}
+              onClick={toChooseMeal}
+            >
+              TODAY
+            </button>
+            {/* <button className="secondary-button" onClick={toChooseMealForWholeWeek}>WHOLE WEEK</button> */}
           </div>
         </div>
       </div>
