@@ -27,6 +27,8 @@ import computerbutton from "../../images/icons/Group 23.png";
 import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
 import darkCircle from "../../images/darkCircle.svg";
+import { ArrowBackIosNew } from '@mui/icons-material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const icons = [
   MenuIcon,
@@ -120,6 +122,7 @@ const ChooseMeal = () => {
       <div className="computer-only">
         <div className="topbar-computer-choosemeal-home">
           <div className="image-topbar-wrapper">
+          <ArrowBackIcon className="arrowBack"></ArrowBackIcon>
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
           <div className="topbar-computer-other-part">
@@ -150,9 +153,11 @@ const ChooseMeal = () => {
       <div className="phone-only">
         <div className="topbar-choosemeal-home">
           <div
+          
             className="image-topbar-home-profile-with-dropdown"
             onClick={toggleDropdown}
           >
+            <ArrowBackIosNew className="back-icon-absolute2" />
             <img
               src={profileIcon}
               alt="logo"
