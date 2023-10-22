@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import "./ConfirmOrder.css";
-import removebuttongImg from "../../images/RemoveButton.png";
 import removebuttonrImg from "../../images/RemoveButton2.png";
 import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";

@@ -151,7 +151,7 @@ const ChooseMeal = () => {
             <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
           </div>
         </div>
-        <img src={computerbutton} className="choosmeal-computer-button"
+        <img src={computerbutton} className="choosmeal-computer-button" alt="button"
          onClick={() => {
           navigate(`/confirmorder`);
         }}></img>
