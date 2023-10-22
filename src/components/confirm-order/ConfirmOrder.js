@@ -21,7 +21,7 @@ const ConfirmOrder = () => {
 
   const [quantity, setQuantity] = useState(1);
   const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
-  const [totalCost, setTotalCost] = useState(0); // Dodajemo stanje za ukupnu cijenu
+  const [totalCost, setTotalCost] = useState(0);
 
   const [expiresOn, setExpiresOn] = useState("");
   const [comment, setComment] = useState("");
@@ -40,21 +40,24 @@ const ConfirmOrder = () => {
     };
   };
 
-  const postOrder = async () => {
-    try {
-      const orderData = createOrderData();
-      const response = await OrderService.PostOrder(orderData);
-      console.log("API Response", response);
-      navigate("/OrderSent");
-    } catch (error) {
-      console.log("Error posting order:", error);
-    }
-  };
-
   useEffect(() => {
     if (orders && orders.length > 0) {
       setQuantity(orders[0].quantity);
     }
+  }, [orders]);
+
+
+  useEffect(() => {
+    let newTotalCost = 0;
+
+    
+    for (const order of orders) {
+      const { price, quantity } = order;
+      const productPrice = price * quantity;
+      newTotalCost += productPrice;
+    }
+
+    setTotalCost(newTotalCost);
   }, [orders]);
 
   const increaseQuantity = () => {
@@ -65,7 +68,7 @@ const ConfirmOrder = () => {
 
   const decreaseQuantity = () => {
     if (quantity === 1) {
-      setRemoveModalVisible(true); // Prikazivanje moda
+      setRemoveModalVisible(true);
     } else {
       setQuantity(quantity - 1);
     }
@@ -87,31 +90,28 @@ const ConfirmOrder = () => {
     return quantity === 1 ? removebuttonrImg : removebuttonrImg;
   };
 
-  // Ažuriranje ukupne cijene na osnovu cijena stavki i količine
-  useEffect(() => {
-    let newTotalCost = 0;
-    for (const order of orders) {
-      newTotalCost += order.price * order.quantity;
-    }
-    setTotalCost(newTotalCost);
-  }, [orders, quantity]); // Pratimo i promene u količini
-
   const handleAddToOrder = (name, description, price) => {
-    // Pravimo objekat sa informacijama o narudžbini
     const orderInfo = {
-      id: Math.random(), // Ovo je privremeno, možete koristiti bolju logiku za generisanje ID-a
+      id: Math.random(), 
       name: name,
       description: description,
       price: price,
-      quantity: quantity, // Koristimo trenutnu količinu
+      quantity: quantity, 
     };
-
-    // Koristite dispatch da pozovete akciju i dodate narudžbinu u Redux store
     dispatch(addOrder(orderInfo));
     console.log(orderInfo);
-
-    // Ažuriranje ukupne cene
     setTotalCost((prevTotalCost) => prevTotalCost + price * quantity);
+  };
+
+  const postOrder = async () => {
+    try {
+      const orderData = createOrderData();
+      const response = await OrderService.PostOrder(orderData);
+      console.log("API Response", response);
+      navigate("/OrderSent");
+    } catch (error) {
+      console.log("Error posting order:", error);
+    }
   };
 
   return (
