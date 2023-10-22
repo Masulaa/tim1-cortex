@@ -37,7 +37,6 @@ const ConfirmOrder = () => {
     }
   };
 
-
   const closeModal = () => {
     setRemoveModalVisible(false);
   };
@@ -66,7 +65,7 @@ const ConfirmOrder = () => {
 
     // Koristite dispatch da pozovete akciju i dodate narudžbinu u Redux store
     dispatch(addOrder(orderInfo));
-    console.log(orderInfo)
+    console.log(orderInfo);
   };
 
   useEffect(() => {
@@ -76,48 +75,66 @@ const ConfirmOrder = () => {
   }, [orders]);
 
   return (
-    <div className={`main-confirmorder ${isRemoveModalVisible ? "modal-open" : ""}`}>
+    <div
+      className={`main-confirmorder ${
+        isRemoveModalVisible ? "modal-open" : ""
+      }`}
+    >
       <div className="confirmorder-head">
         <ArrowBackIosNew className="myprofile-back-icon"></ArrowBackIosNew>
         <p className="confirmorder-title">YOUR ORDER</p>
       </div>
       <div className="confirmorder-meals">
-  {orders.map((order) => (
-    <div className="confirmorder-meal" key={order.id}>
-      <div className="confirmorder-title-and-description">
-        <p className="confirmorder-meal-title">{order.name}</p>
-        <p className="confirmorder-meal-description">{order.description}</p>
+        {orders.map((order) => (
+          <div className="confirmorder-meal" key={order.id}>
+            <div className="confirmorder-title-and-description">
+              <p className="confirmorder-meal-title">{order.name}</p>
+              <p className="confirmorder-meal-description">
+                {order.description}
+              </p>
+            </div>
+            <div className="confirmorder-price-and-counter">
+              <div className="confirmorder-meal-price">
+                {order.price * order.quantity}€
+              </div>
+              <div className="confirmorder-meal-counter">
+                <img
+                  src={quantity === 1 ? removebuttonrImg : removebuttongImg}
+                  alt="removebutton"
+                  className="counter-button-confirmorder"
+                  onClick={() => {
+                    if (quantity === 1) {
+                      setRemoveModalVisible(true); // Otvori modal samo kada je quantity 1
+                    } else {
+                      decreaseQuantity();
+                    }
+                  }}
+                />
+                <h2 className="confirmorder-meal-quantity">{quantity}</h2>
+                <img
+                  src={quantity === 1 ? addbuttonrImg : addbuttongImg}
+                  alt="addbutton"
+                  className="counter-button-confirmorder"
+                  onClick={() => {
+                    if (quantity < 10) {
+                      increaseQuantity();
+                    }
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="confirmorder-price-and-counter">
-        <div className="confirmorder-meal-price">{order.price * order.quantity}€</div>
-        <div className="confirmorder-meal-counter">
-          <img
-            src={getRemoveButtonImage}
-            alt="removebutton"
-            className="counter-button-confirmorder"
-            onClick={() => decreaseQuantity(order.name)}
-          />
-          <h2 className="confirmorder-meal-quantity">{order.quantity}</h2>
-          <img
-            src={getAddButtonImage}
-            alt="addbutton"
-            className="counter-button-confirmorder"
-            onClick={() => increaseQuantity(order.name)}
-          />
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
 
-<div className="confirmorder-finalprice-and-description">
+      <div className="confirmorder-finalprice-and-description">
         <div className="confirmorder-meal-price-info">
           <p className="confirmorder-meals-price-title">Cost:</p>
           <p className="confirmorder-meals-price">{calculateTotalCost()}€</p>
-
         </div>
         <p className="confirmorder-meals-price-description">
-          *This is the price for your company; you don't pay anything for your meal.
+          *This is the price for your company; you don't pay anything for your
+          meal.
         </p>
       </div>
       <div className="confirmorder-meals-description">
@@ -133,14 +150,18 @@ const ConfirmOrder = () => {
         />
       </div>
       <div className="confirmorder-meals-button">
-        <button className="primary-button">
-          CONFIRM ORDER
-        </button>
+        <button className="primary-button">CONFIRM ORDER</button>
       </div>
       {isRemoveModalVisible && (
-        <div className="confirmorder-meals-modal-backdrop" onClick={closeBackdrop}>
+        <div
+          className="confirmorder-meals-modal-backdrop"
+          onClick={closeBackdrop}
+        >
           <div className="confirmorder-meals-modal-wrapper">
-            <div className="confirmorder-meals-modal" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="confirmorder-meals-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
               <img
                 src={CloseBtn}
                 className="confirmorder-meals-modal-back-icon"
