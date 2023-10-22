@@ -13,7 +13,6 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { SearchOutlined } from "@mui/icons-material";
 import profileIcon from "../../images/Ellipse 1.svg";
-import computerbutton from "../../images/icons/Group 23.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { ArticleService } from "../../api/api";
@@ -23,18 +22,18 @@ import { useParams, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addOrder } from "../../store/orderStore";
 
-const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
-  <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
-    <div className="options">
-      <div className="option">Profile</div>
-      <div className="option">Track Order</div>
-      <div className="option">Logout</div>
-    </div>
-  </div>
-);
-{
+// const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
+//   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
+//     <div className="options">
+//       <div className="option">Profile</div>
+//       <div className="option">Track Order</div>
+//       <div className="option">Logout</div>
+//     </div>
+//   </div>
+// );
+
   /*Left je zapravo Right*/
-}
+
 const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
@@ -46,7 +45,7 @@ const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
 );
 
 const SingleMeal = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownOpenLeft, setIsDropdownOpenLeft] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [removeImage, setRemoveImage] = useState(removebuttongImg);
@@ -94,9 +93,9 @@ const SingleMeal = () => {
   }, []);
 
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  // const toggleDropdown = () => {
+  //   setIsDropdownOpen(!isDropdownOpen);
+  // };
 
   const toggleDropdownLeft = () => {
     setIsDropdownOpenLeft(!isDropdownOpenLeft);
