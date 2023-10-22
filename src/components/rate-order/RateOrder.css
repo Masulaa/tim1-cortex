@@ -44,7 +44,6 @@
   line-height: 13px;
   letter-spacing: 0.5px;
   color: #131313;
-  opacity: 50%;
 }
 
 .rateorder-title {
@@ -96,7 +95,6 @@ width: 100%;
   width: 184px;
   display: flex; /* Dodano display flex */
   gap: 8px;
-  opacity: 0.5;
 }
 
 .stars * {
@@ -123,13 +121,12 @@ width: 100%;
 
 .star.selected {
   color: #BD2B2B;
-  opacity: 1;
 }
 
 
 .send-icon {
   position: absolute;
-  color: #1c1b1f;
+  color: #3900e400;
   align-items: center;
   margin-left: 300px;
   margin-top: 16px;

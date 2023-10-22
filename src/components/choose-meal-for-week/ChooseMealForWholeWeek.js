@@ -161,45 +161,45 @@
 //         <div className="choosemealweek-btns">
 
         
-//         <div className="choosemealweek-day-btns">
-//         {["M", "T", "W", "T", "F"].map((day, index) => (
-//           <div
-//             key={index}
-//             className={`choosemealweek-day ${
-//               selectedDay === index ? "selected" : ""}
-//             }`}
-//             onClick={() => {
-//               if (index >= 5) return; // Do nothingitg if it's Saturday or Sunday
-//               selectDay(index);
-//             }}
-//           >
-//             <img
-//               src={
-//                 index >= 5 ? disabledCircle : selectedDay === index ? redInnerCircle : grayIcon
-//               }
-//               alt={day}
-//             />
-//             {day}
-//           </div>
-//         ))}
-//       </div>
-//         <img src={computerbutton} className="choosmeal-computer-button"></img>
-//         </div>
-//       </div>
-//       <div className="phone-only">
-//         <div className="topbar-choosemeal-home">
-//           <div
-//             className="image-topbar-home-profile-with-dropdown"
-//             onClick={toggleDropdown}
-//           >
-//             <img
-//               src={profileIcon}
-//               alt="logo"
-//               className="image-topbar-home-profile"
-//             />
-//             {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
-//           </div>
-//           <Dropdown isDropdownOpen={isDropdownOpen} />
+        <div className="choosemealweek-day-btns">
+        {["M", "T", "W", "T", "F"].map((day, index) => (
+          <div
+            key={index}
+            className={`choosemealweek-day ${
+              selectedDay === index ? "selected" : ""}
+            }`}
+            onClick={() => {
+              if (index >= 5) return; // Do nothing if it's Saturday or Sunday
+              selectDay(index);
+            }}
+          >
+            <img
+              src={
+                index >= 5 ? disabledCircle : selectedDay === index ? redInnerCircle : grayIcon
+              }
+              alt={day}
+            />
+            {day}
+          </div>
+        ))}
+      </div>
+        <img src={computerbutton} className="choosmeal-computer-button"></img>
+        </div>
+      </div>
+      <div className="phone-only">
+        <div className="topbar-choosemeal-home">
+          <div
+            className="image-topbar-home-profile-with-dropdown"
+            onClick={toggleDropdown}
+          >
+            <img
+              src={profileIcon}
+              alt="logo"
+              className="image-topbar-home-profile"
+            />
+            {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
+          </div>
+          <Dropdown isDropdownOpen={isDropdownOpen} />
           
 //           <div className="image-topbar-wrapper">
 //             <img src={logo} alt="logo" className="image-topbar-home" />{" "}

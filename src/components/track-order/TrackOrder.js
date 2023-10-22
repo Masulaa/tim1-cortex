@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./TrackOrder.css";
 import "../../style/global.css";
 import { useNavigate } from "react-router-dom";
@@ -16,10 +16,28 @@ import orderCheck from "../../images/ordercheck.svg";
 import { ArrowBackIosNew } from '@mui/icons-material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+import { OrderService } from "../../api/api";
+
 const TrackOrder = () => {
   const [activeStep] = useState(3);
 
+  const [status, setStatus] = useState("")
+
   const navigate = useNavigate();
+
+  const fetchOrder = async () => {
+    try {
+      const response = await OrderService.GetOrder();
+      setStatus(response.data.state);
+      console.log(response.data.state);
+    } catch (error) {
+      console.log("Error fetching articles:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOrder();
+  }, []);
 
   return (
     <div className="trackorder-main">
@@ -33,18 +51,18 @@ const TrackOrder = () => {
       <div className="trackorder-steps">
           <div className="trackorder-first-step">
             <img
-              src={activeStep === 1 ? pan : panDeactive}
+              src={status === "preparing" ? pan : panDeactive}
               className="order-preparation-icon"
               alt=""
             />
             <p
               className={`order-text-${
-                activeStep === 1 ? "active" : "deactive"
+                status === "preparing" ? "active" : "deactive"
               }`}
             >
               Order in preparation
             </p>
-            {activeStep === 1 && <img src={selectedBtn} className="selected-icon" alt=""/>}
+            {status === "preparing" && <img src={selectedBtn} className="selected-icon" alt=""/>}
           </div>
         <div className="circle-space">
           <img src={orderCircle} className="circle" alt=""/>
@@ -55,16 +73,16 @@ const TrackOrder = () => {
         </div>
         <div className="trackorder-first-step">
           <img
-            src={activeStep === 2 ? onTheWayActive : onTheWay}
+            src={status === "on_the_way" ? onTheWayActive : onTheWay}
             className="on-the-way-icon"
             alt=""
           />
           <p
-            className={`order-text-${activeStep === 2 ? "active" : "deactive"}`}
+            className={`order-text-${status === "on_the_way" ? "active" : "deactive"}`}
           >
             Order on the way
           </p>
-          {activeStep === 2 && <img src={selectedBtn} className="selected-icon" alt=""/>}
+          {status === "on_the_way" && <img src={selectedBtn} className="selected-icon" alt=""/>}
         </div>
         <div className="circle-space">
           <img src={orderCircle} className="circle" alt=""/>
@@ -75,19 +93,19 @@ const TrackOrder = () => {
         </div>
         <div className="trackorder-first-step">
           <img
-            src={activeStep === 3 ? orderPackageActive : orderPackage}
+            src={status === "delivered" ? orderPackageActive : orderPackage}
             className="order-delivered-icon"
             alt=""
           />
           <p
-            className={`order-text-${activeStep === 3 ? "active" : "deactive"}`}
+            className={`order-text-${status === 3 ? "active" : "deactive"}`}
           >
             Order delivered
           </p>
-          {activeStep === 3 && <img src={orderCheck} className="order-check" alt=""/>}
+          {status === "delivered" && <img src={orderCheck} className="order-check" alt=""/>}
         </div>
       </div>
-      {activeStep === 3 && (
+      {status === "delivered" && (
         <div className="trackorder-button-wrap">
         <button className="primary-button" onClick={()=>{navigate("/RateOrder")}}>RATE ORDER</button>
         </div>
