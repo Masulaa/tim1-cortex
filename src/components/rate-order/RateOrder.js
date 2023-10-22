@@ -1,14 +1,13 @@
 import "./RateOrder.css";
 import React from "react";
-import slika01 from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
-import { ArrowBackIosNew, Grade } from "@mui/icons-material";
+import { ArrowBackIosNew } from "@mui/icons-material";
+// import { Grade } from "@mui/icons-material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
-import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
+/*import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";*/
 import SendIcon from "@mui/icons-material/Send";
-import { useNavigate } from "react-router-dom";
 import profileIcon from "../../images/Ellipse 1.svg";
 import { OrderService } from "../../api/api";
 import { RatingService } from "../../api/api";

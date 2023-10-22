@@ -8,7 +8,6 @@ import profileIcon from "../../images/Ellipse 1.svg";
 import { useNavigate } from "react-router-dom";
 import { AuthService, OrderService } from "../../api/api";
 import { ProfileService } from "../../api/api";
-import { startTransition } from "react";
 
 
 const Dropdown = ({ isDropdownOpen, toggleDropdown, isAdmin, navigate, handleLogout ,isPossible }) => (

@@ -8,11 +8,10 @@ import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";
 import deleteBtn from "../../images/delete.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder } from "../../store/orderStore";
+import { addOrder, updateOrder, removeOrder } from "../../store/orderStore"; // Dodali smo `removeOrder`
 import CloseBtn from "../../images/close.svg";
 import { OrderService } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import { updateOrder } from "../../store/orderStore";
 
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
@@ -21,10 +20,9 @@ const ConfirmOrder = () => {
   const navigate = useNavigate();
 
   const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
-
-  const [expiresOn, setExpiresOn] = useState("");
-  const [comment, setComment] = useState("");
   const [totalCost, setTotalCost] = useState(0);
+  const [comment, setComment] = useState("");
+  const [order, setOrder] = useState(null); // Dodana deklaracija za 'order'
 
   const createOrderData = () => {
     const orderArticles = orders.map((order) => ({
@@ -38,39 +36,36 @@ const ConfirmOrder = () => {
     };
   };
 
-  const increaseQuantity = (productId) => {
-    const updatedOrders = orders.map((order) => {
-      if (order.id === productId) {
-        return { ...order, quantity: order.quantity + 1 };
-      }
-      return order;
-    });
-
-    dispatch(updateOrder(updatedOrders));
-  };
-
-  const decreaseQuantity = (productId) => {
-    const updatedOrders = orders.map((order) => {
-      if (order.id === productId && order.quantity > 1) {
-        return { ...order, quantity: order.quantity - 1 };
-      }
-      return order;
-    });
-
-    dispatch(updateOrder(updatedOrders));
-  };
-
   useEffect(() => {
-    let newTotalCost = 0;
-
-    for (const order of orders) {
-      const { price, quantity } = order;
-      const productPrice = price * quantity;
-      newTotalCost += productPrice;
+    if (orders && orders.length > 0) {
+      setTotalCost(
+        orders.reduce((acc, order) => acc + order.price * order.quantity, 0)
+      );
     }
-
-    setTotalCost(newTotalCost);
   }, [orders]);
+
+  const increaseQuantity = (order) => {
+    if (order.quantity < 10) {
+      const updatedOrder = { ...order, quantity: order.quantity + 1 };
+      dispatch(updateOrder(updatedOrder));
+      setTotalCost(totalCost + order.price);
+    }
+  };
+
+  const decreaseQuantity = (order) => {
+    if (order.quantity > 1) {
+      const updatedOrder = { ...order, quantity: order.quantity - 1 };
+      dispatch(updateOrder(updatedOrder));
+      setTotalCost(totalCost - order.price);
+    } else {
+      setRemoveModalVisible(true);
+    }
+  };
+
+  const removeItem = (order) => {
+    dispatch(removeOrder(order.id));
+    setRemoveModalVisible(false); // Zatvaranje modalnog prozora nakon brisanja
+  };
 
   const closeModal = () => {
     setRemoveModalVisible(false);
@@ -80,15 +75,16 @@ const ConfirmOrder = () => {
     setRemoveModalVisible(false);
   };
 
-  const handleAddToOrder = (name, description, price, productId) => {
-    const updatedOrders = orders.map((order) => {
-      if (order.id === productId) {
-        return { ...order, name, description, price };
-      }
-      return order;
-    });
-
-    dispatch(updateOrder(updatedOrders));
+  const handleAddToOrder = (name, description, price) => {
+    const orderInfo = {
+      id: Math.random(),
+      name: name,
+      description: description,
+      price: price,
+      quantity: 1,
+    };
+    dispatch(addOrder(orderInfo));
+    setTotalCost((prevTotalCost) => prevTotalCost + price);
   };
 
   const postOrder = async () => {
@@ -103,7 +99,11 @@ const ConfirmOrder = () => {
   };
 
   return (
-    <div className={`main-confirmorder ${isRemoveModalVisible ? "modal-open" : ""}`}>
+    <div
+      className={`main-confirmorder ${
+        isRemoveModalVisible ? "modal-open" : ""
+      }`}
+    >
       <div className="confirmorder-head">
         <ArrowBackIosNew className="myprofile-back-icon" />
         <p className="confirmorder-title">YOUR ORDER</p>
@@ -113,7 +113,9 @@ const ConfirmOrder = () => {
           <div className="confirmorder-meal" key={order.id}>
             <div className="confirmorder-title-and-description">
               <p className="confirmorder-meal-title">{order.name}</p>
-              <p className="confirmorder-meal-description">{order.description}</p>
+              <p className="confirmorder-meal-description">
+                {order.description}
+              </p>
             </div>
             <div className="confirmorder-price-and-counter">
               <div className="confirmorder-meal-price">
@@ -121,17 +123,17 @@ const ConfirmOrder = () => {
               </div>
               <div className="confirmorder-meal-counter">
                 <img
-                  src={removebuttongImg}
+                  src={removebuttonrImg}
                   alt="removebutton"
                   className="counter-button-confirmorder"
-                  onClick={() => decreaseQuantity(order.id)}
+                  onClick={() => decreaseQuantity(order)}
                 />
                 <h2 className="confirmorder-meal-quantity">{order.quantity}</h2>
                 <img
-                  src={addbuttongImg}
+                  src={order.quantity === 10 ? addbuttongImg : addbuttonrImg}
                   alt="addbutton"
                   className="counter-button-confirmorder"
-                  onClick={() => increaseQuantity(order.id)}
+                  onClick={() => increaseQuantity(order)}
                 />
               </div>
             </div>
@@ -141,12 +143,11 @@ const ConfirmOrder = () => {
       <div className="confirmorder-finalprice-and-description">
         <div className="confirmorder-meal-price-info">
           <p className="confirmorder-meals-price-title">Cost:</p>
-          <p className="confirmorder-meals-price">
-            {totalCost.toFixed(2)}€
-          </p>
+          <p className="confirmorder-meals-price">{totalCost.toFixed(2)}€</p>
         </div>
         <p className="confirmorder-meals-price-description">
-          *This is the price for your company; you don't pay anything for your meal.
+          *This is the price for your company; you don't pay anything for your
+          meal.
         </p>
       </div>
       <div className="confirmorder-meals-description">
@@ -170,9 +171,15 @@ const ConfirmOrder = () => {
         </button>
       </div>
       {isRemoveModalVisible && (
-        <div className="confirmorder-meals-modal-backdrop" onClick={closeBackdrop}>
+        <div
+          className="confirmorder-meals-modal-backdrop"
+          onClick={closeBackdrop}
+        >
           <div className="confirmorder-meals-modal-wrapper">
-            <div className="confirmorder-meals-modal" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="confirmorder-meals-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
               <img
                 src={CloseBtn}
                 className="confirmorder-meals-modal-back-icon"
@@ -182,7 +189,11 @@ const ConfirmOrder = () => {
               <p className="confirmorder-meals-modal-title">Removing item</p>
               <div className="confirmorder-meal-modal-group-trash">
                 <div className="confirmorder-meals-modal-rectangle-trash">
-                  <img src={deleteBtn} className="confirmorder-meal-modal-trash-icon" alt="Delete" />
+                  <img
+                    src={deleteBtn}
+                    className="confirmorder-meal-modal-trash-icon"
+                    alt="Delete"
+                  />
                 </div>
               </div>
               <p className="confirmorder-meals-modal-description">
@@ -196,7 +207,10 @@ const ConfirmOrder = () => {
                 >
                   <p className="confirmorder-meals-modal-cancel-text">Cancel</p>
                 </div>
-                <div className="confirmorder-meals-modal-remove-rectangle">
+                <div
+                  className="confirmorder-meals-modal-remove-rectangle"
+                  onClick={() => removeItem(order)}
+                >
                   <p className="confirmorder-meals-modal-remove-text">Remove</p>
                 </div>
               </div>
