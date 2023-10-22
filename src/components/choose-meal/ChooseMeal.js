@@ -194,11 +194,11 @@ const ChooseMeal = () => {
             key={index}
             onClick={() => handleClick(index)}
           >
-            <div className="circle">
+            <div className="choosemeal-circle">
               <img
                 src={selectedCircles.includes(index) ? darkCircle : circle}
                 alt="Circle"
-                className="circle-icon"
+                className="choosemeal-circle-icon"
               />
               <Icon
                 className="inner-icon"
