@@ -43,12 +43,30 @@ const ConfirmOrder = () => {
     setRemoveModalVisible(false);
   };
 
+  const closeBackdrop = () => {
+    setRemoveModalVisible(false);
+  };
+
   const getAddButtonImage = (key) => {
     return quantities[key] === 10 ? addbuttongImg : addbuttonrImg;
   };
 
   const getRemoveButtonImage = (key) => {
     return quantities[key] === 1 ? removebuttonrImg : removebuttonrImg;
+  };
+
+  const calculateTotalCost = () => {
+    let totalCost = 0;
+    for (const key in quantities) {
+      totalCost += quantities[key] * prices[key];
+    }
+    return totalCost.toFixed(2);
+  };
+
+  const prices = {
+    pizzaCapricciosa: 22,
+    pizzaMargherita: 18,
+    pizzaDiavola: 20,
   };
 
   return (
@@ -62,95 +80,51 @@ const ConfirmOrder = () => {
         <p className="confirmorder-title">YOUR ORDER</p>
       </div>
       <div className="confirmorder-meals">
-        <div className="confirmorder-meal">
-          <div className="confirmorder-title-and-description">
-            <p className="confirmorder-meal-title">Pizza Capricciosa</p>
-            <p className="confirmorder-meal-description">
-              Mozzarella cheese, baked ham, mushrooms, tomato
-            </p>
-          </div>
-          <div className="confirmorder-price-and-counter">
-            <div className="confirmorder-meal-price">22€</div>
-            <div className="confirmorder-meal-counter">
-              <img
-                src={getRemoveButtonImage("pizzaCapricciosa")}
-                alt="removebutton"
-                className="counter-button-confirmorder"
-                onClick={() => decreaseQuantity("pizzaCapricciosa")}
-              />
-              <h2 className="confirmorder-meal-quantity">
-                {quantities.pizzaCapricciosa}
-              </h2>
-              <img
-                src={getAddButtonImage("pizzaCapricciosa")}
-                alt="addbutton"
-                className="counter-button-confirmorder"
-                onClick={() => increaseQuantity("pizzaCapricciosa")}
-              />
+        {Object.keys(quantities).map((key) => (
+          <div className="confirmorder-meal" key={key}>
+            <div className="confirmorder-title-and-description">
+              <p className="confirmorder-meal-title">
+                {key === "pizzaCapricciosa"
+                  ? "Pizza Capricciosa"
+                  : key === "pizzaMargherita"
+                  ? "Pizza Margherita"
+                  : "Pizza Diavola"}
+              </p>
+              <p className="confirmorder-meal-description">
+                {key === "pizzaCapricciosa"
+                  ? "Mozzarella cheese, baked ham, mushrooms, tomato"
+                  : key === "pizzaMargherita"
+                  ? "Mozzarella cheese, tomato sauce, basil"
+                  : "Spicy salami, mozzarella cheese, chili"}
+              </p>
+            </div>
+            <div className="confirmorder-price-and-counter">
+              <div className="confirmorder-meal-price">
+                {quantities[key] * prices[key]}€
+              </div>
+              <div className="confirmorder-meal-counter">
+                <img
+                  src={getRemoveButtonImage(key)}
+                  alt="removebutton"
+                  className="counter-button-confirmorder"
+                  onClick={() => decreaseQuantity(key)}
+                />
+                <h2 className="confirmorder-meal-quantity">{quantities[key]}</h2>
+                <img
+                  src={getAddButtonImage(key)}
+                  alt="addbutton"
+                  className="counter-button-confirmorder"
+                  onClick={() => increaseQuantity(key)}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="confirmorder-meal">
-          <div className="confirmorder-title-and-description">
-            <p className="confirmorder-meal-title">Pizza Margherita</p>
-            <p className="confirmorder-meal-description">
-              Mozzarella cheese, tomato sauce, basil
-            </p>
-          </div>
-          <div className="confirmorder-price-and-counter">
-            <div className="confirmorder-meal-price">18€</div>
-            <div className="confirmorder-meal-counter">
-              <img
-                src={getRemoveButtonImage("pizzaMargherita")}
-                alt="removebutton"
-                className="counter-button-confirmorder"
-                onClick={() => decreaseQuantity("pizzaMargherita")}
-              />
-              <h2 className="confirmorder-meal-quantity">
-                {quantities.pizzaMargherita}
-              </h2>
-              <img
-                src={getAddButtonImage("pizzaMargherita")}
-                alt="addbutton"
-                className="counter-button-confirmorder"
-                onClick={() => increaseQuantity("pizzaMargherita")}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="confirmorder-meal">
-          <div className="confirmorder-title-and-description">
-            <p className="confirmorder-meal-title">Pizza Diavola</p>
-            <p className="confirmorder-meal-description">
-              Spicy salami, mozzarella cheese, chili
-            </p>
-          </div>
-          <div className="confirmorder-price-and-counter">
-            <div className="confirmorder-meal-price">20€</div>
-            <div className="confirmorder-meal-counter">
-              <img
-                src={getRemoveButtonImage("pizzaDiavola")}
-                alt="removebutton"
-                className="counter-button-confirmorder"
-                onClick={() => decreaseQuantity("pizzaDiavola")}
-              />
-              <h2 className="confirmorder-meal-quantity">
-                {quantities.pizzaDiavola}
-              </h2>
-              <img
-                src={getAddButtonImage("pizzaDiavola")}
-                alt="addbutton"
-                className="counter-button-confirmorder"
-                onClick={() => increaseQuantity("pizzaDiavola")}
-              />
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
       <div className="confirmorder-finalprice-and-description">
         <div className="confirmorder-meal-price-info">
           <p className="confirmorder-meals-price-title">Cost:</p>
-          <p className="confirmorder-meals-price">26.5€</p>
+          <p className="confirmorder-meals-price">{calculateTotalCost()}€</p>
         </div>
         <p className="confirmorder-meals-price-description">
           *This is the price for your company; you don't pay anything for your
@@ -167,15 +141,15 @@ const ConfirmOrder = () => {
           minRows={4}
           multiline
           style={{ width: "100%" }}
-        ></OutlinedInput>
+        />
       </div>
       <div className="confirmorder-meals-button">
         <button className="primary-button">CONFIRM ORDER</button>
       </div>
       {isRemoveModalVisible && (
-        <div className="confirmorder-meals-modal-backdrop">
+        <div className="confirmorder-meals-modal-backdrop" onClick={closeBackdrop}>
           <div className="confirmorder-meals-modal-wrapper">
-            <div className="confirmorder-meals-modal">
+            <div className="confirmorder-meals-modal" onClick={(e) => e.stopPropagation()}>
               <img
                 src={CloseBtn}
                 className="confirmorder-meals-modal-back-icon"
@@ -193,18 +167,15 @@ const ConfirmOrder = () => {
                 </div>
               </div>
               <p className="confirmorder-meals-modal-description">
-                By accepting this confirmation your item will be removed from
+                By accepting this confirmation, your item will be removed from
                 the order. Are you sure you want to remove this item?
               </p>
               <div className="confirmorder-meals-modal-button-container">
-                <div className="confirmorder-meals-modal-cancel-rectangle" 
-                onClick={closeModal}
+                <div
+                  className="confirmorder-meals-modal-cancel-rectangle"
+                  onClick={closeModal}
                 >
-                  <p
-                    className="confirmorder-meals-modal-cancel-text"
-                  >
-                    Cancel
-                  </p>
+                  <p className="confirmorder-meals-modal-cancel-text">Cancel</p>
                 </div>
                 <div className="confirmorder-meals-modal-remove-rectangle">
                   <p className="confirmorder-meals-modal-remove-text">Remove</p>
