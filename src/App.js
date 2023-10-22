@@ -5,7 +5,6 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
-const ErrorHandlerPage = lazy(() => import("./components/error/ErrorPage"));
 const ChooseMeal = lazy(() => import("./components/choose-meal/ChooseMeal"));
 const HistoryOfMeals = lazy(() =>
   import("./components/history-of-meals/HistoryOfMeals")
