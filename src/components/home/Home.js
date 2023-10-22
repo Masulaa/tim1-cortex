@@ -8,6 +8,9 @@ import profileIcon from "../../images/Ellipse 1.svg";
 import { useNavigate } from "react-router-dom";
 import { AuthService } from "../../api/api";
 import { ProfileService } from "../../api/api";
+import { startTransition } from "react";
+
+
 const Dropdown = ({ isDropdownOpen, toggleDropdown, isAdmin, navigate, handleLogout }) => (
   <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
     <div className="options">
@@ -42,6 +45,8 @@ const Home = () => {
       console.error("Error logout", error);
     }
   };
+
+  const toChooseMeal = () =>{navigate("/ChooseMeal");}
 
   const fetchUser = async () => {
     try {
@@ -101,7 +106,7 @@ const Home = () => {
             <div className="title-home">I’m ordering for:</div>
           </div>
           <div className="second-part-of-content-home">
-            <button className="primary-button" onClick={()=>{navigate("/ChooseMeal")}}>TODAY</button>
+          <button className="primary-button" onClick={toChooseMeal}>TODAY</button>
             <button className="secondary-button">WHOLE WEEK</button>
           </div>
         </div>

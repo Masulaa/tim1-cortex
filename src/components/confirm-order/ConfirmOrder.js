@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import "./ConfirmOrder.css";
@@ -6,18 +6,50 @@ import removebuttongImg from "../../images/RemoveButton.png";
 import removebuttonrImg from "../../images/RemoveButton2.png";
 import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";
+import deleteBtn from "../../images/delete.svg"
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder } from "../../store/orderStore"; // Zamijenite sa tačnom putanjom do vašeg orderSlice fajla
-import { useEffect } from "react";
-import deleteIcon from "../../images/delete.svg";
+import { addOrder } from "../../store/orderStore";
 import CloseBtn from "../../images/close.svg";
+import { OrderService } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.orders.orders);
 
+  const navigate = useNavigate();
+
   const [quantity, setQuantity] = useState(1);
-  const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
+  const [isRemoveModalVisible, setRemoveModalVisible] = useState(true);
+  const [totalCost, setTotalCost] = useState(0); // Dodajemo stanje za ukupnu cijenu
+
+  const [expiresOn, setExpiresOn] = useState("");
+  const [comment, setComment] = useState("");
+  const [articles, setArticles] = useState([]);
+
+  const createOrderData = () => {
+    const orderArticles = orders.map((order) => ({
+      article_id: order.id,
+      count: order.quantity,
+    }));
+
+    return {
+      expires_on: "2023-10-23",
+      comment: comment,
+      articles: orderArticles,
+    };
+  };
+
+  const postOrder = async () => {
+    try {
+      const orderData = createOrderData();
+      const response = await OrderService.PostOrder(orderData);
+      console.log("API Response", response);
+      navigate("/OrderSent");
+    } catch (error) {
+      console.log("Error posting order:", error);
+    }
+  };
 
   useEffect(() => {
     if (orders && orders.length > 0) {
@@ -32,7 +64,9 @@ const ConfirmOrder = () => {
   };
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
+    if (quantity === 1) {
+      setRemoveModalVisible(true); // Prikazivanje moda
+    } else {
       setQuantity(quantity - 1);
     }
   };
@@ -45,43 +79,45 @@ const ConfirmOrder = () => {
     setRemoveModalVisible(false);
   };
 
-  const calculateTotalCost = () => {
-    let totalCost = 0;
-    for (const order of orders) {
-      totalCost += order.price * order.quantity;
-    }
-    return totalCost.toFixed(2);
+  const getAddButtonImage = () => {
+    return quantity === 10 ? addbuttongImg : addbuttonrImg;
   };
 
+  const getRemoveButtonImage = () => {
+    return quantity === 1 ? removebuttonrImg : removebuttonrImg;
+  };
+
+  // Ažuriranje ukupne cijene na osnovu cijena stavki i količine
+  useEffect(() => {
+    let newTotalCost = 0;
+    for (const order of orders) {
+      newTotalCost += order.price * order.quantity;
+    }
+    setTotalCost(newTotalCost);
+  }, [orders, quantity]); // Pratimo i promene u količini
+
   const handleAddToOrder = (name, description, price) => {
-    // Pravite objekat sa informacijama o narudžbini
+    // Pravimo objekat sa informacijama o narudžbini
     const orderInfo = {
       id: Math.random(), // Ovo je privremeno, možete koristiti bolju logiku za generisanje ID-a
       name: name,
       description: description,
       price: price,
-      quantity: quantity,
+      quantity: quantity, // Koristimo trenutnu količinu
     };
 
     // Koristite dispatch da pozovete akciju i dodate narudžbinu u Redux store
     dispatch(addOrder(orderInfo));
     console.log(orderInfo);
+
+    // Ažuriranje ukupne cene
+    setTotalCost((prevTotalCost) => prevTotalCost + price * quantity);
   };
 
-  useEffect(() => {
-    if (orders && orders.length > 0) {
-      setQuantity(orders[0].quantity);
-    }
-  }, [orders]);
-
   return (
-    <div
-      className={`main-confirmorder ${
-        isRemoveModalVisible ? "modal-open" : ""
-      }`}
-    >
+    <div className={`main-confirmorder ${isRemoveModalVisible ? "modal-open" : ""}`}>
       <div className="confirmorder-head">
-        <ArrowBackIosNew className="myprofile-back-icon"></ArrowBackIosNew>
+        <ArrowBackIosNew className="myprofile-back-icon" />
         <p className="confirmorder-title">YOUR ORDER</p>
       </div>
       <div className="confirmorder-meals">
@@ -89,9 +125,7 @@ const ConfirmOrder = () => {
           <div className="confirmorder-meal" key={order.id}>
             <div className="confirmorder-title-and-description">
               <p className="confirmorder-meal-title">{order.name}</p>
-              <p className="confirmorder-meal-description">
-                {order.description}
-              </p>
+              <p className="confirmorder-meal-description">{order.description}</p>
             </div>
             <div className="confirmorder-price-and-counter">
               <div className="confirmorder-meal-price">
@@ -99,38 +133,29 @@ const ConfirmOrder = () => {
               </div>
               <div className="confirmorder-meal-counter">
                 <img
-                  src={quantity === 1 ? removebuttonrImg : removebuttongImg}
+                  src={getRemoveButtonImage()}
                   alt="removebutton"
                   className="counter-button-confirmorder"
-                  onClick={() => {
-                    if (quantity === 1) {
-                      setRemoveModalVisible(true); // Otvori modal samo kada je quantity 1
-                    } else {
-                      decreaseQuantity();
-                    }
-                  }}
+                  onClick={decreaseQuantity}
                 />
                 <h2 className="confirmorder-meal-quantity">{quantity}</h2>
                 <img
-                  src={quantity === 1 ? addbuttonrImg : addbuttongImg}
+                  src={getAddButtonImage()}
                   alt="addbutton"
                   className="counter-button-confirmorder"
-                  onClick={() => {
-                    if (quantity < 10) {
-                      increaseQuantity();
-                    }
-                  }}
+                  onClick={increaseQuantity}
                 />
               </div>
             </div>
           </div>
         ))}
       </div>
-
       <div className="confirmorder-finalprice-and-description">
         <div className="confirmorder-meal-price-info">
           <p className="confirmorder-meals-price-title">Cost:</p>
-          <p className="confirmorder-meals-price">{calculateTotalCost()}€</p>
+          <p className="confirmorder-meals-price">
+            {totalCost.toFixed(2)}€
+          </p>
         </div>
         <p className="confirmorder-meals-price-description">
           *This is the price for your company; you don't pay anything for your
@@ -147,21 +172,20 @@ const ConfirmOrder = () => {
           minRows={4}
           multiline
           style={{ width: "100%" }}
+          onChange={(e) => {
+            setComment(e.target.value);
+          }}
         />
       </div>
       <div className="confirmorder-meals-button">
-        <button className="primary-button">CONFIRM ORDER</button>
+        <button className="primary-button" onClick={postOrder}>
+          CONFIRM ORDER
+        </button>
       </div>
       {isRemoveModalVisible && (
-        <div
-          className="confirmorder-meals-modal-backdrop"
-          onClick={closeBackdrop}
-        >
+        <div className="confirmorder-meals-modal-backdrop" onClick={closeBackdrop}>
           <div className="confirmorder-meals-modal-wrapper">
-            <div
-              className="confirmorder-meals-modal"
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className="confirmorder-meals-modal" onClick={(e) => e.stopPropagation()}>
               <img
                 src={CloseBtn}
                 className="confirmorder-meals-modal-back-icon"
@@ -171,11 +195,7 @@ const ConfirmOrder = () => {
               <p className="confirmorder-meals-modal-title">Removing item</p>
               <div className="confirmorder-meal-modal-group-trash">
                 <div className="confirmorder-meals-modal-rectangle-trash">
-                  <img
-                    src={deleteIcon}
-                    className="confirmorder-meal-modal-trash-icon"
-                    alt="Delete"
-                  />
+                  <img src={deleteBtn} className="confirmorder-meal-modal-trash-icon" alt="Delete" />
                 </div>
               </div>
               <p className="confirmorder-meals-modal-description">
