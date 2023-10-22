@@ -12,7 +12,7 @@ import { startTransition } from "react";
 
 
 const Dropdown = ({ isDropdownOpen, toggleDropdown, isAdmin, navigate, handleLogout }) => (
-  <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
+  <div className={`choose-meal-dropdown${isDropdownOpen ? '-open' : ''}`}>
     <div className="options">
       <div className="option" onClick={() => { navigate("/MyProfile") }}>Profile</div>
       <div className="option" onClick={handleLogout}>Logout</div>
@@ -87,7 +87,7 @@ const Home = () => {
           </div>
         </div>
         {isDropdownOpen && (
-          <div className="dropdown">
+          <div className="choose-meal-dropdown">
             <div className="options">
               <div className="option" onClick={() => { navigate("/MyProfile") }}>Profile</div>
               <div className="option" onClick={handleLogout}>Logout</div>

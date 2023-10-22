@@ -55,10 +55,9 @@
   letter-spacing: 0.5px;
 }
 
-
-
-.dropdown {
+.choose-meal-dropdown {
   position: absolute;
+  opacity: 0%;
   top: 5.5rem; 
   right: 1.5rem;
   display: flex;
@@ -68,6 +67,22 @@
   border-radius: 4px;
   background: white;
   box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.5s ease;
+}
+
+.choose-meal-dropdown-open {
+  position: absolute;
+  opacity: 100%;
+  top: 5.5rem; 
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 189px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.5s ease;
 }
 
 .options {
@@ -110,10 +125,10 @@
 
 @media screen and (max-height: 620px) and (max-width: 1050px) {
   .content-home,
-  .dropdown {
+  .choose-meal-dropdown {
     scale: 0.65;
   }
-  .dropdown{
+  .choose-meal-dropdown{
     position: absolute;
     top: 2.5rem; 
     right: 0rem;
