@@ -7,7 +7,6 @@ import slika01 from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
 import editslika from "../../images/icons/Group 26.png";
 import closeBtn from "../../images/close.svg";
 import "./MyProfile.css"; // Stilovi za MyProfile komponentu
-import { useNavigate } from "react-router-dom";
 
 const MyProfile = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -17,9 +16,6 @@ const MyProfile = () => {
   const [lastName, setLastName] = useState("");
   const [isModalVisible, setModalVisible] = useState(false);
   const [modalText, setModalText] = useState("");
-
-  const navigate = useNavigate();
-
 
   const fetchUser = async () => {
     try {
@@ -91,7 +87,7 @@ try {
     <div className="main-myprofile">
       <div className="myprofile-content">
         <div className="myprofile-info">
-        <ArrowBackIcon className="arrowBack-absolute2" onClick={() => { navigate("/home") }}></ArrowBackIcon>
+        <ArrowBackIcon className="arrowBack-absolute2"></ArrowBackIcon>
           <ArrowBackIosNew className="back-icon-absolute" />
           <div className="myprofile-title-and-icon">
   <p className="myprofile-title">PROFILE</p>

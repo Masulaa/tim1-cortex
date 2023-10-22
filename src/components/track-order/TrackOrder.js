@@ -24,7 +24,7 @@ const TrackOrder = () => {
   return (
     <div className="trackorder-main">
   <div className="trackorder-head">
-        <ArrowBackIcon className="arrowBack-absolute2" onClick={() => { navigate("/home") }}></ArrowBackIcon>
+        <ArrowBackIcon className="arrowBack-absolute2"></ArrowBackIcon>
         <ArrowBackIosNew className="back-icon-absolute"></ArrowBackIosNew>
         <p className="trackorder-title">YOUR ORDER</p>
       </div > 
