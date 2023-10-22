@@ -6,7 +6,7 @@ import removebuttongImg from "../../images/RemoveButton.png";
 import removebuttonrImg from "../../images/RemoveButton2.png";
 import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";
-import deleteBtn from "../../images/delete.svg"
+import deleteBtn from "../../images/delete.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrder } from "../../store/orderStore";
 import CloseBtn from "../../images/close.svg";
@@ -14,20 +14,17 @@ import { OrderService } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { updateOrder } from "../../store/orderStore";
 
-
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.orders.orders);
 
   const navigate = useNavigate();
 
-  const [quantity, setQuantity] = useState(1);
   const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
-  const [totalCost, setTotalCost] = useState(0);
 
   const [expiresOn, setExpiresOn] = useState("");
   const [comment, setComment] = useState("");
-  const [articles, setArticles] = useState([]);
+  const [totalCost, setTotalCost] = useState(0);
 
   const createOrderData = () => {
     const orderArticles = orders.map((order) => ({
@@ -41,48 +38,40 @@ const ConfirmOrder = () => {
     };
   };
 
-  useEffect(() => {
-    if (orders && orders.length > 0) {
-      setQuantity(orders[0].quantity);
-    }
-  }, [orders]);
-
-
-
-  const increaseQuantity = () => {
-    if (quantity < 10) {
-      setQuantity(quantity + 1);
-      updateTotalCost(quantity + 1);
-    }
-  };
-  
-  const decreaseQuantity = () => {
-    if (quantity === 1) {
-      setRemoveModalVisible(true);
-    } else {
-      setQuantity(quantity - 1);
-      updateTotalCost(quantity - 1);
-    }
-  };
-
-  
-  const updateTotalCost = (newQuantity) => {
+  const increaseQuantity = (productId) => {
     const updatedOrders = orders.map((order) => {
-      if (order.quantity === quantity) {
-        return { ...order, quantity: newQuantity };
+      if (order.id === productId) {
+        return { ...order, quantity: order.quantity + 1 };
       }
       return order;
     });
-    
-  
+
+    dispatch(updateOrder(updatedOrders));
+  };
+
+  const decreaseQuantity = (productId) => {
+    const updatedOrders = orders.map((order) => {
+      if (order.id === productId && order.quantity > 1) {
+        return { ...order, quantity: order.quantity - 1 };
+      }
+      return order;
+    });
+
+    dispatch(updateOrder(updatedOrders));
+  };
+
+  useEffect(() => {
     let newTotalCost = 0;
-    for (const order of updatedOrders) {
+
+    for (const order of orders) {
       const { price, quantity } = order;
       const productPrice = price * quantity;
       newTotalCost += productPrice;
     }
+
     setTotalCost(newTotalCost);
-  };
+  }, [orders]);
+
   const closeModal = () => {
     setRemoveModalVisible(false);
   };
@@ -91,25 +80,15 @@ const ConfirmOrder = () => {
     setRemoveModalVisible(false);
   };
 
-  const getAddButtonImage = () => {
-    return quantity === 10 ? addbuttongImg : addbuttonrImg;
-  };
+  const handleAddToOrder = (name, description, price, productId) => {
+    const updatedOrders = orders.map((order) => {
+      if (order.id === productId) {
+        return { ...order, name, description, price };
+      }
+      return order;
+    });
 
-  const getRemoveButtonImage = () => {
-    return quantity === 1 ? removebuttonrImg : removebuttonrImg;
-  };
-
-  const handleAddToOrder = (name, description, price) => {
-    const orderInfo = {
-      id: Math.random(), 
-      name: name,
-      description: description,
-      price: price,
-      quantity: quantity, 
-    };
-    dispatch(addOrder(orderInfo));
-    console.log(orderInfo);
-    setTotalCost((prevTotalCost) => prevTotalCost + price * quantity);
+    dispatch(updateOrder(updatedOrders));
   };
 
   const postOrder = async () => {
@@ -142,17 +121,17 @@ const ConfirmOrder = () => {
               </div>
               <div className="confirmorder-meal-counter">
                 <img
-                  src={getRemoveButtonImage()}
+                  src={removebuttongImg}
                   alt="removebutton"
                   className="counter-button-confirmorder"
-                  onClick={decreaseQuantity}
+                  onClick={() => decreaseQuantity(order.id)}
                 />
-                <h2 className="confirmorder-meal-quantity">{quantity}</h2>
+                <h2 className="confirmorder-meal-quantity">{order.quantity}</h2>
                 <img
-                  src={getAddButtonImage()}
+                  src={addbuttongImg}
                   alt="addbutton"
                   className="counter-button-confirmorder"
-                  onClick={increaseQuantity}
+                  onClick={() => increaseQuantity(order.id)}
                 />
               </div>
             </div>
@@ -167,8 +146,7 @@ const ConfirmOrder = () => {
           </p>
         </div>
         <p className="confirmorder-meals-price-description">
-          *This is the price for your company; you don't pay anything for your
-          meal.
+          *This is the price for your company; you don't pay anything for your meal.
         </p>
       </div>
       <div className="confirmorder-meals-description">
