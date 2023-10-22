@@ -99,4 +99,11 @@ const client = axios.create({
     },
   };
   
+
+  export const OrderService = {
+    PostOrder(orderData) {
+      return client.post("order", orderData);
+     
+    },
+  }
   
