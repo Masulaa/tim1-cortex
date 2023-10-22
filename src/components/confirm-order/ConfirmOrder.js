@@ -3,12 +3,9 @@ import { ArrowBackIosNew } from "@mui/icons-material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import "./ConfirmOrder.css";
 import removebuttongImg from "../../images/RemoveButton.png";
-import removebuttonrImg from "../../images/RemoveButton2.png";
-import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";
 import deleteBtn from "../../images/delete.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder } from "../../store/orderStore";
 import CloseBtn from "../../images/close.svg";
 import { OrderService } from "../../api/api";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +19,7 @@ const ConfirmOrder = () => {
 
   const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
 
-  const [expiresOn, setExpiresOn] = useState("");
+  /*const [expiresOn, setExpiresOn] = useState("");*/
   const [comment, setComment] = useState("");
   const [totalCost, setTotalCost] = useState(0);
 
@@ -80,7 +77,7 @@ const ConfirmOrder = () => {
     setRemoveModalVisible(false);
   };
 
-  const handleAddToOrder = (name, description, price, productId) => {
+  /*const handleAddToOrder = (name, description, price, productId) => {
     const updatedOrders = orders.map((order) => {
       if (order.id === productId) {
         return { ...order, name, description, price };
@@ -89,7 +86,7 @@ const ConfirmOrder = () => {
     });
 
     dispatch(updateOrder(updatedOrders));
-  };
+  };*/
 
   const postOrder = async () => {
     try {

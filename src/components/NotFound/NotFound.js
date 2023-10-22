@@ -2,7 +2,7 @@ import { ArrowBackIosNew } from '@mui/icons-material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "./NotFound.css";
 import ErrorImage from "../../images/404.png";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
@@ -67,7 +67,7 @@ const NotFound = () => {
       </div>
       <ArrowBackIosNew className="notFound-back-icon"></ArrowBackIosNew>
          <div className="notFound-error">ERROR</div>
-            <img src={ErrorImage} className="notFound-error-image" />
+            <img src={ErrorImage} className="notFound-error-image" alt="Error 404"/>
           <div className="notFound-error-text">Page not found</div>
     </div>
   );

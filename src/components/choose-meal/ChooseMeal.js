@@ -148,7 +148,7 @@ const ChooseMeal = () => {
             <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
           </div>
         </div>
-        <img src={computerbutton} className="choosmeal-computer-button"></img>
+        <img src={computerbutton} className="choosmeal-computer-button" alt="icon"></img>
       </div>
       <div className="phone-only">
         <div className="topbar-choosemeal-home">

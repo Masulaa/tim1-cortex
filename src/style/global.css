@@ -178,16 +178,17 @@ border-bottom: 1px solid #b9b9b9;
 
 }
 
-.arrowBack-absolute{
+.arrowBack-absolute,.arrowBack-absolute2{
   position: absolute;
   left: 20px;
+}
+
+.arrowBack-absolute{ 
   top: 50px;
 }
 
 
 .arrowBack-absolute2{
-  position: absolute;
-  left: 18px;
   top: 30px;
 }
 
