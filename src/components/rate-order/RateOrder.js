@@ -18,9 +18,13 @@ const RateOrder = () => {
   const [comment, setComment] = useState("")
   const [isCommentFilled, setIsCommentFilled] = useState(false);
   const [selectedStars, setSelectedStars] = useState([false, false, false, false, false, false]);
-  const handleStarClick = (starIndex) => {
+  const [starsValue,setStarsValue] = useState();
+  const handleStarClick = (starIndex, value) => {
     const updatedStars = selectedStars.map((_, index) => index <= starIndex);
     setSelectedStars(updatedStars);
+    setStarsValue(value);
+    const isAnyStarSelected = updatedStars.some((star) => star);
+    setIsCommentFilled(isAnyStarSelected);
   };
   
 
@@ -50,15 +54,15 @@ const RateOrder = () => {
       return () => {
         window.removeEventListener("click", handleClickOutside);
       };
-    }, []);
+    }, [selectedStars]);
     const handleSendRatings = async () => {
       const ratingsData = order.map((item, index) => ({
         article_id: item.id,
-        stars: selectedStars[index],
+        stars: starsValue,
         comment: comment,
       }));
   
-      const data = { data: ratingsData };
+      const data = { ratings: ratingsData };
   
       try {
         const response = await RatingService.PostRating(data);
@@ -97,9 +101,10 @@ const RateOrder = () => {
             {[1, 2, 3, 4, 5,6].map((value, index) => (
   <StarOutlineOutlinedIcon
     key={index}
-    className={`star ${selectedStars[index] ? "selected" : ""}`}
-    value={value}
-    onClick={() => handleStarClick(index)}
+    className={`star ${selectedStars[index] ? "selected" : ""}` }
+          value={value}
+    onClick={() => handleStarClick(index, value)}
+    
   />
 ))}
 
@@ -120,7 +125,7 @@ const RateOrder = () => {
               />
            <SendIcon
   onClick={handleSendRatings}
-  className={isCommentFilled ? "red-icon" : "send-icon"}
+  className={`send-icon ${isCommentFilled ? 'red-icon' : ''}`}
 />
 
             </div>
