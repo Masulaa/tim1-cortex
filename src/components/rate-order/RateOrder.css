@@ -135,6 +135,12 @@ width: 100%;
   margin-top: 16px;
 }
 
+.red-icon {
+  color: #BD2B2B;
+  cursor: pointer;
+}
+
+
 @media screen and (max-width: 370px) {
   .send-icon {
     position: absolute;

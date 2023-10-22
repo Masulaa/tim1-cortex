@@ -16,6 +16,7 @@ import { useEffect } from "react";
 const RateOrder = () => {
   const [order, setOrder] = useState([])
   const [comment, setComment] = useState("")
+  const [isCommentFilled, setIsCommentFilled] = useState(false);
   const [selectedStars, setSelectedStars] = useState([false, false, false, false, false, false]);
   const handleStarClick = (starIndex) => {
     const updatedStars = selectedStars.map((_, index) => index <= starIndex);
@@ -112,12 +113,16 @@ const RateOrder = () => {
                 style={{ width: "21.375rem" }}
                 className="inputField"
                 value={comment}
-                onChange={(e) => setComment(e.target.value)}
+                onChange={(e) => {
+                  setComment(e.target.value);
+                  setIsCommentFilled(!!e.target.value);
+                }}
               />
-              <SendIcon
-                className="send-icon"
-                onClick={handleSendRatings}
-              />
+           <SendIcon
+  onClick={handleSendRatings}
+  className={isCommentFilled ? "red-icon" : "send-icon"}
+/>
+
             </div>
           </div>
           <div className="line"></div>
