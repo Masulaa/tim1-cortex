@@ -8,6 +8,20 @@ import profileIcon from "../../images/Ellipse 1.svg";
 import { useNavigate } from "react-router-dom";
 import { AuthService } from "../../api/api";
 import { ProfileService } from "../../api/api";
+const Dropdown = ({ isDropdownOpen, toggleDropdown, isAdmin, navigate, handleLogout }) => (
+  <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
+    <div className="options">
+      <div className="option" onClick={() => { navigate("/MyProfile") }}>Profile</div>
+      <div className="option" onClick={handleLogout}>Logout</div>
+      {isAdmin && (
+        <>
+          <div className="option" onClick={() => { /* Handle Meal Settings click */ }}>Meal Settings</div>
+          <div className="option" onClick={() => { /* Handle Invoice click */ }}>Invoice</div>
+        </>
+      )}
+    </div>
+  </div>
+);
 
 const Home = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -45,20 +59,7 @@ const Home = () => {
 
   const isAdmin = user.admin === 1; // Check if the user is an admin (assuming admin property is 1 for admins)
 
-  const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
-    <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
-      <div className="options">
-        <div className="option" onClick={() => { navigate("/MyProfile") }}>Profile</div>
-        <div className="option" onClick={handleLogout}>Logout</div>
-        {isAdmin && ( // Render additional options if the user is an admin
-          <>
-            <div className="option" onClick={() => { /* Handle Meal Settings click */ }}>Meal Settings</div>
-            <div className="option" onClick={() => { /* Handle Invoice click */ }}>Invoice</div>
-          </>
-        )}
-      </div>
-    </div>
-  );
+ 
 
   return (
     <>
@@ -76,7 +77,8 @@ const Home = () => {
             ) : (
               <ExpandMoreIcon />
             )}
-            <Dropdown isDropdownOpen={isDropdownOpen} />
+           <Dropdown isDropdownOpen={isDropdownOpen} toggleDropdown={toggleDropdown} isAdmin={isAdmin} navigate={navigate} handleLogout={handleLogout} />
+
           </div>
         </div>
         {isDropdownOpen && (
@@ -99,7 +101,7 @@ const Home = () => {
             <div className="title-home">I’m ordering for:</div>
           </div>
           <div className="second-part-of-content-home">
-            <button className="primary-button">TODAY</button>
+            <button className="primary-button" onClick={()=>{navigate("/ChooseMeal")}}>TODAY</button>
             <button className="secondary-button">WHOLE WEEK</button>
           </div>
         </div>
