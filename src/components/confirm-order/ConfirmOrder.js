@@ -8,7 +8,7 @@ import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";
 import deleteBtn from "../../images/delete.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder, updateOrder, removeOrder } from "../../store/orderStore"; // Dodali smo `removeOrder`
+import { addOrder, updateOrder, removeOrder } from "../../store/orderStore";
 import CloseBtn from "../../images/close.svg";
 import { OrderService } from "../../api/api";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ const ConfirmOrder = () => {
   const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
   const [comment, setComment] = useState("");
-  const [order, setOrder] = useState(null); // Dodana deklaracija za 'order'
+  const [orderToRemove, setOrderToRemove] = useState(null);
 
   const createOrderData = () => {
     const orderArticles = orders.map((order) => ({
@@ -41,6 +41,8 @@ const ConfirmOrder = () => {
       setTotalCost(
         orders.reduce((acc, order) => acc + order.price * order.quantity, 0)
       );
+    } else {
+      setTotalCost(0);
     }
   }, [orders]);
 
@@ -58,13 +60,16 @@ const ConfirmOrder = () => {
       dispatch(updateOrder(updatedOrder));
       setTotalCost(totalCost - order.price);
     } else {
+      setOrderToRemove(order);
       setRemoveModalVisible(true);
     }
   };
 
-  const removeItem = (order) => {
-    dispatch(removeOrder(order.id));
-    setRemoveModalVisible(false); // Zatvaranje modalnog prozora nakon brisanja
+  const removeItem = () => {
+    if (orderToRemove) {
+      dispatch(removeOrder(orderToRemove.id));
+      setRemoveModalVisible(false);
+    }
   };
 
   const closeModal = () => {
@@ -114,7 +119,9 @@ const ConfirmOrder = () => {
             <div className="confirmorder-title-and-description">
               <p className="confirmorder-meal-title">{order.name}</p>
               <p className="confirmorder-meal-description">
-                {order.description}
+                {order.description.length > 13
+                  ? order.description.substring(0, 13) + "..."
+                  : order.description}
               </p>
             </div>
             <div className="confirmorder-price-and-counter">
@@ -209,7 +216,7 @@ const ConfirmOrder = () => {
                 </div>
                 <div
                   className="confirmorder-meals-modal-remove-rectangle"
-                  onClick={() => removeItem(order)}
+                  onClick={removeItem}
                 >
                   <p className="confirmorder-meals-modal-remove-text">Remove</p>
                 </div>
