@@ -27,6 +27,8 @@ import computerbutton from "../../images/icons/Group 23.png";
 import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
 import darkCircle from "../../images/darkCircle.svg";
+import { ArrowBackIosNew } from "@mui/icons-material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const icons = [
   MenuIcon,
@@ -114,12 +116,12 @@ const ChooseMeal = () => {
     }
   };
 
-
   return (
     <div className="main-choosemeal">
       <div className="computer-only">
         <div className="topbar-computer-choosemeal-home">
           <div className="image-topbar-wrapper">
+            <ArrowBackIcon className="arrowBack"></ArrowBackIcon>
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
           <div className="topbar-computer-other-part">
@@ -145,7 +147,10 @@ const ChooseMeal = () => {
             <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
           </div>
         </div>
-        <img src={computerbutton} className="choosmeal-computer-button"></img>
+        <img src={computerbutton} className="choosmeal-computer-button"
+         onClick={() => {
+          navigate(`/confirmorder`);
+        }}></img>
       </div>
       <div className="phone-only">
         <div className="topbar-choosemeal-home">
@@ -153,22 +158,26 @@ const ChooseMeal = () => {
             className="image-topbar-home-profile-with-dropdown"
             onClick={toggleDropdown}
           >
+            <ArrowBackIosNew className="back-icon-absolute2" />
             <img
               src={profileIcon}
               alt="logo"
               className="image-topbar-home-profile"
+              
             />
             {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
           </div>
           <Dropdown isDropdownOpen={isDropdownOpen} />
-          
+
           <div className="image-topbar-wrapper">
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
-          <div className="choosemeal-shoopingbag">
-            <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
+          <div
+            className="choosemeal-shoopingbag"
+          >
+            <ShoppingBagOutlinedIcon />
           </div>
-                  </div>{" "}
+        </div>{" "}
         <div className="search-choosemeal">
           <OutlinedInput className="search-input" placeholder="Search" />
           <SearchOutlined className="search-icon-choose-meal" />
@@ -176,8 +185,12 @@ const ChooseMeal = () => {
       </div>
       <div className="icon-row">
         {icons.map((Icon, index) => (
-          <div className={`icon ${index === 0 ? 'hidden' : ''}`} key={index} onClick={() => handleClick(index)}>
-          <div className="circle">
+          <div
+            className={`icon ${index === 0 ? "hidden" : ""}`}
+            key={index}
+            onClick={() => handleClick(index)}
+          >
+            <div className="circle">
               <img
                 src={selectedCircles.includes(index) ? darkCircle : circle}
                 alt="Circle"

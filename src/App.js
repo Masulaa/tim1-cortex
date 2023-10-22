@@ -1,7 +1,11 @@
 import { lazy, Suspense } from "react";
 import "./App.css";
 import "./style/global.css";
+import { useState,useEffect } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { ProfileService } from "./api/api";
+import { OrderService } from "./api/api";
+import { Navigate } from "react-router-dom";
 
 const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
@@ -24,6 +28,46 @@ const RateOrder = lazy(() => import("./components/rate-order/RateOrder"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 function App() {
+
+  // const [user, setUser] = useState([])
+
+  // const fetchUser = async () => {
+  //   try {
+  //     const response = await ProfileService.GetProfile();
+  //     setUser(response.data.success);
+  //     // console.log(response.data.success);
+  //   } catch (error) {
+  //     // console.log("Error fetching user:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
+
+  // const isAdmin = user.admin === 1;
+
+
+  // const IsOrderPossible = async () => {
+  //   try {
+  //     const response = await OrderService.IsOrderPossible();
+  //     setIsPossible(response);
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.log("Error fetching isPossible:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   IsOrderPossible();
+  // }, []);
+
+  // const [isPossible, setIsPossible] = useState([])
+
+  // const isPossible200 = isPossible.status === 200;
+  // const isPossible400 = isPossible.status === 400;
+
+
   return (
     <BrowserRouter>
       <Routes>
@@ -96,19 +140,24 @@ function App() {
         <Route
           path="TrackOrder"
           element={
+
             <Suspense fallback={<NotFound />}>
               <TrackOrder />
-            </Suspense>
+            </Suspense> 
+            
           }
         />
-        <Route
-          path="Settings"
-          element={
-            <Suspense fallback={<NotFound />}>
-              <Settings />
-            </Suspense>
-          }
-        />
+   <Route
+  path="Settings"
+  element={
+   
+      <Suspense fallback={<NotFound />}>
+        <Settings />
+      </Suspense>
+
+  
+  }
+/>
         <Route
           path="HistoryOfMeals"
           element={

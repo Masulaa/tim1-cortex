@@ -10,9 +10,10 @@ import "./MyProfile.css"; // Stilovi za MyProfile komponentu
 
 const MyProfile = () => {
   const [user, setUser] = useState({ email: "", password: "" });
-  const [password, setPassword] = useState("");
+
   const [isButtonActive, setButtonActive] = useState(false);
-  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [isModalVisible, setModalVisible] = useState(false);
   const [modalText, setModalText] = useState("");
 
@@ -31,17 +32,17 @@ const MyProfile = () => {
   }, []);
 
   useEffect(() => {
-    setEmail(user.email);
-  }, [user.email]);
+    setFirstName(user.first_name);
+  }, [user.first_name]);
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
-    const newPassword = event.target.value;
-    setPassword(newPassword);
-    setButtonActive(email !== "" && newPassword !== "");
+  const handleLastNameChange = (event) => {
+    const lastName = event.target.value;
+    setLastName(lastName);
+    setButtonActive(firstName !== "" && lastName !== "");
   };
 
   const openModal = (text) => {
@@ -56,6 +57,32 @@ const MyProfile = () => {
     setModalVisible(false);
   };
 
+  const [profileImage, setProfileImage] = useState();
+
+const handleProfileImageChange = (event) => {
+  // Ovde možete rukovati izborom slike, na primer, pomoću File API-ja.
+  const selectedImage = event.target.files[0];
+  setProfileImage(selectedImage);
+};
+
+const userNewData = {
+  first_name: firstName,
+  last_name: lastName,
+  photo: profileImage
+}
+const EditProfile = () =>{
+
+
+try {
+  const response = ProfileService.EditProfile(userNewData);
+  console.log("API Response", response);
+  fetchUser();
+} catch (error) {
+  console.log("Error sending ratings:", error);
+}
+}
+
+
   return (
     <div className="main-myprofile">
       <div className="myprofile-content">
@@ -63,31 +90,41 @@ const MyProfile = () => {
         <ArrowBackIcon className="arrowBack-absolute2"></ArrowBackIcon>
           <ArrowBackIosNew className="back-icon-absolute" />
           <div className="myprofile-title-and-icon">
-            <p className="myprofile-title">PROFILE</p>
-            <img src={slika01} alt="profilna" className="myprofile-picture" />
-            <img src={editslika} alt="edit" className="myprofile-edit-picture" />
-          </div>
+  <p className="myprofile-title">PROFILE</p>
+  <input
+    type="file"
+    accept="image/*"
+    id="profile-image-input"
+    style={{ display: "none" }}
+    onChange={handleProfileImageChange}
+  />
+  <label htmlFor="profile-image-input">
+    <img src={slika01} alt="profilna" className="myprofile-picture" />
+  </label>
+  <img src={editslika} alt="edit" className="myprofile-edit-picture" />
+</div>
+
           <p className="myprofile-email">{user.email}</p>
         </div>
         <div className="myprofile-input-fields">
           <section className="myprofile-input-wrapper">
             <div className="input-wrapper2">
               <TextField
+              label="First name"
                 variant="outlined"
                 style={{ width: "326px" }}
                 className="inputField"
-                onChange={handleEmailChange}
-                value={email}
+                onChange={handleFirstNameChange}
+                value={firstName}
               />
 
               <TextField
-                label="Password"
-                type="password"
+              label="Last name"
                 variant="outlined"
                 style={{ width: "326px" }}
                 className="inputField"
-                onChange={handlePasswordChange}
-                value={password}
+                onChange={handleLastNameChange}
+                value={lastName}
               />
             </div>
           </section>
@@ -97,7 +134,8 @@ const MyProfile = () => {
         <button
           className={`disabled-btn ${isButtonActive ? "active" : ""}`}
           disabled={!isButtonActive}
-          onClick={() => openModal("Changes saved.")}
+          onClick={() => {openModal("Changes saved.")
+        EditProfile();}}
         >
           SAVE CHANGES
         </button>
