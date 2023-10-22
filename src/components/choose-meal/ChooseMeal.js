@@ -24,12 +24,12 @@ import { ArticleService } from "../../api/api";
 import addbuttongImg from "../../images/AddButton.png";
 import pizzaImg from "../../images/PizzaCapricciosa.png";
 import computerbutton from "../../images/icons/Group 23.png";
-import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
 import darkCircle from "../../images/darkCircle.svg";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 const icons = [
   MenuIcon,
   LocalPizzaOutlinedIcon,
@@ -47,9 +47,9 @@ const icons = [
 const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
     <div className="options">
-      <div className="option">Profile</div>
-      <div className="option">Track Order</div>
-      <div className="option">Logout</div>
+    <Link to="/myprofile" className="option">Profile</Link>
+    <Link to="/trakorder" className="option">Track Order</Link>
+    <Link to="/login" className="option">Log out</Link>
     </div>
   </div>
 );
@@ -57,9 +57,9 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
 const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
-      <div className="option">Profile</div>
-      <div className="option">Track Order</div>
-      <div className="option">Logout</div>
+    <Link to="/myprofile" className="option">Profile</Link>
+    <Link to="/trackorder" className="option">Track Order</Link>
+    <Link to="/" className="option">Log out</Link>
     </div>
   </div>
 );

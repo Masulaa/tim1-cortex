@@ -9,7 +9,7 @@ import profileIcon from "../../images/Ellipse 1.svg";
 import { OrderService } from "../../api/api";
 import { RatingService } from "../../api/api";
 import "./RateOrder.css";
-
+import {Link} from "react-router-dom";
 const RateOrder = () => {
   const [order, setOrder] = useState([]);
   const [comment, setComment] = useState("");
@@ -67,9 +67,13 @@ const RateOrder = () => {
 
   return (
     <div className="main-rateOrder">
+      <Link to="/home">
       <ArrowBackIcon className="arrowBack-absolute"></ArrowBackIcon>
+      </Link> 
       <div className="rateorder-info">
+      <Link to="/home">
         <ArrowBackIosNew className="back-icon" />
+        </Link>
         <p className="rateorder-title">RATE ORDER</p>
       </div>
       <div>
