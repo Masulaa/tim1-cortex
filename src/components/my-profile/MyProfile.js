@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ArrowBackIosNew } from "@mui/icons-material";
+import { ArrowBackIosNew } from '@mui/icons-material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TextField from "@mui/material/TextField";
 import { ProfileService } from "../../api/api";
 import slika01 from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
@@ -59,7 +60,8 @@ const MyProfile = () => {
     <div className="main-myprofile">
       <div className="myprofile-content">
         <div className="myprofile-info">
-          <ArrowBackIosNew className="myprofile-back-icon" />
+        <ArrowBackIcon className="arrowBack-absolute2"></ArrowBackIcon>
+          <ArrowBackIosNew className="back-icon-absolute" />
           <div className="myprofile-title-and-icon">
             <p className="myprofile-title">PROFILE</p>
             <img src={slika01} alt="profilna" className="myprofile-picture" />
