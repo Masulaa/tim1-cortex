@@ -221,12 +221,12 @@ gap: 48px;
 
 .menu-hidden {
   transform: translateY(200%);
-  transition: transform 1s ease-in-out, display 0s 1s, opacity 1s 0s;
+  transition: transform 0.5s ease-in-out, display 0s 0.5s, opacity 0.5s 0s;
 }
 
 .menu-visible {
   transform: translateY(0%);
-  transition: transform 1s ease-in-out, display 0s 1s, opacity 1s 0s;
+  transition: transform 0.5s ease-in-out, display 0s 0.5s, opacity 0.5s 0s;
 }
 
 .choosemeal-recommend-title {
@@ -629,9 +629,6 @@ scale: 0.90;
   justify-content: space-between;
 }
 
-@media screen and (min-width: 960px) {
-
-}
 
 .phone-only {
   display: none; /* Početno skrivanje na svim ekranima */
@@ -687,4 +684,19 @@ scale: 0.90;
   width: 500px;
   margin-left: 20px;
   }
+}
+.hidden {
+  display: block;
+}
+
+/* Add a media query to control visibility on wider screens */
+@media screen and (min-width: 961px) {
+  .hidden {
+    display: none; /* Show it on wider screens */
+  }
+  
+}
+
+.choosemeal-menu{
+  display: none;
 }

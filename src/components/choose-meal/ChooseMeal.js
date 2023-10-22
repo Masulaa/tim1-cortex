@@ -26,6 +26,7 @@ import pizzaImg from "../../images/PizzaCapricciosa.png";
 import computerbutton from "../../images/icons/Group 23.png";
 import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
+import darkCircle from "../../images/darkCircle.svg";
 
 const icons = [
   MenuIcon,
@@ -50,9 +51,7 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
     </div>
   </div>
 );
-{
-  /*Left je zapravo Right*/
-}
+
 const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
@@ -68,6 +67,7 @@ const ChooseMeal = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownOpenLeft, setIsDropdownOpenLeft] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [selectedCircles, setSelectedCircles] = useState([]);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -95,13 +95,25 @@ const ChooseMeal = () => {
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
+    document.querySelector(".choosemeal-menu").style.display = "block";
   };
 
   const handleClick = (index) => {
     if (index === 0) {
       toggleMenu();
+          //can u change src to darkcircle
+    } else if (index > 0 && index < 12) {
+      // Check if the circle is already selected
+      if (selectedCircles.includes(index)) {
+        // If selected, remove it from the array
+        setSelectedCircles(selectedCircles.filter((item) => item !== index));
+      } else {
+        // If not selected, add it to the array
+        setSelectedCircles([...selectedCircles, index]);
+      }
     }
   };
+
 
   return (
     <div className="main-choosemeal">
@@ -149,11 +161,12 @@ const ChooseMeal = () => {
             {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
           </div>
           <Dropdown isDropdownOpen={isDropdownOpen} />
-          <div className="choosemeal-shoopingbag">
-            <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
-          </div>
+         
           <div className="image-topbar-wrapper">
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
+          </div>
+          <div className="choosemeal-shoopingbag">
+            <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
           </div>
         </div>{" "}
         <div className="search-choosemeal">
@@ -163,10 +176,21 @@ const ChooseMeal = () => {
       </div>
       <div className="icon-row">
         {icons.map((Icon, index) => (
-          <div className="icon" key={index} onClick={() => handleClick(index)}>
+          <div className={`icon ${index === 0 ? 'hidden' : ''}`} key={index} onClick={() => handleClick(index)}>
             <div className="circle">
-              <img src={circle} alt="Circle" className="circle-icon" />
-              <Icon className="inner-icon" />
+              <img
+                src={selectedCircles.includes(index) ? darkCircle : circle}
+                alt="Circle"
+                className="circle-icon"
+              />
+              <Icon
+                className="inner-icon"
+                style={{
+                  color: selectedCircles.includes(index)
+                    ? "darkred"
+                    : "initial",
+                }}
+              />
             </div>
           </div>
         ))}
