@@ -1,26 +1,57 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { addOrder } from "../../store/orderStore"; // Zamijenite sa tačnom putanjom do vašeg orderSlice fajla
-import { useEffect } from "react";
+import React, { useState } from "react";
 import { ArrowBackIosNew } from "@mui/icons-material";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import "./ConfirmOrder.css";
 import removebuttongImg from "../../images/RemoveButton.png";
 import removebuttonrImg from "../../images/RemoveButton2.png";
 import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";
-import OutlinedInput from "@mui/material/OutlinedInput";
+import { useDispatch, useSelector } from "react-redux";
+import { addOrder } from "../../store/orderStore"; // Zamijenite sa tačnom putanjom do vašeg orderSlice fajla
+import { useEffect } from "react";
+import CloseBtn from "../../images/close.svg";
+import { OrderService } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
+  const orders = useSelector((state) => state.orders.orders);
 
+  const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
-  
-  const [removeImage, setRemoveImage] = useState(removebuttongImg);
-  const [addImage, setAddImage] = useState(addbuttonrImg);
+  const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
 
-  const orders = useSelector((state) => state.orders.orders);
+  const [expiresOn, setExpiresOn] = useState(""); // Postavite vrednost na odgovarajuću vrednost
+  const [comment, setComment] = useState(""); // Postavite vrednost na odgovarajuću vrednost
+  const [articles, setArticles] = useState([]); // Postavite vrednost na odgovarajuću vrednost
+
+  
+
+
+  const createOrderData = () => {
+    const orderArticles = orders.map((order) => ({
+      article_id: order.id,
+      count: order.quantity,
+    }));
+
+    return {
+      expires_on: "2023-10-23",
+      comment: comment, 
+      articles: orderArticles,
+    };
+  };
+
+  const postOrder = async () => {
+    try {
+      const orderData = createOrderData();
+       const response = await OrderService.PostOrder(orderData);
+      console.log("API Response", response);
+      navigate("/OrderSent")
+    } catch (error) {
+      console.log("Error posting order:", error);
+    }
+  };
 
   useEffect(() => {
     if (orders && orders.length > 0) {
@@ -33,13 +64,37 @@ const ConfirmOrder = () => {
       setQuantity(quantity + 1);
     }
   };
-  
+
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
-  
+
+
+  const closeModal = () => {
+    setRemoveModalVisible(false);
+  };
+
+  const closeBackdrop = () => {
+    setRemoveModalVisible(false);
+  };
+
+  const getAddButtonImage = () => {
+    return quantity === 10 ? addbuttongImg : addbuttonrImg;
+  };
+
+  const getRemoveButtonImage = () => {
+    return quantity === 1 ? removebuttonrImg : removebuttongImg;
+  };
+
+  const calculateTotalCost = () => {
+    let totalCost = 0;
+    for (const order of orders) {
+      totalCost += order.price * order.quantity;
+    }
+    return totalCost.toFixed(2);
+  };
 
   const handleAddToOrder = (name, description, price) => {
     // Pravite objekat sa informacijama o narudžbini
@@ -56,8 +111,14 @@ const ConfirmOrder = () => {
     console.log(orderInfo)
   };
 
+  useEffect(() => {
+    if (orders && orders.length > 0) {
+      setQuantity(orders[0].quantity);
+    }
+  }, [orders]);
+
   return (
-    <div className="main-confirmorder">
+    <div className={`main-confirmorder ${isRemoveModalVisible ? "modal-open" : ""}`}>
       <div className="confirmorder-head">
         <ArrowBackIosNew className="myprofile-back-icon"></ArrowBackIosNew>
         <p className="confirmorder-title">YOUR ORDER</p>
@@ -70,46 +131,93 @@ const ConfirmOrder = () => {
         <p className="confirmorder-meal-description">{order.description}</p>
       </div>
       <div className="confirmorder-price-and-counter">
-        <div className="confirmorder-meal-price">{order.price}</div>
+        <div className="confirmorder-meal-price">{order.price * order.quantity}€</div>
         <div className="confirmorder-meal-counter">
-        
-
-<img
-  src={removeImage}
-  alt="removebutton"
-  className="counter-button-confirmorder"
-  onClick={decreaseQuantity}
-/><h2 className="confirmorder-meal-quantity">{quantity}</h2><img
-  src={addImage}
-  alt="addbutton"
-  className="counter-button-confirmorder"
-  onClick={increaseQuantity}
-/>
-
+          <img
+            src={removebuttonrImg}
+            alt="removebutton"
+            className="counter-button-confirmorder"
+            onClick={() => decreaseQuantity(order.name)}
+          />
+          <h2 className="confirmorder-meal-quantity">{order.quantity}</h2>
+          <img
+            src={addbuttonrImg}
+            alt="addbutton"
+            className="counter-button-confirmorder"
+            onClick={() => increaseQuantity(order.name)}
+          />
         </div>
       </div>
     </div>
   ))}
 </div>
-      <div className="confirmorder-finalprice-and-description">
+
+<div className="confirmorder-finalprice-and-description">
         <div className="confirmorder-meal-price-info">
           <p className="confirmorder-meals-price-title">Cost:</p>
-          <p className="confirmorder-meals-price">26.5€</p>
+          <p className="confirmorder-meals-price">{calculateTotalCost()}€</p>
+
         </div>
         <p className="confirmorder-meals-price-description">
-          *This is the price for your company; you don't pay anything for your
-          meal.
+          *This is the price for your company; you don't pay anything for your meal.
         </p>
       </div>
       <div className="confirmorder-meals-description">
         <p className="confirmorder-meals-text-over-description">
           Do you have any requirements like allergy preferences?
         </p>
-        <OutlinedInput maxRows={4} placeholder="Type" minRows={4} multiline style={{ width: "100%" }} />
+        <OutlinedInput
+          maxRows={4}
+          placeholder="Type"
+          minRows={4}
+          multiline
+          style={{ width: "100%" }}
+          onChange={(e)=>{setComment(e.target.value)}}
+        />
       </div>
       <div className="confirmorder-meals-button">
-        <button className="primary-button">CONFIRM ORDER</button>
+        <button className="primary-button" onClick={postOrder}>
+          CONFIRM ORDER
+        </button>
       </div>
+      {isRemoveModalVisible && (
+        <div className="confirmorder-meals-modal-backdrop" onClick={closeBackdrop}>
+          <div className="confirmorder-meals-modal-wrapper">
+            <div className="confirmorder-meals-modal" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={CloseBtn}
+                className="confirmorder-meals-modal-back-icon"
+                onClick={closeModal}
+                alt="Close"
+              />
+              <p className="confirmorder-meals-modal-title">Removing item</p>
+              <div className="confirmorder-meal-modal-group-trash">
+                <div className="confirmorder-meals-modal-rectangle-trash">
+                  <img
+                    className="confirmorder-meal-modal-trash-icon"
+                    alt="Delete"
+                  />
+                </div>
+              </div>
+              <p className="confirmorder-meals-modal-description">
+                By accepting this confirmation, your item will be removed from
+                the order. Are you sure you want to remove this item?
+              </p>
+              <div className="confirmorder-meals-modal-button-container">
+                <div
+                  className="confirmorder-meals-modal-cancel-rectangle"
+                  onClick={closeModal}
+                >
+                  <p className="confirmorder-meals-modal-cancel-text">Cancel</p>
+                </div>
+                <div className="confirmorder-meals-modal-remove-rectangle">
+                  <p className="confirmorder-meals-modal-remove-text">Remove</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
