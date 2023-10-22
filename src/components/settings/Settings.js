@@ -5,6 +5,7 @@ import { ArrowBackIosNew } from '@mui/icons-material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import active from "../../images/icons/active.svg";
 import inactive from "../../images/icons/inactive.svg";
+import { Link } from 'react-router-dom';
 const Settings = () => {
   const [days, setDays] = useState({
     Monday: true,
@@ -34,8 +35,10 @@ const Settings = () => {
   return (
     <div className="main-settings">
       <div className="settings-head">
+        <Link to="/home">
         <ArrowBackIcon className="arrowBack-absolute2"></ArrowBackIcon>
         <ArrowBackIosNew className="back-icon-absolute"></ArrowBackIosNew>
+        </Link>
         <p className="settings-title">SETTINGS</p>
       </div>
       <div className="settigs-content">

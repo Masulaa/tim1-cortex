@@ -28,8 +28,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import darkCircle from "../../images/darkCircle.svg";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 const icons = [
   { icon: MenuIcon, name: null },
   { icon: LocalPizzaOutlinedIcon, name: "Pizza" },
@@ -46,15 +45,9 @@ const icons = [
 const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
     <div className="options">
-      <Link to="/myprofile" className="option">
-        Profile
-      </Link>
-      <Link to="/trakorder" className="option">
-        Track Order
-      </Link>
-      <Link to="/login" className="option">
-        Log out
-      </Link>
+      <div className="option">Profile</div>
+      <div className="option">Track Order</div>
+      <div className="option">Logout</div>
     </div>
   </div>
 );
@@ -62,15 +55,9 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
 const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
-      <Link to="/myprofile" className="option">
-        Profile
-      </Link>
-      <Link to="/trackorder" className="option">
-        Track Order
-      </Link>
-      <Link to="/" className="option">
-        Log out
-      </Link>
+      <div className="option">Profile</div>
+      <div className="option">Track Order</div>
+      <div className="option">Logout</div>
     </div>
   </div>
 );
@@ -169,13 +156,10 @@ const ChooseMeal = () => {
             <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
           </div>
         </div>
-        <img
-          src={computerbutton}
-          className="choosmeal-computer-button"
-          onClick={() => {
-            navigate(`/confirmorder`);
-          }}
-        ></img>
+        <img src={computerbutton} className="choosmeal-computer-button"
+         onClick={() => {
+          navigate(`/confirmorder`);
+        }}></img>
       </div>
       <div className="phone-only">
         <div className="topbar-choosemeal-home">
@@ -212,11 +196,11 @@ const ChooseMeal = () => {
             key={index}
             onClick={() => handleClick(index, data.name)}
           >
-            <div className="circle">
+            <div className="choosemeal-circle">
               <img
                 src={selectedCircles.includes(index) ? darkCircle : circle}
                 alt="Circle"
-                className="circle-icon"
+                className="choosemeal-circle-icon"
               />
               <Icon
                 className="inner-icon"
