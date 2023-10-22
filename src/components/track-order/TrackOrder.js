@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./TrackOrder.css";
 import "../../style/global.css";
+import { useNavigate } from "react-router-dom";
 
 import selectedBtn from "../../images/keyboard_backspace.svg";
 import tracklogo from "../../images/trackorderlogo.png";
@@ -17,6 +18,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const TrackOrder = () => {
   const [activeStep] = useState(3);
+
+  const navigate = useNavigate();
 
   return (
     <div className="trackorder-main">
@@ -86,7 +89,7 @@ const TrackOrder = () => {
       </div>
       {activeStep === 3 && (
         <div className="trackorder-button-wrap">
-        <button className="primary-button">RATE ORDER</button>
+        <button className="primary-button" onClick={()=>{navigate("/RateOrder")}}>RATE ORDER</button>
         </div>
       )}</div>
     </div>

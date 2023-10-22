@@ -13,7 +13,6 @@ const OrderSent = () => {
 
     const navigate = useNavigate();
 
-    const toTrackOrder = navigate("/TrackOrder");
 
 
 
@@ -30,7 +29,7 @@ const OrderSent = () => {
                             <img src={check} alt="" className="check" />
                             <h1 className="order-sent">Order sent</h1>
                         </div>
-                        <p className="track-order-text" onClick={toTrackOrder}>Track order</p>
+                        <p className="track-order-text" style={{cursor:"pointer"}} onClick={()=>{navigate("/TrackOrder")}}>Track order</p>
                     </div>
                 </div>
             </div>
