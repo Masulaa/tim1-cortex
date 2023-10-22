@@ -110,7 +110,9 @@ const ConfirmOrder = () => {
       }`}
     >
       <div className="confirmorder-head">
-        <ArrowBackIosNew className="myprofile-back-icon" />
+        <ArrowBackIosNew className="myprofile-back-icon" onClick={() => {
+          navigate(`/choosemeal`);
+        }} />
         <p className="confirmorder-title">YOUR ORDER</p>
       </div>
       <div className="confirmorder-meals">

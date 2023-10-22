@@ -121,7 +121,11 @@ const ChooseMeal = () => {
       <div className="computer-only">
         <div className="topbar-computer-choosemeal-home">
           <div className="image-topbar-wrapper">
-            <ArrowBackIcon className="arrowBack"></ArrowBackIcon>
+            <ArrowBackIcon className="arrowBack"
+            onClick={() => {
+              navigate(`/home`);
+            }}
+            ></ArrowBackIcon>
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
           <div className="topbar-computer-other-part">
