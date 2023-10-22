@@ -76,7 +76,7 @@ const SingleMeal = () => {
     // Koristite dispatch da pozovete akciju i dodate narudžbinu u Redux store
     dispatch(addOrder(orderInfo));
     console.log(orderInfo)
-    navigate("/ConfirmOrder")
+    navigate("/ChooseMeal")
   };
 
   const fetchArticles = async () => {

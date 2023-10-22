@@ -54,6 +54,10 @@ const Home = () => {
     }
   };
 
+  const toChooseMealForWholeWeek = () => {
+      navigate("/ChooseMealForWholeWeek");
+  };
+
   const fetchUser = async () => {
     try {
       const response = await ProfileService.GetProfile();
@@ -111,7 +115,7 @@ const Home = () => {
           </div>
           <div className="second-part-of-content-home">
           <button className={`primary-button`} onClick={toChooseMeal} >TODAY</button>
-            <button className="secondary-button">WHOLE WEEK</button>
+            <button className="secondary-button" onClick={toChooseMealForWholeWeek}>WHOLE WEEK</button>
           </div>
         </div>
       </div>
