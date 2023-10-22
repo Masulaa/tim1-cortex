@@ -6,7 +6,7 @@ const HTTP_OK = 200;
 
 
 const client = axios.create({
-    baseURL: "https://4n2q9d.ictcortex.me/",
+    baseURL: "https://4n2q9d.ictcortex.me/api/",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
