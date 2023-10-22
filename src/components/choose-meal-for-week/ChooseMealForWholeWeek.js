@@ -166,7 +166,7 @@ const ChooseMealWeak = () => {
               selectedDay === index ? "selected" : ""}
             }`}
             onClick={() => {
-              if (index >= 5) return; // Do nothing if it's Saturday or Sunday
+              if (index >= 5) return; // Do nothingitg if it's Saturday or Sunday
               selectDay(index);
             }}
           >

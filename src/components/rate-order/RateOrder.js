@@ -26,6 +26,11 @@ const RateOrder = () => {
     const isAnyStarSelected = updatedStars.some((star) => star);
     setIsCommentFilled(isAnyStarSelected);
   };
+
+  const [articleRatings, setArticleRatings] = useState(order.map(() => ({
+    selectedStars: [false, false, false, false, false],
+    comment: "",
+  })));
   
 
   const fetchOrder = async () => {

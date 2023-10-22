@@ -26,9 +26,8 @@ import pizzaImg from "../../images/PizzaCapricciosa.png";
 import computerbutton from "../../images/icons/Group 23.png";
 import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
-import darkCircle from "../../images/darkCircle.svg";
-import { ArrowBackIosNew } from "@mui/icons-material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { OrderService } from "../../api/api";
+import { redirect } from "react-router-dom";
 
 const icons = [
   MenuIcon,
@@ -53,7 +52,9 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
     </div>
   </div>
 );
-
+{
+  /*Left je zapravo Right*/
+}
 const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
@@ -69,7 +70,7 @@ const ChooseMeal = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownOpenLeft, setIsDropdownOpenLeft] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [selectedCircles, setSelectedCircles] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -78,6 +79,23 @@ const ChooseMeal = () => {
   const toggleDropdownLeft = () => {
     setIsDropdownOpenLeft(!isDropdownOpenLeft);
   };
+  const IsOrderPossible = async () => {
+    try {
+      const response = await OrderService.IsOrderPossible();
+      setIsPossible(response);
+      console.log(response);
+    } catch (error) {
+      console.log("Error fetching isPossible:", error);
+    }
+  };
+
+  const [isPossible, setIsPossible] = useState([])
+
+  useEffect(() => {
+    IsOrderPossible();
+  }, []);
+
+ 
 
   const navigate = useNavigate();
 
@@ -86,8 +104,11 @@ const ChooseMeal = () => {
       const response = await ArticleService.GetArticles();
       setArticles(response.data);
       console.log(response);
+      if (response.status === 400) {
+        navigate("/Home");
+      }
     } catch (error) {
-      console.log("Error fetching articles:", error);
+  
     }
   };
 
@@ -97,31 +118,23 @@ const ChooseMeal = () => {
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
-    document.querySelector(".choosemeal-menu").style.display = "block";
   };
 
   const handleClick = (index) => {
     if (index === 0) {
       toggleMenu();
-      // Change src to darkcircle
-    } else if (index > 0 && index < 12) {
-      // Check if the circle is already selected
-      if (selectedCircles.includes(index)) {
-        // If selected, remove it from the array
-        setSelectedCircles(selectedCircles.filter((item) => item !== index));
-      } else {
-        // If not selected, add it to the array
-        setSelectedCircles([...selectedCircles, index]);
-      }
     }
-  };
+  }; 
+  
+if (!isPossible.status === 200) {
+  navigate('/Home');
+}
 
   return (
     <div className="main-choosemeal">
       <div className="computer-only">
         <div className="topbar-computer-choosemeal-home">
           <div className="image-topbar-wrapper">
-            <ArrowBackIcon className="arrowBack"></ArrowBackIcon>
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
           <div className="topbar-computer-other-part">
@@ -147,10 +160,7 @@ const ChooseMeal = () => {
             <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
           </div>
         </div>
-        <img src={computerbutton} className="choosmeal-computer-button"
-         onClick={() => {
-          navigate(`/confirmorder`);
-        }}></img>
+        <img src={computerbutton} className="choosmeal-computer-button"></img>
       </div>
       <div className="phone-only">
         <div className="topbar-choosemeal-home">
@@ -158,24 +168,19 @@ const ChooseMeal = () => {
             className="image-topbar-home-profile-with-dropdown"
             onClick={toggleDropdown}
           >
-            <ArrowBackIosNew className="back-icon-absolute2" />
             <img
               src={profileIcon}
               alt="logo"
               className="image-topbar-home-profile"
-              
             />
             {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
           </div>
           <Dropdown isDropdownOpen={isDropdownOpen} />
-
+          <div className="choosemeal-shoopingbag">
+            <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
+          </div>
           <div className="image-topbar-wrapper">
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
-          </div>
-          <div
-            className="choosemeal-shoopingbag"
-          >
-            <ShoppingBagOutlinedIcon />
           </div>
         </div>{" "}
         <div className="search-choosemeal">
@@ -185,25 +190,10 @@ const ChooseMeal = () => {
       </div>
       <div className="icon-row">
         {icons.map((Icon, index) => (
-          <div
-            className={`icon ${index === 0 ? "hidden" : ""}`}
-            key={index}
-            onClick={() => handleClick(index)}
-          >
-            <div className="circle">
-              <img
-                src={selectedCircles.includes(index) ? darkCircle : circle}
-                alt="Circle"
-                className="circle-icon"
-              />
-              <Icon
-                className="inner-icon"
-                style={{
-                  color: selectedCircles.includes(index)
-                    ? "darkred"
-                    : "initial",
-                }}
-              />
+          <div className="icon" key={index} onClick={() => handleClick(index)}>
+            <div className="choosemeal-circle">
+              <img src={circle} alt="Circle" className="circle-icon" />
+              <Icon className="inner-icon" />
             </div>
           </div>
         ))}
@@ -287,7 +277,7 @@ const ChooseMeal = () => {
             <div className="choosemeal-categories-text">Pizza</div>
           </div>
 
-          <div className="choosemeal-categories-single">
+          <div className="choosemeal-categories-single" >
             <div className="choosemeal-categories-icon">
               <CookieOutlinedIcon></CookieOutlinedIcon>
             </div>
