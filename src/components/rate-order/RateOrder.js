@@ -88,7 +88,7 @@ const RateOrder = () => {
            {order.map((item, index) => (
         <div className="rateorder-one-rate" key={index}>
           <div className="info">
-            <img src={item.photo} alt="slika hrane" className="food-picture" />
+            <img src={`https://4n2q9d.ictcortex.me/photos/${item.photo}`} alt="slika hrane" className="food-picture" />
             <div>
               <h1 className="food-title">{item.name}</h1>
               <p className="food-desc">{item.description}</p>
