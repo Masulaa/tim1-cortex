@@ -34,7 +34,6 @@ const ConfirmOrder = () => {
     }));
 
     return {
-      expires_on: "2023-10-23",
       comment: comment,
       articles: orderArticles,
     };

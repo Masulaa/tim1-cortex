@@ -135,7 +135,7 @@ width: 100%;
   margin-top: 16px;
 }
 
-.red-icon {
+.send-icon.red-icon {
   color: #BD2B2B;
   cursor: pointer;
 }
