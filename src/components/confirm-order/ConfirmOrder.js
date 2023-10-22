@@ -12,7 +12,6 @@ import { addOrder } from "../../store/orderStore";
 import CloseBtn from "../../images/close.svg";
 import { OrderService } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import { updateOrder } from "../../store/orderStore";
 
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
@@ -22,55 +21,73 @@ const ConfirmOrder = () => {
 
   const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
 
-  const [expiresOn, setExpiresOn] = useState("");
-  const [comment, setComment] = useState("");
-  const [totalCost, setTotalCost] = useState(0);
+  const [expiresOn, setExpiresOn] = useState("2023-10-23");
+  const [comment, setComment] = useState(""); // Inicijalizovan prazan string
+  const [articles, setArticles] = useState([
+    {
+      id: 1,
+      name: "Dummy Article 1",
+      description: "Description 1",
+      price: 10,
+      quantity: 2,
+    },
+    {
+      id: 2,
+      name: "Dummy Article 2",
+      description: "Description 2",
+      price: 15,
+      quantity: 1,
+    },
+  ]);
 
   const createOrderData = () => {
-    const orderArticles = orders.map((order) => ({
-      article_id: order.id,
-      count: order.quantity,
+    const orderArticles = articles.map((article) => ({
+      article_id: article.id,
+      count: article.quantity,
     }));
 
     return {
+      expires_on: expiresOn,
       comment: comment,
       articles: orderArticles,
     };
   };
 
-  const increaseQuantity = (productId) => {
-    const updatedOrders = orders.map((order) => {
-      if (order.id === productId) {
-        return { ...order, quantity: order.quantity + 1 };
-      }
-      return order;
-    });
-
-    dispatch(updateOrder(updatedOrders));
-  };
-
-  const decreaseQuantity = (productId) => {
-    const updatedOrders = orders.map((order) => {
-      if (order.id === productId && order.quantity > 1) {
-        return { ...order, quantity: order.quantity - 1 };
-      }
-      return order;
-    });
-
-    dispatch(updateOrder(updatedOrders));
-  };
-
-  useEffect(() => {
+  const updateTotalCost = () => {
     let newTotalCost = 0;
 
-    for (const order of orders) {
-      const { price, quantity } = order;
+    for (const article of articles) {
+      const { price, quantity } = article;
       const productPrice = price * quantity;
       newTotalCost += productPrice;
     }
 
-    setTotalCost(newTotalCost);
-  }, [orders]);
+    return newTotalCost; // Vraća novi trošak
+  };
+
+  const increaseQuantity = (articleId) => {
+    const updatedArticles = articles.map((article) => {
+      if (article.id === articleId) {
+        return { ...article, quantity: Math.min(10, article.quantity + 1) };
+      }
+      return article;
+    });
+    setArticles(updatedArticles);
+  };
+
+  const decreaseQuantity = (articleId) => {
+    const updatedArticles = articles.map((article) => {
+      if (article.id === articleId) {
+        const newQuantity = Math.max(1, article.quantity - 1);
+        if (newQuantity === 1) {
+          setRemoveModalVisible(true);
+        }
+        return { ...article, quantity: newQuantity };
+      }
+      return article;
+    });
+    setArticles(updatedArticles);
+  };
 
   const closeModal = () => {
     setRemoveModalVisible(false);
@@ -80,22 +97,10 @@ const ConfirmOrder = () => {
     setRemoveModalVisible(false);
   };
 
-  const handleAddToOrder = (name, description, price, productId) => {
-    const updatedOrders = orders.map((order) => {
-      if (order.id === productId) {
-        return { ...order, name, description, price };
-      }
-      return order;
-    });
-
-    dispatch(updateOrder(updatedOrders));
-  };
-
   const postOrder = async () => {
     try {
       const orderData = createOrderData();
-      const response = await OrderService.PostOrder(orderData);
-      console.log("API Response", response);
+      console.log("Simulated API Request:", orderData);
       navigate("/OrderSent");
     } catch (error) {
       console.log("Error posting order:", error);
@@ -103,35 +108,43 @@ const ConfirmOrder = () => {
   };
 
   return (
-    <div className={`main-confirmorder ${isRemoveModalVisible ? "modal-open" : ""}`}>
+    <div
+      className={`main-confirmorder ${
+        isRemoveModalVisible ? "modal-open" : ""
+      }`}
+    >
       <div className="confirmorder-head">
         <ArrowBackIosNew className="myprofile-back-icon" />
         <p className="confirmorder-title">YOUR ORDER</p>
       </div>
       <div className="confirmorder-meals">
-        {orders.map((order) => (
-          <div className="confirmorder-meal" key={order.id}>
+        {articles.map((article) => (
+          <div className="confirmorder-meal" key={article.id}>
             <div className="confirmorder-title-and-description">
-              <p className="confirmorder-meal-title">{order.name}</p>
-              <p className="confirmorder-meal-description">{order.description}</p>
+              <p className="confirmorder-meal-title">{article.name}</p>
+              <p className="confirmorder-meal-description">
+                {article.description}
+              </p>
             </div>
             <div className="confirmorder-price-and-counter">
               <div className="confirmorder-meal-price">
-                {order.price * order.quantity}€
+                {article.price * article.quantity}€
               </div>
               <div className="confirmorder-meal-counter">
                 <img
-                  src={removebuttongImg}
+                  src={removebuttonrImg}
                   alt="removebutton"
                   className="counter-button-confirmorder"
-                  onClick={() => decreaseQuantity(order.id)}
+                  onClick={() => decreaseQuantity(article.id)}
                 />
-                <h2 className="confirmorder-meal-quantity">{order.quantity}</h2>
+                <h2 className="confirmorder-meal-quantity">
+                  {article.quantity}
+                </h2>
                 <img
-                  src={addbuttongImg}
+                  src={article.quantity >= 10 ? addbuttongImg : addbuttonrImg}
                   alt="addbutton"
                   className="counter-button-confirmorder"
-                  onClick={() => increaseQuantity(order.id)}
+                  onClick={() => increaseQuantity(article.id)}
                 />
               </div>
             </div>
@@ -142,11 +155,12 @@ const ConfirmOrder = () => {
         <div className="confirmorder-meal-price-info">
           <p className="confirmorder-meals-price-title">Cost:</p>
           <p className="confirmorder-meals-price">
-            {totalCost.toFixed(2)}€
+            {updateTotalCost().toFixed(2)}€
           </p>
         </div>
         <p className="confirmorder-meals-price-description">
-          *This is the price for your company; you don't pay anything for your meal.
+          *This is the price for your company; you don't pay anything for your
+          meal.
         </p>
       </div>
       <div className="confirmorder-meals-description">
@@ -159,6 +173,7 @@ const ConfirmOrder = () => {
           minRows={4}
           multiline
           style={{ width: "100%" }}
+          value={comment}
           onChange={(e) => {
             setComment(e.target.value);
           }}
@@ -170,9 +185,15 @@ const ConfirmOrder = () => {
         </button>
       </div>
       {isRemoveModalVisible && (
-        <div className="confirmorder-meals-modal-backdrop" onClick={closeBackdrop}>
+        <div
+          className="confirmorder-meals-modal-backdrop"
+          onClick={closeBackdrop}
+        >
           <div className="confirmorder-meals-modal-wrapper">
-            <div className="confirmorder-meals-modal" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="confirmorder-meals-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
               <img
                 src={CloseBtn}
                 className="confirmorder-meals-modal-back-icon"
@@ -182,7 +203,11 @@ const ConfirmOrder = () => {
               <p className="confirmorder-meals-modal-title">Removing item</p>
               <div className="confirmorder-meal-modal-group-trash">
                 <div className="confirmorder-meals-modal-rectangle-trash">
-                  <img src={deleteBtn} className="confirmorder-meal-modal-trash-icon" alt="Delete" />
+                  <img
+                    src={deleteBtn}
+                    className="confirmorder-meal-modal-trash-icon"
+                    alt="Delete"
+                  />
                 </div>
               </div>
               <p className="confirmorder-meals-modal-description">
