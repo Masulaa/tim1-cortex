@@ -14,16 +14,9 @@ const RateOrder = () => {
   const [order, setOrder] = useState([]);
   const [comment, setComment] = useState("");
   const [isCommentFilled, setIsCommentFilled] = useState(false);
-  const [selectedStars, setSelectedStars] = useState([false, false, false, false, false, false]);
-  const [starsValue,setStarsValue] = useState();
-  const handleStarClick = (starIndex, value) => {
-    const updatedStars = selectedStars.map((_, index) => index <= starIndex);
-    setSelectedStars(updatedStars);
-    setStarsValue(value);
-    const isAnyStarSelected = updatedStars.some((star) => star);
-    setIsCommentFilled(isAnyStarSelected);
-  };
-  
+
+  // Maintain an array of selected stars for each product
+  const [selectedStars, setSelectedStars] = useState([]);
 
   const fetchOrder = async () => {
     try {
