@@ -8,7 +8,7 @@ import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";
 import deleteBtn from "../../images/delete.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder } from "../../store/orderStore";
+import { addOrder, updateOrder, removeOrder } from "../../store/orderStore"; // Dodali smo `removeOrder`
 import CloseBtn from "../../images/close.svg";
 import { OrderService } from "../../api/api";
 import { useNavigate } from "react-router-dom";
@@ -20,73 +20,51 @@ const ConfirmOrder = () => {
   const navigate = useNavigate();
 
   const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
-
-  const [expiresOn, setExpiresOn] = useState("2023-10-23");
-  const [comment, setComment] = useState(""); // Inicijalizovan prazan string
-  const [articles, setArticles] = useState([
-    {
-      id: 1,
-      name: "Dummy Article 1",
-      description: "Description 1",
-      price: 10,
-      quantity: 2,
-    },
-    {
-      id: 2,
-      name: "Dummy Article 2",
-      description: "Description 2",
-      price: 15,
-      quantity: 1,
-    },
-  ]);
+  const [totalCost, setTotalCost] = useState(0);
+  const [comment, setComment] = useState("");
+  const [order, setOrder] = useState(null); // Dodana deklaracija za 'order'
 
   const createOrderData = () => {
-    const orderArticles = articles.map((article) => ({
-      article_id: article.id,
-      count: article.quantity,
+    const orderArticles = orders.map((order) => ({
+      article_id: order.id,
+      count: order.quantity,
     }));
 
     return {
-      expires_on: expiresOn,
       comment: comment,
       articles: orderArticles,
     };
   };
 
-  const updateTotalCost = () => {
-    let newTotalCost = 0;
-
-    for (const article of articles) {
-      const { price, quantity } = article;
-      const productPrice = price * quantity;
-      newTotalCost += productPrice;
+  useEffect(() => {
+    if (orders && orders.length > 0) {
+      setTotalCost(
+        orders.reduce((acc, order) => acc + order.price * order.quantity, 0)
+      );
     }
+  }, [orders]);
 
-    return newTotalCost; // Vraća novi trošak
+  const increaseQuantity = (order) => {
+    if (order.quantity < 10) {
+      const updatedOrder = { ...order, quantity: order.quantity + 1 };
+      dispatch(updateOrder(updatedOrder));
+      setTotalCost(totalCost + order.price);
+    }
   };
 
-  const increaseQuantity = (articleId) => {
-    const updatedArticles = articles.map((article) => {
-      if (article.id === articleId) {
-        return { ...article, quantity: Math.min(10, article.quantity + 1) };
-      }
-      return article;
-    });
-    setArticles(updatedArticles);
+  const decreaseQuantity = (order) => {
+    if (order.quantity > 1) {
+      const updatedOrder = { ...order, quantity: order.quantity - 1 };
+      dispatch(updateOrder(updatedOrder));
+      setTotalCost(totalCost - order.price);
+    } else {
+      setRemoveModalVisible(true);
+    }
   };
 
-  const decreaseQuantity = (articleId) => {
-    const updatedArticles = articles.map((article) => {
-      if (article.id === articleId) {
-        const newQuantity = Math.max(1, article.quantity - 1);
-        if (newQuantity === 1) {
-          setRemoveModalVisible(true);
-        }
-        return { ...article, quantity: newQuantity };
-      }
-      return article;
-    });
-    setArticles(updatedArticles);
+  const removeItem = (order) => {
+    dispatch(removeOrder(order.id));
+    setRemoveModalVisible(false); // Zatvaranje modalnog prozora nakon brisanja
   };
 
   const closeModal = () => {
@@ -97,10 +75,23 @@ const ConfirmOrder = () => {
     setRemoveModalVisible(false);
   };
 
+  const handleAddToOrder = (name, description, price) => {
+    const orderInfo = {
+      id: Math.random(),
+      name: name,
+      description: description,
+      price: price,
+      quantity: 1,
+    };
+    dispatch(addOrder(orderInfo));
+    setTotalCost((prevTotalCost) => prevTotalCost + price);
+  };
+
   const postOrder = async () => {
     try {
       const orderData = createOrderData();
-      console.log("Simulated API Request:", orderData);
+      const response = await OrderService.PostOrder(orderData);
+      console.log("API Response", response);
       navigate("/OrderSent");
     } catch (error) {
       console.log("Error posting order:", error);
@@ -118,33 +109,31 @@ const ConfirmOrder = () => {
         <p className="confirmorder-title">YOUR ORDER</p>
       </div>
       <div className="confirmorder-meals">
-        {articles.map((article) => (
-          <div className="confirmorder-meal" key={article.id}>
+        {orders.map((order) => (
+          <div className="confirmorder-meal" key={order.id}>
             <div className="confirmorder-title-and-description">
-              <p className="confirmorder-meal-title">{article.name}</p>
+              <p className="confirmorder-meal-title">{order.name}</p>
               <p className="confirmorder-meal-description">
-                {article.description}
+                {order.description}
               </p>
             </div>
             <div className="confirmorder-price-and-counter">
               <div className="confirmorder-meal-price">
-                {article.price * article.quantity}€
+                {order.price * order.quantity}€
               </div>
               <div className="confirmorder-meal-counter">
                 <img
                   src={removebuttonrImg}
                   alt="removebutton"
                   className="counter-button-confirmorder"
-                  onClick={() => decreaseQuantity(article.id)}
+                  onClick={() => decreaseQuantity(order)}
                 />
-                <h2 className="confirmorder-meal-quantity">
-                  {article.quantity}
-                </h2>
+                <h2 className="confirmorder-meal-quantity">{order.quantity}</h2>
                 <img
-                  src={article.quantity >= 10 ? addbuttongImg : addbuttonrImg}
+                  src={order.quantity === 10 ? addbuttongImg : addbuttonrImg}
                   alt="addbutton"
                   className="counter-button-confirmorder"
-                  onClick={() => increaseQuantity(article.id)}
+                  onClick={() => increaseQuantity(order)}
                 />
               </div>
             </div>
@@ -154,9 +143,7 @@ const ConfirmOrder = () => {
       <div className="confirmorder-finalprice-and-description">
         <div className="confirmorder-meal-price-info">
           <p className="confirmorder-meals-price-title">Cost:</p>
-          <p className="confirmorder-meals-price">
-            {updateTotalCost().toFixed(2)}€
-          </p>
+          <p className="confirmorder-meals-price">{totalCost.toFixed(2)}€</p>
         </div>
         <p className="confirmorder-meals-price-description">
           *This is the price for your company; you don't pay anything for your
@@ -173,7 +160,6 @@ const ConfirmOrder = () => {
           minRows={4}
           multiline
           style={{ width: "100%" }}
-          value={comment}
           onChange={(e) => {
             setComment(e.target.value);
           }}
@@ -221,7 +207,10 @@ const ConfirmOrder = () => {
                 >
                   <p className="confirmorder-meals-modal-cancel-text">Cancel</p>
                 </div>
-                <div className="confirmorder-meals-modal-remove-rectangle">
+                <div
+                  className="confirmorder-meals-modal-remove-rectangle"
+                  onClick={() => removeItem(order)}
+                >
                   <p className="confirmorder-meals-modal-remove-text">Remove</p>
                 </div>
               </div>
