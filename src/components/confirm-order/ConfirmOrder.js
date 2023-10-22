@@ -6,12 +6,14 @@ import removebuttongImg from "../../images/RemoveButton.png";
 import removebuttonrImg from "../../images/RemoveButton2.png";
 import addbuttonrImg from "../../images/AddButton.png";
 import addbuttongImg from "../../images/AddButton2.png";
-import deleteBtn from "../../images/delete.svg";
+import deleteBtn from "../../images/delete.svg"
 import { useDispatch, useSelector } from "react-redux";
 import { addOrder } from "../../store/orderStore";
 import CloseBtn from "../../images/close.svg";
 import { OrderService } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import { updateOrder } from "../../store/orderStore";
+
 
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
@@ -45,32 +47,42 @@ const ConfirmOrder = () => {
     }
   }, [orders]);
 
-  useEffect(() => {
-    let newTotalCost = 0;
 
-    for (const order of orders) {
-      const { price, quantity } = order;
-      const productPrice = price * quantity;
-      newTotalCost += productPrice;
-    }
-
-    setTotalCost(newTotalCost);
-  }, [orders]);
 
   const increaseQuantity = () => {
     if (quantity < 10) {
       setQuantity(quantity + 1);
+      updateTotalCost(quantity + 1);
     }
   };
-
+  
   const decreaseQuantity = () => {
     if (quantity === 1) {
       setRemoveModalVisible(true);
     } else {
       setQuantity(quantity - 1);
+      updateTotalCost(quantity - 1);
     }
   };
 
+  
+  const updateTotalCost = (newQuantity) => {
+    const updatedOrders = orders.map((order) => {
+      if (order.quantity === quantity) {
+        return { ...order, quantity: newQuantity };
+      }
+      return order;
+    });
+    
+  
+    let newTotalCost = 0;
+    for (const order of updatedOrders) {
+      const { price, quantity } = order;
+      const productPrice = price * quantity;
+      newTotalCost += productPrice;
+    }
+    setTotalCost(newTotalCost);
+  };
   const closeModal = () => {
     setRemoveModalVisible(false);
   };
@@ -89,15 +101,15 @@ const ConfirmOrder = () => {
 
   const handleAddToOrder = (name, description, price) => {
     const orderInfo = {
-      id: Math.random(),
+      id: Math.random(), 
       name: name,
       description: description,
       price: price,
-      quantity: quantity,
+      quantity: quantity, 
     };
     dispatch(addOrder(orderInfo));
-    const productPrice = price * quantity;
-    setTotalCost((prevTotalCost) => prevTotalCost + productPrice);
+    console.log(orderInfo);
+    setTotalCost((prevTotalCost) => prevTotalCost + price * quantity);
   };
 
   const postOrder = async () => {
@@ -135,7 +147,7 @@ const ConfirmOrder = () => {
                   className="counter-button-confirmorder"
                   onClick={decreaseQuantity}
                 />
-                <h2 className="confirmorder-meal-quantity">{order.quantity}</h2>
+                <h2 className="confirmorder-meal-quantity">{quantity}</h2>
                 <img
                   src={getAddButtonImage()}
                   alt="addbutton"
@@ -155,7 +167,8 @@ const ConfirmOrder = () => {
           </p>
         </div>
         <p className="confirmorder-meals-price-description">
-          *This is the price for your company; you don't pay anything for your meal.
+          *This is the price for your company; you don't pay anything for your
+          meal.
         </p>
       </div>
       <div className="confirmorder-meals-description">
@@ -195,7 +208,8 @@ const ConfirmOrder = () => {
                 </div>
               </div>
               <p className="confirmorder-meals-modal-description">
-                By accepting this confirmation, your item will be removed from the order. Are you sure you want to remove this item?
+                By accepting this confirmation, your item will be removed from
+                the order. Are you sure you want to remove this item?
               </p>
               <div className="confirmorder-meals-modal-button-container">
                 <div
