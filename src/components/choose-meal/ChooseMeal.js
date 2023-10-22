@@ -25,6 +25,7 @@ import addbuttongImg from "../../images/AddButton.png";
 import pizzaImg from "../../images/PizzaCapricciosa.png";
 import computerbutton from "../../images/icons/Group 23.png";
 import { useNavigate } from "react-router";
+import CloseIcon from "@mui/icons-material/Close";
 
 const icons = [
   MenuIcon,
@@ -170,6 +171,29 @@ const ChooseMeal = () => {
           </div>
         ))}
       </div>
+      <div className="message-box">
+        <div>
+          <p>Orders can be accepted until 8:00 in the morning.</p>
+          <p>
+            After 9:00, the application will automatically block the possibility
+            of ordering for that day.
+          </p>
+        </div>
+        <div>
+          <CloseIcon
+            className="CloseIcon"
+            onClick={function () {
+              const messageBox = document.querySelector(".message-box");
+              if (messageBox) {
+                messageBox.style.transform = "scale(0)";
+                setTimeout(() => {
+                  messageBox.remove();
+                }, 500);
+              }
+            }}
+          ></CloseIcon>
+        </div>
+      </div>
       <div>
         <div className="choosemeal-recommend-title">Recommend</div>
         <div className="choosemeal-meals">
@@ -195,7 +219,9 @@ const ChooseMeal = () => {
                     src={addbuttongImg}
                     alt=""
                     className="choosemeal-meal-add-button"
-                    onClick={()=>{navigate(`/ChooseMeal/SingleMeal/${article.id}`)}}
+                    onClick={() => {
+                      navigate(`/ChooseMeal/SingleMeal/${article.id}`);
+                    }}
                   ></img>
                 </div>
               </div>

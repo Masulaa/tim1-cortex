@@ -105,5 +105,15 @@ const client = axios.create({
       return client.post("order", orderData);
      
     },
+    GetOrder() {
+      return client.get("order");
+     
+    },
+  }
+
+  export const RatingService = {
+    PostRating(ratingData){
+      return client.post("ratings", ratingData)
+    }
   }
   

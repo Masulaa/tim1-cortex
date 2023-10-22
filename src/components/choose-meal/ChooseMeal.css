@@ -1,12 +1,11 @@
+
+
 .main-choosemeal {
   display: flex;
   flex-direction: column;
 }
-body {
-  overflow: hidden;
-}
+
 .image-topbar-wrapper {
-  width: 156px;
   height: 23px;
 }
 .search-choosemeal {
@@ -178,7 +177,7 @@ gap: 48px;
 
 .icon-row {
   display: flex;
-  overflow-x: auto;
+  overflow-x: auto !important;
   height: 100px;
   padding: 15px 0px 15px 24px;
 }
@@ -651,5 +650,41 @@ scale: 0.90;
 @media (min-width: 768px) {
   .computer-only {
     display: block; /* Prikazivanje na ekranima sa širinom manjom od 768px (telefoni) */
+  }
+}
+.CloseIcon{
+  margin-left: 30px;
+}
+
+.message-box {
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 600px){
+  .message-box{
+    display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 4px;
+  background: #E5C4C4;
+  width: 80%;
+  margin: auto;
+  }
+ 
+}
+
+@media (min-width: 601px){
+  .message-box{
+    display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 4px;
+  background: #E5C4C4;
+  width: 500px;
+  margin-left: 20px;
   }
 }

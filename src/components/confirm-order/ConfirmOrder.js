@@ -20,7 +20,7 @@ const ConfirmOrder = () => {
   const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
-  const [isRemoveModalVisible, setRemoveModalVisible] = useState(true);
+  const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
   const [totalCost, setTotalCost] = useState(0); // Dodajemo stanje za ukupnu cijenu
 
   const [expiresOn, setExpiresOn] = useState("");

@@ -96,6 +96,7 @@ width: 100%;
   width: 184px;
   display: flex; /* Dodano display flex */
   gap: 8px;
+  opacity: 0.5;
 }
 
 .stars * {
@@ -120,6 +121,12 @@ width: 100%;
   flex-direction: row; /* Dodano flex direction */
 }
 
+.star.selected {
+  color: #BD2B2B;
+  opacity: 1;
+}
+
+
 .send-icon {
   position: absolute;
   color: #1c1b1f;
@@ -127,6 +134,12 @@ width: 100%;
   margin-left: 300px;
   margin-top: 16px;
 }
+
+.red-icon {
+  color: #BD2B2B;
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 370px) {
   .send-icon {
