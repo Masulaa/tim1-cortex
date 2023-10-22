@@ -4,6 +4,7 @@ import slika01 from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import { ArrowBackIosNew, Grade } from "@mui/icons-material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import StarOutlineOutlinedIcon from '@mui/icons-material/StarOutlineOutlined';
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 import SendIcon from "@mui/icons-material/Send";
@@ -76,9 +77,9 @@ const RateOrder = () => {
   return (
     <div className="main-rateOrder">
       {" "}
+      <ArrowBackIcon className="arrowBack-absolute"></ArrowBackIcon>
       <div className="rateorder-info">
         <ArrowBackIosNew className="back-icon" />
-
           <p className="rateorder-title">RATE ORDER</p>
       </div>
       <div>

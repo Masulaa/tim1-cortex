@@ -26,9 +26,9 @@ import pizzaImg from "../../images/PizzaCapricciosa.png";
 import computerbutton from "../../images/icons/Group 23.png";
 import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
-import { OrderService } from "../../api/api";
-import { redirect } from "react-router-dom";
 import darkCircle from "../../images/darkCircle.svg";
+import { ArrowBackIosNew } from '@mui/icons-material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const icons = [
   MenuIcon,
@@ -78,23 +78,6 @@ const ChooseMeal = () => {
   const toggleDropdownLeft = () => {
     setIsDropdownOpenLeft(!isDropdownOpenLeft);
   };
-  const IsOrderPossible = async () => {
-    try {
-      const response = await OrderService.IsOrderPossible();
-      setIsPossible(response);
-      console.log(response);
-    } catch (error) {
-      console.log("Error fetching isPossible:", error);
-    }
-  };
-
-  const [isPossible, setIsPossible] = useState([])
-
-  useEffect(() => {
-    IsOrderPossible();
-  }, []);
-
- 
 
   const navigate = useNavigate();
 
@@ -103,11 +86,8 @@ const ChooseMeal = () => {
       const response = await ArticleService.GetArticles();
       setArticles(response.data);
       console.log(response);
-      if (response.status === 400) {
-        navigate("/Home");
-      }
     } catch (error) {
-  
+      console.log("Error fetching articles:", error);
     }
   };
 
@@ -123,7 +103,7 @@ const ChooseMeal = () => {
   const handleClick = (index) => {
     if (index === 0) {
       toggleMenu();
-          //can u change src to darkcircle
+      // Change src to darkcircle
     } else if (index > 0 && index < 12) {
       // Check if the circle is already selected
       if (selectedCircles.includes(index)) {
@@ -134,11 +114,7 @@ const ChooseMeal = () => {
         setSelectedCircles([...selectedCircles, index]);
       }
     }
-  }; 
-  
-if (!isPossible.status === 200) {
-  navigate('/Home');
-}
+  };
 
 
   return (
@@ -146,6 +122,7 @@ if (!isPossible.status === 200) {
       <div className="computer-only">
         <div className="topbar-computer-choosemeal-home">
           <div className="image-topbar-wrapper">
+          <ArrowBackIcon className="arrowBack"></ArrowBackIcon>
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
           <div className="topbar-computer-other-part">
@@ -176,9 +153,11 @@ if (!isPossible.status === 200) {
       <div className="phone-only">
         <div className="topbar-choosemeal-home">
           <div
+          
             className="image-topbar-home-profile-with-dropdown"
             onClick={toggleDropdown}
           >
+            <ArrowBackIosNew className="back-icon-absolute2" />
             <img
               src={profileIcon}
               alt="logo"
@@ -187,14 +166,14 @@ if (!isPossible.status === 200) {
             {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
           </div>
           <Dropdown isDropdownOpen={isDropdownOpen} />
-         
+          
           <div className="image-topbar-wrapper">
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
           <div className="choosemeal-shoopingbag">
             <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
           </div>
-        </div>{" "}
+                  </div>{" "}
         <div className="search-choosemeal">
           <OutlinedInput className="search-input" placeholder="Search" />
           <SearchOutlined className="search-icon-choose-meal" />
@@ -203,7 +182,7 @@ if (!isPossible.status === 200) {
       <div className="icon-row">
         {icons.map((Icon, index) => (
           <div className={`icon ${index === 0 ? 'hidden' : ''}`} key={index} onClick={() => handleClick(index)}>
-            <div className="circle">
+          <div className="circle">
               <img
                 src={selectedCircles.includes(index) ? darkCircle : circle}
                 alt="Circle"

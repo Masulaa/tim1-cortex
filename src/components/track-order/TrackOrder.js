@@ -12,7 +12,8 @@ import orderPackage from "../../images/package_2.svg";
 import orderPackageActive from "../../images/packageactive.svg";
 import orderCircle from "../../images/Ellipse 12.svg";
 import orderCheck from "../../images/ordercheck.svg";
-import { ArrowBackIosNew } from "@mui/icons-material";
+import { ArrowBackIosNew } from '@mui/icons-material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const TrackOrder = () => {
   const [activeStep] = useState(3);
@@ -20,7 +21,8 @@ const TrackOrder = () => {
   return (
     <div className="trackorder-main">
   <div className="trackorder-head">
-        <ArrowBackIosNew className="trackorder-back-icon"></ArrowBackIosNew>
+        <ArrowBackIcon className="arrowBack-absolute2"></ArrowBackIcon>
+        <ArrowBackIosNew className="back-icon-absolute"></ArrowBackIosNew>
         <p className="trackorder-title">YOUR ORDER</p>
       </div > 
       <div className="trackorder-content">
