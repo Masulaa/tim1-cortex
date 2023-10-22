@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../style/global.css";
 import "./OrderSent.css";
 import close from "../../images/close.svg";
 import check from "../../images/check.svg";
 import orderS from "../../images/OrderS.png";
+import { useNavigate } from "react-router-dom";
+
 
 const OrderSent = () => {
+
+
+
+    const navigate = useNavigate();
+
+    const toTrackOrder = navigate("/TrackOrder");
+
+
+
     return (
         <div className="main-order-sent">
             <div className="closebutton">
@@ -19,7 +30,7 @@ const OrderSent = () => {
                             <img src={check} alt="" className="check" />
                             <h1 className="order-sent">Order sent</h1>
                         </div>
-                        <p className="track-order-text">Track order</p>
+                        <p className="track-order-text" onClick={toTrackOrder}>Track order</p>
                     </div>
                 </div>
             </div>

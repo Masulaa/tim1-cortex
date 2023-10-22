@@ -96,6 +96,7 @@ width: 100%;
   width: 184px;
   display: flex; /* Dodano display flex */
   gap: 8px;
+  opacity: 0.5;
 }
 
 .stars * {
@@ -119,6 +120,12 @@ width: 100%;
   display: flex; /* Dodano display flex */
   flex-direction: row; /* Dodano flex direction */
 }
+
+.star.selected {
+  color: #BD2B2B;
+  opacity: 1;
+}
+
 
 .send-icon {
   position: absolute;
