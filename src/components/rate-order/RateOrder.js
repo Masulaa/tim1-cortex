@@ -10,67 +10,63 @@ import SendIcon from "@mui/icons-material/Send";
 import { useNavigate } from "react-router-dom";
 import profileIcon from "../../images/Ellipse 1.svg";
 import PizzaImage from "../../images/PizzaCapricciosa.png";
-import IceCreamImage from "../../images/dd43c18a3aa6cfb2c05d436792dd61aa.png"
+import IceCreamImage from "../../images/dd43c18a3aa6cfb2c05d436792dd61aa.png";
 import OrangeImage from "../../images/d55142bafca3db7dd33f3e21800a867e.png";
 
 class FoodInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selektovaneZvijezde: [false, false, false, false, false, false], 
+      selektovaneZvijezde: [false, false, false, false, false, false],
     };
   }
 
   handleClick = (index) => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const noviNiz = [...prevState.selektovaneZvijezde];
-      for (let i = 0; i < 6; i++){
-            noviNiz[i] = false;
+      for (let i = 0; i < 6; i++) {
+        noviNiz[i] = false;
       }
       for (let i = 0; i <= index; i++) {
-            noviNiz[i] = true;
+        noviNiz[i] = true;
       }
       return { selektovaneZvijezde: noviNiz };
     });
-  }
+  };
 
   render() {
-    const {
-      foodName,
-      foodDescription,
-      foodPrice,
-      foodImage,
-      userImage,
-    } = this.props;
+    const { foodName, foodDescription, foodPrice, foodImage, userImage } =
+      this.props;
 
     const { selektovaneZvijezde } = this.state;
 
-const zvijezda = (index, selektovano) => (
-  <GradeOutlinedIcon 
-    key={index}
-    onClick={() => this.handleClick(index)}
-    style={{ color: selektovano ? '#BD2B2B' : 'black', opacity: "50%", }}
-  />
-);
+    const zvijezda = (index, selektovano) => (
+      <GradeOutlinedIcon
+        key={index}
+        onClick={() => this.handleClick(index)}
+        style={{ color: selektovano ? "#BD2B2B" : "black", opacity: "50%" }}
+      />
+    );
 
-const zvijezda2 = (index, selektovano) => (
-  <GradeIcon 
-    key={index}
-    onClick={() => this.handleClick(index)}
-    style={{ color: selektovano ? '#BD2B2B' : 'black' }}
-    className="star"
-  />
-);
+    const zvijezda2 = (index, selektovano) => (
+      <GradeIcon
+        key={index}
+        onClick={() => this.handleClick(index)}
+        style={{ color: selektovano ? "#BD2B2B" : "black" }}
+        className="star"
+      />
+    );
 
-const Stars = selektovaneZvijezde.map((selektovano, index) => (
-  selektovano ? zvijezda2(index, selektovano) : zvijezda(index, selektovano)
-));
+    const Stars = selektovaneZvijezde.map((selektovano, index) =>
+      selektovano ? zvijezda2(index, selektovano) : zvijezda(index, selektovano)
+    );
 
     return (
       <>
+      <div className="rateorder-one-rate">
         <div className="info">
           <img src={foodImage} alt="slika hrane" className="food-picture" />
-          <div className="info-box-mini">
+          <div>
             <h1 className="food-title">{foodName}</h1>
             <p className="food-desc">{foodDescription}</p>
           </div>
@@ -78,25 +74,23 @@ const Stars = selektovaneZvijezde.map((selektovano, index) => (
         </div>
         <div className="rate-div">
           <img src={userImage} alt="slika korisnika" className="user-picture" />
-          <div className="stars">
-            {Stars}
-          </div>
+          <div className="stars">{Stars}</div>
         </div>
         <div>
           <div className="text-field">
             <TextField
               label="Comments"
               variant="outlined"
-              style={{ width: "342px"}}
+              style={{ width: "21.375rem" }}
               className="inputField"
             />
-            <SendIcon 
-              onClick={() => alert("Funkcija za slanje poruke")} 
+            <SendIcon
+              onClick={() => alert("Funkcija za slanje poruke")}
               className="send-icon"
-            /> 
-          </div>
-          <div className="line"></div>
-        </div>
+            />
+          </div></div>
+          <div className="line">
+        </div></div>
       </>
     );
   }
@@ -105,12 +99,15 @@ const Stars = selektovaneZvijezde.map((selektovano, index) => (
 const RateOrder = () => {
   return (
     <div className="main-rateOrder">
-      <div className="rateOrder-content">
-        <div className="rateOrder-info">
-          {" "}
-          <ArrowBackIosNew className="back-icon"></ArrowBackIosNew>
-          <h1 className="rateorder-title">Rate Order</h1>
-          <div className="info-box">
+      {" "}
+      <div className="rateorder-info">
+        <ArrowBackIosNew className="back-icon" />
+
+          <p className="rateorder-title">RATE ORDER</p>
+      </div>
+      <div>
+        <div>
+          <div>
             <FoodInfo
               foodName="Pizza Capricciosa"
               foodDescription="Mozzarela cheese, baked ham, mushrooms, tomato"
@@ -119,7 +116,7 @@ const RateOrder = () => {
               foodImage={PizzaImage}
               userImage={profileIcon}
             />
-            <FoodInfo
+            {/* <FoodInfo
               foodName="Chocolate Ice Cream"
               foodDescription=""
               foodPrice="2$"
@@ -134,7 +131,7 @@ const RateOrder = () => {
               userName="Ime Korisnika"
               foodImage={OrangeImage}
               userImage={profileIcon}
-            />
+            /> */}
           </div>
         </div>
       </div>
