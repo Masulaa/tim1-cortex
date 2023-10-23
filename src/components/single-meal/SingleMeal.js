@@ -12,7 +12,7 @@ import logo from "../../images/logo.png";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { SearchOutlined } from "@mui/icons-material";
-import profileIcon from "../../images/Ellipse 1.svg";
+import profileIcon from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { ArticleService } from "../../api/api";

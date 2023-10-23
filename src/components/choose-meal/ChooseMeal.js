@@ -189,11 +189,14 @@ const closeMenu = () => {
       </div>
       <div className="phone-only">
         <div className="topbar-choosemeal-home">
+        <ArrowBackIosNew className="back-icon-absolute2" onClick={() => {
+                navigate(`/home`);
+              }}/>
           <div
             className="image-topbar-home-profile-with-dropdown"
             onClick={toggleDropdown}
           >
-            <ArrowBackIosNew className="back-icon-absolute2" />
+            
             <img
               src={profileIcon}
               alt="logo"
@@ -210,10 +213,10 @@ const closeMenu = () => {
             <ShoppingBagOutlinedIcon />
           </div>
         </div>{" "}
-        <div className="search-choosemeal">
+        {/* <div className="search-choosemeal">
           <OutlinedInput className="search-input" placeholder="Search" />
           <SearchOutlined className="search-icon-choose-meal" />
-        </div>
+        </div> */}
       </div>
       <div className="icon-row">
         {icons.map((data, index) => {
