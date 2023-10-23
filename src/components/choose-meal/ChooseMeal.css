@@ -198,13 +198,6 @@ gap: 48px;
   height: 64px;
 }
 
-.choosemeal-profile-icon {
-  width: 48px;
-  height: 48px;
-  cursor: pointer; /* Dodajemo pokazivač na ikonicu profila */
-  border-radius: 100%;
-}
-
 .inner-icon {
   z-index: 1;
   display: flex;
