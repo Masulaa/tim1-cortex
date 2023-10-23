@@ -5,11 +5,12 @@
   flex-direction: column;
   padding: 2.25rem 6.25rem;
 
-
 }
-
-.choose-meal-dropdown-open{
-  z-index: 5;
+.img1-home{
+  z-index: 1;
+}
+.choose-meal-dropdown-open,.choose-meal-dropdown{
+  z-index: 10;
 }
 
 .image-topbar-home-profile {
