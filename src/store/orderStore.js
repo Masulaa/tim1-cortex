@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   orders: [],
-  addedMealIds: [], 
+  addedMeals: {}, // Objekt za pohranu dodanih jela
+  addedMealIds: [], // Niz ID-ova dodanih jela
 };
+
 const orderSlice = createSlice({
   name: "order",
   initialState: initialState,
@@ -11,19 +13,23 @@ const orderSlice = createSlice({
     addOrder(state, action) {
       const orderInfo = action.payload;
       state.orders.push(orderInfo);
-      state.addedMealIds.push(orderInfo.id);
+      const { id, ...mealInfo } = orderInfo; // Izdvojite ID i ostale informacije o obroku
+      state.addedMeals[id] = mealInfo; // Dodajte obrok u objekt addedMeals
+      state.addedMealIds.push(id); // Dodajte ID u niz addedMealIds
     },
     removeOrder(state, action) {
-      // Remove an order from the orders array based on its ID
-      const orderIndex = state.orders.findIndex(
-        (order) => order.id === action.payload
-      );
+      const idToRemove = action.payload;
+      // Uklonite obrok iz niza orders
+      const orderIndex = state.orders.findIndex((order) => order.id === idToRemove);
       if (orderIndex !== -1) {
         state.orders.splice(orderIndex, 1);
       }
+      // Uklonite obrok iz objekta addedMeals
+      delete state.addedMeals[idToRemove];
+      // Uklonite ID iz niza addedMealIds
+      state.addedMealIds = state.addedMealIds.filter((id) => id !== idToRemove);
     },
     updateOrder(state, action) {
-      // Update an order's quantity based on its ID
       const { id, quantity } = action.payload;
       const order = state.orders.find((order) => order.id === id);
       if (order) {
@@ -31,8 +37,9 @@ const orderSlice = createSlice({
       }
     },
     clearOrders(state) {
-      // Clear all orders
       state.orders = [];
+      state.addedMeals = {};
+      state.addedMealIds = [];
     },
   },
 });

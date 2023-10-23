@@ -4,7 +4,7 @@ import logo from "../../images/logo.png";
 import icon from "../../images/8bb19757e48ed988259f35eab3822824.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import profileIcon from "../../images/Ellipse 1.svg";
+import profileIcon from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
 import { useNavigate } from "react-router-dom";
 import { AuthService, OrderService } from "../../api/api";
 import { ProfileService } from "../../api/api";
