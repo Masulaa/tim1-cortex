@@ -158,10 +158,10 @@ const closeMenu = () => {
           </div>
           <div className="topbar-computer-other-part">
             {" "}
-            <div className="search-choosemeal">
+            {/* <div className="search-choosemeal">
               <OutlinedInput className="search-input" placeholder="Search" />
               <SearchOutlined className="search-icon-choose-meal" />
-            </div>{" "}
+            </div>{" "} */}
             <div className="choosemeal-shoopingbag" >
               <ShoppingBagOutlinedIcon style={{cursor:"pointer"}} onClick={()=>{navigate("/ConfirmOrder")}}></ShoppingBagOutlinedIcon>
             </div>

@@ -134,10 +134,10 @@ const SingleMeal = () => {
           </div>
           <div className="topbar-computer-other-part">
             {" "}
-            <div className="search-choosemeal">
+            {/* <div className="search-choosemeal">
               <OutlinedInput className="search-input" placeholder="Search" />
               <SearchOutlined className="search-icon-choose-meal" />
-            </div>{" "}
+            </div>{" "} */}
             <div className="choosemeal-shoopingbag">
               <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
             </div>
@@ -157,7 +157,9 @@ const SingleMeal = () => {
         </div>
       </div>
       <div className="computer-only-content">
-      <img src={backButton} className="back-button-orderMeal" alt="pizza" />
+      <img src={backButton} className="back-button-orderMeal" onClick={() => {
+                navigate(`/choosemeal`);
+              }} alt="pizza" />
       <img src={pizzaImg} alt="pizza" className="img-layout-orderMeal" />
       <section className="texts-orderMeal">
         <div className="about-orderMeal">
