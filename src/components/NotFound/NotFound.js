@@ -13,24 +13,7 @@ import logo from "../../images/logo.png";
 import "../../style/global.css";
 import { Link } from "react-router-dom";
 const NotFound = () => {
-
-  const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
-    <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
-      <div className="options">
-        <div className="option"  >Profile</div>
-        <div className="option">Logout</div>
-      </div>
-    </div>
-  );
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-
 
 
 
