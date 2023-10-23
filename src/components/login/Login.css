@@ -6,7 +6,6 @@
   align-items: center;
   flex-direction: column;
 }
-
 .title {
   gap: 24px;
   display: flex;

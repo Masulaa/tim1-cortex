@@ -7,7 +7,7 @@
 
 }
 .img1-home{
-  z-index: 1;
+  margin-top: 50px;
 }
 .choose-meal-dropdown-open,.choose-meal-dropdown{
   z-index: 10;
