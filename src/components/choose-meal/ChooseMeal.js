@@ -28,6 +28,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import darkCircle from "../../images/darkCircle.svg";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom/dist";
 
 const icons = [
   { icon: MenuIcon, name: null },
