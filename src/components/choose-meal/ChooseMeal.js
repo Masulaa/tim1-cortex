@@ -28,6 +28,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import darkCircle from "../../images/darkCircle.svg";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom/dist";
 
 const icons = [
   { icon: MenuIcon, name: null },
@@ -139,8 +140,8 @@ const ChooseMeal = () => {
               <OutlinedInput className="search-input" placeholder="Search" />
               <SearchOutlined className="search-icon-choose-meal" />
             </div>{" "}
-            <div className="choosemeal-shoopingbag">
-              <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
+            <div className="choosemeal-shoopingbag" >
+              <ShoppingBagOutlinedIcon style={{cursor:"pointer"}} onClick={()=>{navigate("/ConfirmOrder")}}></ShoppingBagOutlinedIcon>
             </div>
             <div
               className="image-topbar-home-profile-with-dropdown"
@@ -180,7 +181,7 @@ const ChooseMeal = () => {
           <div className="image-topbar-wrapper">
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
-          <div className="choosemeal-shoopingbag">
+          <div className="choosemeal-shoopingbag" onClick={()=>{navigate("/ConfirmOrder")}}>
             <ShoppingBagOutlinedIcon />
           </div>
         </div>{" "}
