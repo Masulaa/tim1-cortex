@@ -172,7 +172,7 @@ const closeMenu = () => {
               <img
                 src={profileIcon}
                 alt="logo"
-                className="choosemeal-profile-icon"
+                className="image-topbar-home-profile"
               />
               {isDropdownOpenLeft ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
             </div>

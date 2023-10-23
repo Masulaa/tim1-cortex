@@ -19,13 +19,6 @@
   height: 24px;
 }
 
-.single-meal-img-profile {
-  width: 48px;
-  height: 48px;
-  cursor: pointer; /* Dodajemo pokazivač na ikonicu profila */
-  border-radius: 100%;
-}
-
 /* Style the pizza image */
 .img-layout-orderMeal {
   height: auto;
