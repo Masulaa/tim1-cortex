@@ -5,7 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SendIcon from "@mui/icons-material/Send";
 import StarIcon from "@mui/icons-material/Star";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
-import profileIcon from "../../images/Ellipse 1.svg";
+import profileIcon from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
 import { OrderService } from "../../api/api";
 import { RatingService } from "../../api/api";
 import "./RateOrder.css";
