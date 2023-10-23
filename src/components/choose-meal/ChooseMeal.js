@@ -64,14 +64,6 @@ const Dropdown = ({ isDropdownOpen, isAdmin,   handleLogout, navigate}) => (
           <div
             className="option"
             onClick={() => {
-              navigate("/Settings");
-            }}
-          >
-            Meal Settings
-          </div>
-          <div
-            className="option"
-            onClick={() => {
               window.open("https://4n2q9d.ictcortex.me", "_blank");
             }}
           >
@@ -96,14 +88,6 @@ const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft, isAdmin, navigat
   
       {isAdmin && (
         <>
-          <div
-            className="option"
-            onClick={() => {
-              navigate("/Settings");
-            }}
-          >
-            Meal Settings
-          </div>
           <div
             className="option"
             onClick={() => {
