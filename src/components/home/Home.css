@@ -8,7 +8,9 @@
 
 }
 
-
+.choose-meal-dropdown-open{
+  z-index: 5;
+}
 
 .image-topbar-home-profile {
   width: 48px;

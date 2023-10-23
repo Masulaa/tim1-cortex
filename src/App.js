@@ -11,9 +11,7 @@ const LogIn = lazy(() => import("./components/login/Login"));
 const Home = lazy(() => import("./components/home/Home"));
 const ChooseMeal = lazy(() => import("./components/choose-meal/ChooseMeal"));
 const ChooseMealForWholeWeek = lazy(() => import("./components/choose-meal-for-week/ChooseMealForWholeWeek"));
-const HistoryOfMeals = lazy(() =>
-  import("./components/history-of-meals/HistoryOfMeals")
-);
+
 const SingleMeal = lazy(() => import("./components/single-meal/SingleMeal"));
 const OrderSent = lazy(() => import("./components/order-sent/OrderSent"));
 const TrackOrder = lazy(() => import("./components/track-order/TrackOrder"));
@@ -158,14 +156,7 @@ function App() {
   
   }
 />
-        <Route
-          path="HistoryOfMeals"
-          element={
-            <Suspense fallback={<NotFound />}>
-              <HistoryOfMeals />
-            </Suspense>
-          }
-        />
+
         <Route
           path="RateOrder"
           element={
