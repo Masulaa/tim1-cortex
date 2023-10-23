@@ -117,7 +117,16 @@ const Home = () => {
       setIsPossible(response);
       console.log(response);
     } catch (error) {
-      console.log("Error fetching isPossible:", error);
+      {
+        if (error.response.status === 400) {
+          // Status 400 se tretira kao očekivan rezultat
+          setIsPossible(error.response);
+        } else {
+          // Ovo je prava greška, pa je prijavljujemo
+          console.error("Greška prilikom dobijanja odgovora:", error);
+        }
+      }
+    
     }
   };
 

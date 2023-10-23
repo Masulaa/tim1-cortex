@@ -688,3 +688,9 @@ z-index: -10;
 .choosemeal-menu{
   display: none;
 }
+.selected-category .choosemeal-categories-text{
+  color: #bd2b2b;
+}
+.selected-category {
+  color: #bd2b2b;
+}

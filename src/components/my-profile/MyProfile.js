@@ -3,7 +3,6 @@ import { ArrowBackIosNew, ArrowBack } from "@mui/icons-material";
 import TextField from "@mui/material/TextField";
 import { ProfileService } from "../../api/api";
 import slika01 from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
-import editslika from "../../images/icons/Group 26.png";
 import closeBtn from "../../images/close.svg";
 import "./MyProfile.css"; // Stilovi za MyProfile komponentu
 import { Link } from "react-router-dom";
@@ -55,18 +54,13 @@ const MyProfile = () => {
     setModalVisible(false);
   };
 
-  const handleProfileImageChange = (event) => {
-    // Handle image selection
-    const selectedImage = event.target.files[0];
-    setProfileImage(selectedImage);
-  };
 
   const EditProfile = async () => {
     try {
       const response = await ProfileService.EditProfile({
         first_name: firstName,
         last_name: lastName,
-        photo: profileImage,
+        photo: null,
       });
       console.log("API Response", response);
       fetchUser();
@@ -85,17 +79,7 @@ const MyProfile = () => {
           </Link>
           <div className="myprofile-title-and-icon">
             <p className="myprofile-title">PROFILE</p>
-            <input
-              type="file"
-              accept="image/*"
-              id="profile-image-input"
-              style={{ display: "none" }}
-              onChange={handleProfileImageChange}
-            />
-            <label htmlFor="profile-image-input">
               <img src={slika01} alt="profilna" className="myprofile-picture" />
-            </label>
-            <img src={editslika} alt="edit" className="myprofile-edit-picture" />
           </div>
           <p className="myprofile-email">{user.email}</p>
         </div>

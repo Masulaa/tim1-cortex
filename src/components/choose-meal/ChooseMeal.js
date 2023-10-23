@@ -36,12 +36,13 @@ const icons = [
   { icon: LunchDiningOutlinedIcon, name: "Burger" },
   { icon: CookieOutlinedIcon, name: "Sweets" },
   { icon: BakeryDiningOutlinedIcon, name: "Breakfast" },
-  { icon: SoupKitchenIcon, name: "Breakfast" },
+  { icon: SoupKitchenIcon, name: "Cooked" },
   { icon: OutdoorGrillOutlinedIcon, name: "Grill" },
   { icon: SpaIcon, name: "Vegan" },
   { icon: LiquorOutlinedIcon, name: "Drink" },
   { icon: CoffeeMakerOutlinedIcon, name: "Coffee" },
 ];
+
 
 const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
@@ -69,7 +70,7 @@ const ChooseMeal = () => {
   const [isDropdownOpenLeft, setIsDropdownOpenLeft] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [selectedCircles, setSelectedCircles] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -100,12 +101,18 @@ const ChooseMeal = () => {
     document.querySelector(".choosemeal-menu").style.display = "block";
   };
 
+const closeMenu = () => {
+  toggleMenu();
+
+}
+
   const handleClick = (index, name) => {
-    if(selectedCategory==name){
-      setSelectedCategory(null)
+    if (selectedCategory == name) {
+      setSelectedCategory(null);
+    } else if (name != null) {
+      setSelectedCategory(name);
     }
-    else if(name != null){setSelectedCategory(name)}
-    
+
     if (index === 0) {
       toggleMenu();
       // Change src to darkcircle
@@ -157,10 +164,13 @@ const ChooseMeal = () => {
             <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
           </div>
         </div>
-        <img src={computerbutton} className="choosmeal-computer-button"
-         onClick={() => {
-          navigate(`/confirmorder`);
-        }}></img>
+        <img
+          src={computerbutton}
+          className="choosmeal-computer-button"
+          onClick={() => {
+            navigate(`/confirmorder`);
+          }}
+        ></img>
       </div>
       <div className="phone-only">
         <div className="topbar-choosemeal-home">
@@ -191,29 +201,32 @@ const ChooseMeal = () => {
         </div>
       </div>
       <div className="icon-row">
-        {icons.map((data, index) => {let Icon=data.icon; return(
-          <div
-            className={`icon ${index === 0 ? "hidden" : ""}`}
-            key={index}
-            onClick={() => handleClick(index, data.name)}
-          >
-            <div className="choosemeal-circle">
-              <img
-                src={selectedCircles.includes(index) ? darkCircle : circle}
-                alt="Circle"
-                className="choosemeal-circle-icon"
-              />
-              <Icon
-                className="inner-icon"
-                style={{
-                  color: selectedCircles.includes(index)
-                    ? "darkred"
-                    : "initial",
-                }}
-              />
+        {icons.map((data, index) => {
+          let Icon = data.icon;
+          return (
+            <div
+              className={`icon ${index === 0 ? "hidden" : ""}`}
+              key={index}
+              onClick={() => handleClick(index, data.name)}
+            >
+              <div className="choosemeal-circle">
+                <img
+                  src={selectedCircles.includes(index) ? darkCircle : circle}
+                  alt="Circle"
+                  className="choosemeal-circle-icon"
+                />
+                <Icon
+                  className="inner-icon"
+                  style={{
+                    color: selectedCircles.includes(index)
+                      ? "darkred"
+                      : "initial",
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        )})}
+          );
+        })}
       </div>
       <div className="message-box">
         <div>
@@ -242,47 +255,49 @@ const ChooseMeal = () => {
         <div className="choosemeal-recommend-title">Recommend</div>
         <div className="choosemeal-meals">
           {articles.map((article) => {
-            if(selectedCategory){let show = false;
-            article.tags.forEach(element => {
-              if(element.name==selectedCategory){
-                show=true;
+            if (selectedCategory) {
+              let show = false;
+              article.tags.forEach((element) => {
+                if (element.name == selectedCategory) {
+                  show = true;
+                }
+              });
+              if (!show) {
+                return;
               }
-            });
-            if(!show){
-              return ;
             }
-          }
-            return(
-            <div key={article.id} className="choosemeal-single-meal">
-              <div className="choosemeal-single-info">
-                <div className="choosemeal-first-part-meal-info">
-                  <img
-                    src={pizzaImg}
-                    alt=""
-                    className="choosemeal-meal-img"
-                  ></img>
-                  <div className="choosemeal-meal-title-and-description">
-                    <p className="choosemeal-meal-title">{article.name}</p>
-                    <p className="choosemeal-meal-description">
-                      {article.ingredients}
-                    </p>
+            return (
+              <div key={article.id} className="choosemeal-single-meal">
+                <div className="choosemeal-single-info">
+                  <div className="choosemeal-first-part-meal-info">
+                    <img
+                      src={pizzaImg}
+                      alt=""
+                      className="choosemeal-meal-img"
+                    ></img>
+                    <div className="choosemeal-meal-title-and-description">
+                      <p className="choosemeal-meal-title">{article.name}</p>
+                      <p className="choosemeal-meal-description">
+                        {article.ingredients}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="choosemeal-second-part-meal-info">
+                    <p className="choosemeal-meal-price">{article.price}€</p>
+                    <img
+                      src={addbuttongImg}
+                      alt=""
+                      className="choosemeal-meal-add-button"
+                      onClick={() => {
+                        navigate(`/ChooseMeal/SingleMeal/${article.id}`);
+                      }}
+                    ></img>
                   </div>
                 </div>
-                <div className="choosemeal-second-part-meal-info">
-                  <p className="choosemeal-meal-price">{article.price}€</p>
-                  <img
-                    src={addbuttongImg}
-                    alt=""
-                    className="choosemeal-meal-add-button"
-                    onClick={() => {
-                      navigate(`/ChooseMeal/SingleMeal/${article.id}`);
-                    }}
-                  ></img>
-                </div>
+                <div className="line"></div>
               </div>
-              <div className="line"></div>
-            </div>
-          )})}
+            );
+          })}
         </div>
       </div>
       {
@@ -298,69 +313,91 @@ const ChooseMeal = () => {
       >
         <p className="choosemeal-title-menu">Menu</p>
         <div className="choosemeal-categories-menu">
-          <div className="choosemeal-categories-single">
+          <div
+                      className={`choosemeal-categories-single ${selectedCategory === "Pizza" ? "selected-category" : ""}`}
+
+            onClick={() => handleClick(1, "Pizza")}
+          >
             <div className="choosemeal-categories-icon">
-              <LocalPizzaOutlinedIcon></LocalPizzaOutlinedIcon>
+              <LocalPizzaOutlinedIcon />
             </div>
             <div className="choosemeal-categories-text">Pizza</div>
           </div>
 
-          <div className="choosemeal-categories-single">
+          <div           className={`choosemeal-categories-single ${selectedCategory === "Burger" ? "selected-category" : ""}`}
+
+          onClick={() => handleClick(2, "Burger")}
+          >
             <div className="choosemeal-categories-icon">
               <CookieOutlinedIcon></CookieOutlinedIcon>
             </div>
             <div className="choosemeal-categories-text">Burger</div>
           </div>
-          <div className="choosemeal-categories-single">
+          <div           className={`choosemeal-categories-single ${selectedCategory === "Sweets" ? "selected-category" : ""}`}
+
+          onClick={() => handleClick(3, "Sweets")}
+          >
             <div className="choosemeal-categories-icon">
               <BakeryDiningOutlinedIcon></BakeryDiningOutlinedIcon>
             </div>
             <div className="choosemeal-categories-text">Sweets</div>
           </div>
-          <div className="choosemeal-categories-single">
+          <div           className={`choosemeal-categories-single ${selectedCategory === "Breakfast" ? "selected-category" : ""}`}
+
+          onClick={() => handleClick(4, "Breakfast")}
+          >
             <div className="choosemeal-categories-icon">
               <OutdoorGrillOutlinedIcon></OutdoorGrillOutlinedIcon>
             </div>
             <div className="choosemeal-categories-text">Breakfast</div>
           </div>
-          <div className="choosemeal-categories-single">
+          <div           className={`choosemeal-categories-single ${selectedCategory === "Cooked" ? "selected-category" : ""}`}
+
+          onClick={() => handleClick(5, "Cooked")}
+          >
             <div className="choosemeal-categories-icon">
               <SoupKitchenIcon></SoupKitchenIcon>
             </div>
             <div className="choosemeal-categories-text">Cooked</div>
           </div>
-          <div className="choosemeal-categories-single">
+          <div           className={`choosemeal-categories-single ${selectedCategory === "Grill" ? "selected-category" : ""}`}
+
+          onClick={() => handleClick(6, "Grill")}
+          >
             <div className="choosemeal-categories-icon">
               <SpaIcon></SpaIcon>
             </div>
             <div className="choosemeal-categories-text">Grill</div>
           </div>
-          <div className="choosemeal-categories-single">
+          <div           className={`choosemeal-categories-single ${selectedCategory === "Vegan" ? "selected-category" : ""}`}
+
+          onClick={() => handleClick(7, "Vegan")}>
             <div className="choosemeal-categories-icon">
               <LiquorOutlinedIcon></LiquorOutlinedIcon>
             </div>
             <div className="choosemeal-categories-text">Vegan</div>
           </div>
-          <div className="choosemeal-categories-single">
+          <div           className={`choosemeal-categories-single ${selectedCategory === "Drink" ? "selected-category" : ""}`}
+
+          onClick={() => handleClick(8, "Drink")}>
             <div className="choosemeal-categories-icon">
               <CoffeeMakerOutlinedIcon></CoffeeMakerOutlinedIcon>
             </div>
             <div className="choosemeal-categories-text">Drink</div>
           </div>
-          <div className="choosemeal-categories-single">
+          <div           className={`choosemeal-categories-single ${selectedCategory === "Coffee" ? "selected-category" : ""}`}
+
+        
+          onClick={() => handleClick(9, "Coffee")}
+          >
             <div className="choosemeal-categories-icon">
               <EmojiFoodBeverageOutlinedIcon></EmojiFoodBeverageOutlinedIcon>
             </div>
             <div className="choosemeal-categories-text">Cofee</div>
           </div>
-          <div className="choosemeal-categories-single">
-            <div className="choosemeal-categories-icon">
-              <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
-            </div>
-            <div className="choosemeal-categories-text">Tea</div>
-          </div>
+
         </div>
-        <div className="choosemeal-menu-apply-button">
+        <div className="choosemeal-menu-apply-button" onClick={closeMenu}>
           <button className="choosemeal-menu-apply">APPLY</button>
         </div>
       </div>

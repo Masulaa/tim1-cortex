@@ -39,29 +39,6 @@ const NotFound = () => {
       <div className="notFound-header"> <div className="notFound-topbar-computer--home">
           <div className="notFound-image-topbar-wrapper">
           <ArrowBackIcon className="notFound-arrowBack"></ArrowBackIcon>
-            <img src={logo} alt="logo" className="image-topbar-home" />{" "}
-          </div>
-          <div className="notFound-topbar-computer-other-part">
-            {" "}
-            <div className="notFound-search-">
-              <OutlinedInput className="notFound-search-input" placeholder="Search" />
-              <SearchOutlined className="notFound-search-icon-choose-meal" />
-            </div>{" "}
-            <div className="notFound--shoopingbag">
-              <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
-            </div>
-            <div
-            className="image-topbar-home-profile-with-dropdown"
-            onClick={toggleDropdown}
-          >
-            <img src={profileIcon} alt="logo" className="image-topbar-home-profile" />
-            {isDropdownOpen ? (
-        <ExpandLessIcon />
-      ) : (
-        <ExpandMoreIcon />
-      )}
-      <Dropdown isDropdownOpen={isDropdownOpen} />
-          </div>
           </div>
         </div>
       </div>
