@@ -283,6 +283,7 @@ margin-top: 1rem;
   gap: 10px;
   border-radius: 4px;
   background: #E7E7E7;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .confirmorder-meals-modal-cancel-text {
@@ -303,6 +304,8 @@ margin-top: 1rem;
   gap: 10px;
   border-radius: 4px;
   background: #DC9C9C;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .confirmorder-meals-modal-remove-text {
