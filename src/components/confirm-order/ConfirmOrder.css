@@ -25,7 +25,9 @@
   border-radius: 0 0 0 5px;
   left: 0;
 }
-
+.confirmorder-meals-modal-remove-rectangle:hover{
+  background-color: #BD2B2B;
+}
 .confirmorder-head {
   display: flex;
   flex-direction: column;
@@ -270,7 +272,9 @@ margin-top: 1rem;
   line-height: 16px; /* 133.333% */
   letter-spacing: 0.5px;
 }
-
+.confirmorder-meals-modal-cancel-rectangle:hover{
+  background-color:#b4b4b4 ;
+}
 .confirmorder-meals-modal-cancel-rectangle {
   display: inline-flex;
   padding: 16px 36px;
@@ -298,7 +302,7 @@ margin-top: 1rem;
   align-items: center;
   gap: 10px;
   border-radius: 4px;
-  background: #BD2B2B;
+  background: #DC9C9C;
 }
 
 .confirmorder-meals-modal-remove-text {
