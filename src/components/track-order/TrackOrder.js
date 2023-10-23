@@ -66,12 +66,12 @@ const TrackOrder = () => {
             </p>
             {status === "preparing" && <img src={selectedBtn} className="selected-icon" alt=""/>}
           </div>
-        <div className="circle-space">
-          <img src={orderCircle} className="circle" alt=""/>
-          <img src={orderCircle} className="circle" alt=""/>
-          <img src={orderCircle} className="circle" alt=""/>
-          <img src={orderCircle} className="circle" alt=""/>
-          <img src={orderCircle} className="circle" alt=""/>
+        <div className="trackorder-circle-space">
+          <img src={orderCircle} className="trackorder-circle" alt=""/>
+          <img src={orderCircle} className="trackorder-circle" alt=""/>
+          <img src={orderCircle} className="trackorder-circle" alt=""/>
+          <img src={orderCircle} className="trackorder-circle" alt=""/>
+          <img src={orderCircle} className="trackorder-circle" alt=""/>
         </div>
         <div className="trackorder-first-step">
           <img
@@ -86,7 +86,7 @@ const TrackOrder = () => {
           </p>
           {status === "on_the_way" && <img src={selectedBtn} className="selected-icon" alt=""/>}
         </div>
-        <div className="circle-space">
+        <div className="trackorder-circle-space">
           <img src={orderCircle} className="circle" alt=""/>
           <img src={orderCircle} className="circle" alt=""/>
           <img src={orderCircle} className="circle" alt=""/>
