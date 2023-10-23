@@ -11,7 +11,7 @@ import { SearchOutlined } from "@mui/icons-material";
 import profileIcon from "../../images/Ellipse 1.svg";
 import logo from "../../images/logo.png";
 import "../../style/global.css";
-
+import { Link } from "react-router-dom";
 const NotFound = () => {
 
   const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
@@ -38,7 +38,9 @@ const NotFound = () => {
     <div className="notFound-main">
       <div className="notFound-header"> <div className="notFound-topbar-computer--home">
           <div className="notFound-image-topbar-wrapper">
+            <Link to="/home">
           <ArrowBackIcon className="notFound-arrowBack"></ArrowBackIcon>
+          </Link>
           </div>
         </div>
       </div>
