@@ -499,41 +499,25 @@ cursor: pointer;
 }
 @media screen and (min-width: 960px) {
   .choosemeal-categories-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+ display: none;
   }
+
+  .choosemeal-menu-apply{
+    display: none;
+  }
+
   .choosemeal-title-menu {
     display: none;
     color: transparent;
   }
 
   .menu-visible {
-scale: 0.90;
-    position: absolute;
-    width: 225px;
-    height: 544px;
-    padding: 15px;
-    z-index: 3;
-    background-color: #ffffff;
-    margin-left: 3rem;
-    box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
-    border-radius: 15px;
-    margin-top: 20vh;
+display: none;
+z-index: -10;
   }
   .menu-hidden {
-    scale: 0.90;
-    position: block;
-    width: 225px;
-    height: 544px;
-    z-index: -3;
-    padding: 15px;
-    margin-top: 20vh;
-    background-color: #ffffff;
-    margin-left: 3rem;
-    border-radius: 15px;
-    box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.12);
-    border-radius: 15px;
+    display: none;
+    z-index: -10;
   }
   .overlay-visible {
     width: 100%;
@@ -654,6 +638,7 @@ scale: 0.90;
 }
 .CloseIcon{
   margin-left: 30px;
+  cursor: pointer;
 }
 
 .message-box {

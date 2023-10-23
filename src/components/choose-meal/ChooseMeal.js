@@ -28,28 +28,26 @@ import CloseIcon from "@mui/icons-material/Close";
 import darkCircle from "../../images/darkCircle.svg";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+
 const icons = [
-  MenuIcon,
-  LocalPizzaOutlinedIcon,
-  LunchDiningOutlinedIcon,
-  CookieOutlinedIcon,
-  BakeryDiningOutlinedIcon,
-  SoupKitchenIcon,
-  OutdoorGrillOutlinedIcon,
-  SpaIcon,
-  LiquorOutlinedIcon,
-  CoffeeMakerOutlinedIcon,
-  EmojiFoodBeverageOutlinedIcon,
+  { icon: MenuIcon, name: null },
+  { icon: LocalPizzaOutlinedIcon, name: "Pizza" },
+  { icon: LunchDiningOutlinedIcon, name: "Burger" },
+  { icon: CookieOutlinedIcon, name: "Sweets" },
+  { icon: BakeryDiningOutlinedIcon, name: "Breakfast" },
+  { icon: SoupKitchenIcon, name: "Breakfast" },
+  { icon: OutdoorGrillOutlinedIcon, name: "Grill" },
+  { icon: SpaIcon, name: "Vegan" },
+  { icon: LiquorOutlinedIcon, name: "Drink" },
+  { icon: CoffeeMakerOutlinedIcon, name: "Coffee" },
 ];
 
 const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
     <div className="options">
-    <Link to="/myprofile" className="option">Profile</Link>
-    <Link to="/trakorder" className="option">Track Order</Link>
-    <Link to="/login" className="option">Log out</Link>
+      <div className="option">Profile</div>
+      <div className="option">Track Order</div>
+      <div className="option">Logout</div>
     </div>
   </div>
 );
@@ -57,9 +55,9 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
 const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
-    <Link to="/myprofile" className="option">Profile</Link>
-    <Link to="/trackorder" className="option">Track Order</Link>
-    <Link to="/" className="option">Log out</Link>
+      <div className="option">Profile</div>
+      <div className="option">Track Order</div>
+      <div className="option">Logout</div>
     </div>
   </div>
 );
@@ -70,6 +68,7 @@ const ChooseMeal = () => {
   const [isDropdownOpenLeft, setIsDropdownOpenLeft] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [selectedCircles, setSelectedCircles] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -100,7 +99,12 @@ const ChooseMeal = () => {
     document.querySelector(".choosemeal-menu").style.display = "block";
   };
 
-  const handleClick = (index) => {
+  const handleClick = (index, name) => {
+    if(selectedCategory==name){
+      setSelectedCategory(null)
+    }
+    else if(name != null){setSelectedCategory(name)}
+    
     if (index === 0) {
       toggleMenu();
       // Change src to darkcircle
@@ -111,7 +115,7 @@ const ChooseMeal = () => {
         setSelectedCircles(selectedCircles.filter((item) => item !== index));
       } else {
         // If not selected, add it to the array
-        setSelectedCircles([...selectedCircles, index]);
+        setSelectedCircles([index]);
       }
     }
   };
@@ -121,10 +125,11 @@ const ChooseMeal = () => {
       <div className="computer-only">
         <div className="topbar-computer-choosemeal-home">
           <div className="image-topbar-wrapper">
-          <ArrowBackIcon className="arrowBack"
-            onClick={() => {
-              navigate(`/home`);
-            }}
+            <ArrowBackIcon
+              className="arrowBack"
+              onClick={() => {
+                navigate(`/home`);
+              }}
             ></ArrowBackIcon>
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
@@ -134,8 +139,8 @@ const ChooseMeal = () => {
               <OutlinedInput className="search-input" placeholder="Search" />
               <SearchOutlined className="search-icon-choose-meal" />
             </div>{" "}
-            <div className="choosemeal-shoopingbag">
-              <ShoppingBagOutlinedIcon></ShoppingBagOutlinedIcon>
+            <div className="choosemeal-shoopingbag" >
+              <ShoppingBagOutlinedIcon style={{cursor:"pointer"}} onClick={()=>{navigate("/ConfirmOrder")}}></ShoppingBagOutlinedIcon>
             </div>
             <div
               className="image-topbar-home-profile-with-dropdown"
@@ -151,7 +156,7 @@ const ChooseMeal = () => {
             <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
           </div>
         </div>
-        <img src={computerbutton} className="choosmeal-computer-button" alt="button"
+        <img src={computerbutton} className="choosmeal-computer-button"
          onClick={() => {
           navigate(`/confirmorder`);
         }}></img>
@@ -167,7 +172,6 @@ const ChooseMeal = () => {
               src={profileIcon}
               alt="logo"
               className="image-topbar-home-profile"
-              
             />
             {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
           </div>
@@ -176,9 +180,7 @@ const ChooseMeal = () => {
           <div className="image-topbar-wrapper">
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}
           </div>
-          <div
-            className="choosemeal-shoopingbag"
-          >
+          <div className="choosemeal-shoopingbag" onClick={()=>{navigate("/ConfirmOrder")}}>
             <ShoppingBagOutlinedIcon />
           </div>
         </div>{" "}
@@ -188,11 +190,11 @@ const ChooseMeal = () => {
         </div>
       </div>
       <div className="icon-row">
-        {icons.map((Icon, index) => (
+        {icons.map((data, index) => {let Icon=data.icon; return(
           <div
             className={`icon ${index === 0 ? "hidden" : ""}`}
             key={index}
-            onClick={() => handleClick(index)}
+            onClick={() => handleClick(index, data.name)}
           >
             <div className="choosemeal-circle">
               <img
@@ -210,7 +212,7 @@ const ChooseMeal = () => {
               />
             </div>
           </div>
-        ))}
+        )})}
       </div>
       <div className="message-box">
         <div>
@@ -238,7 +240,18 @@ const ChooseMeal = () => {
       <div>
         <div className="choosemeal-recommend-title">Recommend</div>
         <div className="choosemeal-meals">
-          {articles.map((article) => (
+          {articles.map((article) => {
+            if(selectedCategory){let show = false;
+            article.tags.forEach(element => {
+              if(element.name==selectedCategory){
+                show=true;
+              }
+            });
+            if(!show){
+              return ;
+            }
+          }
+            return(
             <div key={article.id} className="choosemeal-single-meal">
               <div className="choosemeal-single-info">
                 <div className="choosemeal-first-part-meal-info">
@@ -268,7 +281,7 @@ const ChooseMeal = () => {
               </div>
               <div className="line"></div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
       {
