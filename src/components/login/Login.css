@@ -1,12 +1,11 @@
 .main2 {
-  height: 100vh;
+  height: 100%;
   width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
 .title {
   gap: 24px;
   display: flex;

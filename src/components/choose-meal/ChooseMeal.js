@@ -15,7 +15,7 @@ import EmojiFoodBeverageOutlinedIcon from "@mui/icons-material/EmojiFoodBeverage
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { SearchOutlined } from "@mui/icons-material";
-import profileIcon from "../../images/Ellipse 1.svg";
+import profileIcon from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
 import circle from "../../images/Ellipse 2.svg";
 import logo from "../../images/logo.png";
 import "./ChooseMeal.css";
@@ -29,7 +29,7 @@ import darkCircle from "../../images/darkCircle.svg";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom/dist";
-
+import {Link} from "react-router-dom";
 const icons = [
   { icon: MenuIcon, name: null },
   { icon: LocalPizzaOutlinedIcon, name: "Pizza" },
@@ -47,9 +47,16 @@ const icons = [
 const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
     <div className="options">
-      <div className="option">Profile</div>
-      <div className="option">Track Order</div>
-      <div className="option">Logout</div>
+    <Link to="/myprofile">
+
+<div className="option">Profile</div>
+</Link>
+<Link to="/trackorder">
+<div className="option">Track Order</div>
+</Link>
+<Link to="/">
+<div className="option">Logout</div>
+</Link>
     </div>
   </div>
 );
@@ -57,9 +64,17 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
 const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
+      <Link to="/myprofile">
+
       <div className="option">Profile</div>
+      </Link>
+      <Link to="/trackorder">
       <div className="option">Track Order</div>
+      </Link>
+  <Link to="/">
       <div className="option">Logout</div>
+      </Link>
+
     </div>
   </div>
 );

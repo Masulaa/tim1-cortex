@@ -2,11 +2,12 @@
 
 /* Apply styles to the main container */
 .main-orderMeal {
-  width: 100%;
+  width: 100vh;
   background: #fff;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
 /* Style the back button */
