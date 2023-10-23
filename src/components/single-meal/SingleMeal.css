@@ -2,12 +2,11 @@
 
 /* Apply styles to the main container */
 .main-orderMeal {
-  width: 100vh;
+  width: 100%;
   background: #fff;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
 }
 
 /* Style the back button */
@@ -17,6 +16,13 @@
   left: 16px;
   width: 24px;
   height: 24px;
+}
+
+.single-meal-img-profile {
+  width: 48px;
+  height: 48px;
+  cursor: pointer; /* Dodajemo pokazivač na ikonicu profila */
+  border-radius: 100%;
 }
 
 /* Style the pizza image */

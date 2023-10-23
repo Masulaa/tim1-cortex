@@ -119,7 +119,7 @@ const SingleMeal = () => {
               <img
                 src={profileIcon}
                 alt="logo"
-                className="image-topbar-home-profile"
+                className="single-meal-img-profile"
               />
               {isDropdownOpenLeft ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
             </div>
