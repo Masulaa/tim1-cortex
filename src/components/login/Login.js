@@ -84,7 +84,6 @@ const LogIn = () => {
           >
             LOG IN
           </button>
-          <div className="forgot">Forgot password?</div>
         </div>
       </section>
     </div>
