@@ -19,6 +19,7 @@ import profileIcon from "../../images/5b5efd8e2b3715267f1b3b8d1b2d49cf.png";
 import circle from "../../images/Ellipse 2.svg";
 import logo from "../../images/logo.png";
 import "./ChooseMeal.css";
+import { AuthService } from "../../api/api";
 import "../../style/global.css";
 import { ArticleService } from "../../api/api";
 import addbuttongImg from "../../images/AddButton.png";
@@ -30,6 +31,7 @@ import { ArrowBackIosNew } from "@mui/icons-material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom/dist";
 import {Link} from "react-router-dom";
+import { ProfileService } from "../../api/api";
 const icons = [
   { icon: MenuIcon, name: null },
   { icon: LocalPizzaOutlinedIcon, name: "Pizza" },
@@ -44,7 +46,7 @@ const icons = [
 ];
 
 
-const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
+const Dropdown = ({ isDropdownOpen, isAdmin,   handleLogout, navigate}) => (
   <div className={`dropdown ${isDropdownOpen ? "open" : ""}`}>
     <div className="options">
     <Link to="/myprofile">
@@ -55,13 +57,33 @@ const Dropdown = ({ isDropdownOpen, toggleDropdown }) => (
 <div className="option">Track Order</div>
 </Link>
 <Link to="/">
-<div className="option">Logout</div>
+
 </Link>
+{isAdmin && (
+        <>
+          <div
+            className="option"
+            onClick={() => {
+              navigate("/Settings");
+            }}
+          >
+            Meal Settings
+          </div>
+          <div
+            className="option"
+            onClick={() => {
+              window.open("https://4n2q9d.ictcortex.me", "_blank");
+            }}
+          >
+            Admin Panel
+          </div>
+        </>
+      )}<div className="option" onClick={handleLogout}>Logout</div>
     </div>
   </div>
 );
 
-const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
+const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft, isAdmin, navigate, handleLogout }) => (
   <div className={`dropdown1 ${isDropdownOpenLeft ? "open" : ""}`}>
     <div className="options">
       <Link to="/myprofile">
@@ -71,9 +93,29 @@ const DropdownLeft = ({ isDropdownOpenLeft, toggleDropdownLeft }) => (
       <Link to="/trackorder">
       <div className="option">Track Order</div>
       </Link>
-  <Link to="/">
-      <div className="option">Logout</div>
-      </Link>
+  
+      {isAdmin && (
+        <>
+          <div
+            className="option"
+            onClick={() => {
+              navigate("/Settings");
+            }}
+          >
+            Meal Settings
+          </div>
+          <div
+            className="option"
+            onClick={() => {
+              window.open("https://4n2q9d.ictcortex.me", "_blank");
+            }}
+          >
+            Admin Panel
+          </div>
+        </>
+      )}
+      <div className="option" onClick={handleLogout}>Logout</div>
+      
 
     </div>
   </div>
@@ -86,6 +128,20 @@ const ChooseMeal = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [selectedCircles, setSelectedCircles] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleLogout = async () => {
+    try {
+      const success = await AuthService.logout();
+      if (success) {
+        console.log("Logout successful");
+      }
+    } catch (error) {
+      console.error("Error logout", error);
+    }
+  };
+
+
+
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -143,6 +199,24 @@ const closeMenu = () => {
     }
   };
 
+  const fetchUser = async () => {
+    try {
+      const response = await ProfileService.GetProfile();
+      setUser(response.data.success);
+      console.log(response.data.success);
+    } catch (error) {
+      console.log("Error fetching user:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+  const [user, setUser] = useState([]);
+  const isAdmin = user.admin === 1;
+
+
+
   return (
     <div className="main-choosemeal">
       <div className="computer-only">
@@ -176,7 +250,7 @@ const closeMenu = () => {
               />
               {isDropdownOpenLeft ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
             </div>
-            <DropdownLeft isDropdownOpenLeft={isDropdownOpenLeft} />
+            <DropdownLeft handleLogout={handleLogout} isDropdownOpenLeft={isDropdownOpenLeft} navigate={navigate} isAdmin={isAdmin} />
           </div>
         </div>
         <img
@@ -204,7 +278,7 @@ const closeMenu = () => {
             />
             {isDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}{" "}
           </div>
-          <Dropdown isDropdownOpen={isDropdownOpen} />
+          <Dropdown isDropdownOpen={isDropdownOpen} handleLogout={handleLogout} isAdmin={isAdmin} navigate={navigate}/>
 
           <div className="image-topbar-wrapper">
             <img src={logo} alt="logo" className="image-topbar-home" />{" "}

@@ -27,9 +27,7 @@ const Dropdown = ({
       >
         Profile
       </div>
-      <div className="option" onClick={handleLogout}>
-        Logout
-      </div>
+
       {isPossible === 400 ? ( // Prikazi "Track Order" ako je isPossible 400
         <div
           className="option"
@@ -53,13 +51,15 @@ const Dropdown = ({
           <div
             className="option"
             onClick={() => {
-              /* Handle Invoice click */
+              window.open("https://4n2q9d.ictcortex.me", "_blank");
             }}
           >
-            Invoice
+            Admin Panel
           </div>
         </>
-      )}
+      )}      <div className="option" onClick={handleLogout}>
+        Logout
+      </div>
     </div>
   </div>
 );

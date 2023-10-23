@@ -12,7 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addOrder, updateOrder, removeOrder } from "../../store/orderStore";
 import CloseBtn from "../../images/close.svg";
 import { OrderService } from "../../api/api";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ConfirmOrder = () => {
   const dispatch = useDispatch();
@@ -111,10 +113,15 @@ const ConfirmOrder = () => {
       }`}
     >
       <div className="confirmorder-head">
-        <ArrowBackIosNew className="myprofile-back-icon" onClick={() => {
-          navigate(`/choosemeal`);
-        }} />
+      <Link to="/ChooseMeal">
+      <ArrowBackIcon className="arrowBack-absolute"></ArrowBackIcon>
+      </Link> 
+      <div className="rateorder-info">
+      <Link to="/ChooseMeal">
+        <ArrowBackIosNew className="back-icon" />
+        </Link>
         <p className="confirmorder-title">YOUR ORDER</p>
+      </div>
       </div>
       <div className="confirmorder-meals">
         {orders.map((order) => (

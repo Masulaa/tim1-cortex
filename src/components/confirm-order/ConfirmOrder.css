@@ -65,6 +65,14 @@
   margin: 0;
 }
 
+.back-icon{
+    position: absolute;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 0 0 0 5px;
+    left: 0;
+}
+
 .confirmorder-meal-title {
   color: #131313;
   font-family: Roboto;
